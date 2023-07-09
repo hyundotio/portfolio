@@ -1,0 +1,23 @@
+.links-button-countdown-list :global(.active) :global(.layer-2){
+    transition: clip-path 5s ease-out;
+}
+  
+.links-button-countdown-list :global(.fast-forward) :global(.layer-2){
+    transition: clip-path 0.2s ease-out;
+}
+
+.ghost-text-container {
+    position: relative;
+    .ghost-text {
+        position: relative;
+        user-select: none;
+        z-index: -1;
+        color: transparent !important;
+        visibility: hidden;
+    }
+    .real-text {
+        top: 0;
+        left: 0;
+        position: absolute;
+    }
+}

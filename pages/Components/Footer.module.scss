@@ -1,0 +1,23 @@
+.footer-container {
+    width: 100%;
+    background-color: var(--layer-contrast_bg);
+    color: var(--layer-contrast_text);
+}
+
+.footer-reserved {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.footer-contents {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2rem;
+}
+
+.links-list-container {
+    h5 {
+      margin-bottom: 1.25rem;
+    }
+}

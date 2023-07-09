@@ -1,0 +1,23 @@
+@use './fonts/stylesheet.css';
+@use './globals_colors.scss';
+@use './globals_containers.scss';
+@use './globals_layout.scss';
+@use './globals_typography.scss';
+
+/**
+.light::selection {
+  background: #E0D2FF;
+}
+
+.light::-moz-selection {
+  background: #E0D2FF;
+}
+
+.dark::selection {
+  background: #7D48ED;
+}
+  
+.dark::-moz-selection {
+  background: #7D48ED;
+}
+**/

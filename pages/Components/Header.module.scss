@@ -1,0 +1,35 @@
+@use '../globals_layout.scss';
+
+.header-menu {
+    height: 4rem;
+    margin-bottom: 3rem;
+    display: flex;
+    justify-content: space-between;
+}
+  
+.header-container {
+    position: relative;
+    margin-bottom: 4.5rem;
+}
+
+.header-actions {
+  display: flex;
+  button:first-of-type {
+    margin-right: 1px;
+  }
+}
+
+.content-header {
+    height: 5.75rem;
+    @extend %two-col;
+    aside {
+      border-bottom: 1.33px solid var(--text);
+      @extend %two-col;
+    }
+    &.home {
+      border-bottom: 1.33px solid var(--text);
+      aside {
+        border-bottom: none;
+      }
+    }
+  }

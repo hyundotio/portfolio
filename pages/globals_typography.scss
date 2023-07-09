@@ -1,0 +1,38 @@
+:root {
+  --font-size_root: 1rem;
+  --font-size_m: 1.25rem;
+  --font-size_l: 3rem;
+  --spacing_root: 1rem;
+}
+
+p, .textbox {
+    line-height: 148%;
+    //The negative margin will negate white space on top and bottom of the container.
+    margin: -0.2875rem 0;
+}
+
+h1, .h1 {
+    font-size: var(--font-size_l);
+    font-weight: 800;
+    line-height: 108%;
+    //The negative margin will negate white space on top and bottom of the container.
+    margin: -0.375rem 0;
+}
+
+h5, .h5 {
+    font-size: var(--font-size_m);
+    font-weight: 600;
+}
+
+h6, .h6 {
+    font-size: var(--font-size_root);
+    font-weight: 500;
+}
+
+.text_l {
+    font-size: var(--font-size_l);
+    font-weight: 200;
+    line-height: 115%;
+    //The negative margin will negate white space on top and bottom of the container.
+    margin: -0.625rem 0;
+}

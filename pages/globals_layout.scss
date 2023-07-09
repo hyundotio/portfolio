@@ -1,0 +1,33 @@
+%two-col {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 2rem;
+}
+
+.two-col {
+    @extend %two-col;
+}
+
+.spread-v {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+
+.image-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1.33px solid var(--text);
+    border-radius: 1px;
+    height: 100%;
+    position: relative;
+    background-color: var(--link);  
+    img {
+        margin: 1rem;
+        height: calc(100% - 2rem) !important;
+        width: calc(100% - 2rem) !important;
+        object-fit: contain;
+    }
+}

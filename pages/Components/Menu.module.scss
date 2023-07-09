@@ -1,0 +1,30 @@
+.menu-container {
+    position: absolute;
+    right: 0;
+    top: 3.9375rem;
+    z-index: 9;
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.5s ease-out;
+    width: calc(50% - 1rem);
+    .menu-contents {
+        user-select: none;
+        background-color: var(--layer-1_bg);
+        box-sizing: border-box;
+        overflow: hidden;
+        .padded-container {
+            border: 1px solid var(--link);
+            padding: 3.0625rem 2rem 2rem 2rem;
+        }
+    }
+    &.active {
+        user-select: initial;
+        grid-template-rows: 1fr;
+    }
+}
+
+.active-link {
+    &::after {
+        content: "*";
+    }
+}

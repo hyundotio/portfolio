@@ -1,0 +1,30 @@
+.breadcrumbs-container {
+    width: 100%;
+    height: 2.75rem;
+    box-sizing: border-box;
+    background-color: var(--layer-1_bg);
+    border-bottom: 1.33px solid var(--accent-1);
+    .breadcrumbs {
+      margin: auto;
+      padding: 0 3rem;
+      box-sizing: border-box;
+      height: 2.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      & > ul {
+        padding-right: 3rem;
+        li {
+          display: inline;
+          &::after {
+            content:" / "
+          }
+          &:last-of-type {
+            &::after {
+              content: "";
+            }
+          }
+        }
+      }
+    }
+  }

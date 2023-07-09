@@ -1,0 +1,76 @@
+.icon-button {
+    height: 2.75rem;
+    width: 2.75rem;
+    cursor: pointer;
+    background-color: var(--link);
+    border: none;
+    padding: 0;
+    margin: 0;
+    transition: background-color ease-out 0.2s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1px;
+    svg {
+      fill: var(--bg);
+      path, rect {
+        fill: var(--bg);
+      }
+    }
+    &:hover {
+      background-color: var(--link_hover);
+    }
+    &:active {
+      background-color: var(--link_active);
+    }
+    &:focus {
+      outline: 1.33px solid var(--link);
+      outline-offset: 2px;
+      outline-style: dashed;
+    }
+}
+
+.header-icon-button {
+    height: 4rem;
+    width: 4rem;
+    border: 1.33px solid var(--link);
+    border-radius: 1px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color ease-out 0.2s;
+    background-color: transparent;
+    svg {
+      fill: var(--link);
+      path, rect {
+        fill: var(--link);
+      }
+    }
+    &:hover {
+      background-color: var(--link_hover);
+      svg {
+        fill: var(--bg);
+        path, rect {
+          fill: var(--bg);
+        }
+      }
+    }
+    &:active {
+      background-color: var(--link_active);
+    }
+    &:focus {
+      outline: 1.33px solid var(--link);
+      outline-offset: 2px;
+      outline-style: dashed;
+    }
+  }
+  
+  .back-button {
+    height: 66px;
+    width: 66px;
+    margin: -1px;
+    border-radius: 33px;
+  }
+  

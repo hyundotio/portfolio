@@ -1,0 +1,26 @@
+.links-button-list {
+    & > li {
+        margin-bottom: 0.75rem;
+        &:last-of-type {
+        margin-bottom: 0;
+        }
+    }
+}
+
+.disc-list {
+    list-style-type: disc;
+    padding-left: 1.125rem;
+}
+
+.list {
+    li {
+        margin-bottom: 0.5rem;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.nested {
+    margin-left: 2rem;
+}

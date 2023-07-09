@@ -1,0 +1,82 @@
+.layered-button {
+    user-select: none;
+    position: relative;
+    border: 1.33px solid var(--link);
+    box-sizing: border-box;
+    font-family: 'alliance';
+    font-weight: 200;
+    line-height: 100%;
+    color: var(--link);
+    font-size: 1.25rem;
+    width: 100%;
+    padding: 0;
+    height: 2.75rem;
+    overflow: hidden;
+    cursor: pointer;
+    &.active {
+        .layer-2 {
+        clip-path: inset(0 0 0 calc(100% - 3.375rem));
+        }
+    }
+    &:hover {
+        .layer-2 {
+        transition: clip-path 0.4s ease-out !important;
+        clip-path: inset(0 0 0 100%) !important;
+        }
+    }
+    &:active {
+        .layer-1 {
+        background-color: var(--link_active);
+        }
+    }
+    &:focus {
+        outline: 1.33px solid var(--link);
+        outline-offset: 2px;
+        outline-style: dashed;
+    }
+}
+  
+.layer-1 {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: var(--link);
+    color: var(--bg);
+    height: 2.75rem;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    justify-content: space-between;
+    transition: background-color ease-out 0.12s;
+    svg {
+        margin-left: 4rem;
+        fill: var(--bg);
+        path {
+        fill: var(--bg);
+        }
+    }
+}
+  
+.layer-2 {
+    box-sizing: border-box;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: var(--bg);
+    color: var(--link);
+    clip-path: inset(0 0 0 0);
+    transition: clip-path 0.4s ease-out;
+    height: 2.75rem;
+    justify-content: space-between;
+    svg {
+        margin-left: 4rem;
+        fill: var(--link);
+        path {
+        fill: var(--link);
+        }
+    }
+}
