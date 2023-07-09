@@ -3,11 +3,11 @@ import TwoColSection from "./TwoColSection";
 import ArrowRightIcon from '../Assets/Arrow--Right.svg'
 import ArrowDownIcon from '../Assets/Arrow--Down.svg'
 import React from "react";
-import Image from 'next/image'
 import Description from "../Components/Description";
 import styles from "./CountdownImageList.module.scss";
 import commonListStyles from "../Components/List.common.module.scss";
 import IconButton from "../Components/IconButton";
+import NextImageBlurred from "../Components/BlurImage";
 
 interface Project {
     backgroundColor: string,
@@ -86,7 +86,7 @@ const CountdownImageList = (props: Props) => {
                     }}>
                         {
                             props.projects[renderIdx].imageSrc ?
-                                <Image
+                                <NextImageBlurred
                                     src={props.projects[renderIdx].imageSrc}
                                     alt={props.projects[renderIdx].imageCaption}
                                     fill
