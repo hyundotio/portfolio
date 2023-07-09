@@ -30,7 +30,7 @@ const Menu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
                                     onClick={() => props.setActive(false)}
                                 />,
                                 <TextLink
-                                    className={'/workroom' === pathname ? styles['active-link'] : ''}
+                                    className={pathname.indexOf('workroom') > -1 ? styles['active-link'] : ''}
                                     isInternalLink
                                     href="/workroom"
                                     text="Workroom"

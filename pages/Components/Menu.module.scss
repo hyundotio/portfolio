@@ -24,7 +24,5 @@
 }
 
 .active-link {
-    &::after {
-        content: "*";
-    }
+    font-weight: 600;
 }
