@@ -34,7 +34,7 @@ const CountdownImageList = (props: Props) => {
     const timer = React.useRef(() => {
         setFastForward(false);
         setIdx(i => i === (props.projects.length - 1) ? 0 : i + 1);
-        timerId.current = setTimeout(timer.current, 6000);
+        timerId.current = setTimeout(timer.current, 10000);
     });
     const timerId = React.useRef<NodeJS.Timeout>();
 
@@ -87,6 +87,7 @@ const CountdownImageList = (props: Props) => {
                         {
                             props.projects[renderIdx].imageSrc ?
                                 <NextImageBlurred
+                                    key={props.projects[renderIdx].title}
                                     src={props.projects[renderIdx].imageSrc}
                                     alt={props.projects[renderIdx].imageCaption}
                                     fill
