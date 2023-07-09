@@ -87,6 +87,7 @@ const CountdownImageList = (props: Props) => {
                         {
                             props.projects[renderIdx].imageSrc ?
                                 <NextImageBlurred
+                                    key={props.projects[renderIdx].title.toLowerCase().replace(/ /g,"-")}
                                     src={props.projects[renderIdx].imageSrc}
                                     alt={props.projects[renderIdx].imageCaption}
                                     fill
