@@ -1,0 +1,14 @@
+.image {
+    transition: filter 0.5s ease-out, opacity 0.5s ease-out;
+    opacity: 0;
+    filter: blur(8px);
+}
+
+.ready {
+    opacity: 1;
+    filter: blur(0px);
+}
+
+.not-ready {
+    filter: blur(8px);
+}
