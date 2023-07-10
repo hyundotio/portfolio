@@ -8,6 +8,7 @@ import styles from "./CountdownImageList.module.scss";
 import commonListStyles from "../Components/List.common.module.scss";
 import IconButton from "../Components/IconButton";
 import NextImageBlurred from "../Components/BlurImage";
+import { useRouter } from "next/router";
 
 interface Project {
     backgroundColor: string,
@@ -16,7 +17,8 @@ interface Project {
     imageCaption: string,
     timeRange: string,
     summary: string,
-    tldr: string
+    tldr: string,
+    href: string
 }
 
 interface Props {
@@ -30,6 +32,7 @@ const CountdownImageList = (props: Props) => {
     const [hoverIdx, setHoverIdx] = React.useState<number | undefined>();
     const [fastForward, setFastForward] = React.useState(false);
     const [renderIdx, setRenderIdx] = React.useState(0);
+    const router = useRouter();
 
     const timer = React.useRef(() => {
         setFastForward(false);
@@ -119,6 +122,7 @@ const CountdownImageList = (props: Props) => {
                                                     fastForward={fastForward && i === idx}
                                                     text={project.title}
                                                     icon={<ArrowRightIcon />}
+                                                    onClick={() => router.push(project.href)}
                                                 />
                                             </li>
                                         )
@@ -158,7 +162,10 @@ const CountdownImageList = (props: Props) => {
                     />
                   </div>
                   <div className="row">
-                    <IconButton icon={<ArrowRightIcon />} />
+                    <IconButton
+                        icon={<ArrowRightIcon />}
+                        onClick={() => router.push(props.projects[renderIdx].href)}
+                    />
                   </div>
                 </div>
                 
