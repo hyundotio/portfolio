@@ -1,0 +1,12 @@
+.real-footer-container {
+    background-color: var(--link);
+    min-height: 720px;
+    height: calc(100vh - 2.75rem);
+    max-height: calc(100vh - 2.75rem);
+    display: flex;
+    align-items: center;
+    color: var(--layer-contrast_text);
+    li:first-of-type {
+        font-weight: 600;
+    }
+}

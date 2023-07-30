@@ -7,6 +7,7 @@ import Breadcrumbs from './Components/Breadcrumbs';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import Menu from './Components/Menu';
+import RealFooter from './Components/RealFooter';
 
 export type ThemeContextType = {
     themeClassName: string,
@@ -92,6 +93,7 @@ function Hyun({ Component, pageProps }: AppProps) {
                                     <Component {...pageProps} />
                                 </main>
                                 <Footer />
+                                <RealFooter />
                             </div>
                         </>
                     </ThemeContext.Provider>

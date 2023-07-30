@@ -3,6 +3,7 @@ import styles from "./TextLink.module.scss";
 
 interface Props {
     isInternalLink?: boolean;
+    isDownload?: boolean;
     href: string;
     text?: string;
     kind?: "plain" | "white";
@@ -14,11 +15,23 @@ interface Props {
 const TextLink = (props: Props) => {
     return (
         props.isInternalLink ? 
-        <Link onClick={props.onClick} href={props.href} className={`${props.kind === "white" ? styles["text-link-white"] : styles["text-link"]} ${props.className ? props.className : ''}`}>
+        <Link
+            download={props.isDownload}
+            onClick={props.onClick}
+            href={props.href}
+            className={`${props.kind === "white" ? styles["text-link-white"] : styles["text-link"]} ${props.className ? props.className : ''}`}
+        >
             {props.text ? props.text : props.href}
             {props.icon ? props.icon : null}
         </Link> :
-        <a onClick={props.onClick} href={props.href} className={`${props.kind === "white" ? styles["text-link-white"] : styles["text-link"]} ${props.className ? props.className : ''}`}>
+        <a
+            download={props.isDownload}
+            rel="noopener noreferrer"
+            target="_blank"
+            onClick={props.onClick}
+            href={props.href}
+            className={`${props.kind === "white" ? styles["text-link-white"] : styles["text-link"]} ${props.className ? props.className : ''}`}
+        >
             {props.text ? props.text : props.href}
             {props.icon ? props.icon : null}
         </a>

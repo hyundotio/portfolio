@@ -25,9 +25,14 @@ body, html {
     overflow-y: auto;
 }
 
+main.content-container {
+    min-height: calc(100vh - 2.75rem);
+}
+
 .content-container {
     max-width: 1024px;
     margin: auto;
+    width: 100%;
     padding: 3rem;
     box-sizing: border-box;
 }

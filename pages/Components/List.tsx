@@ -1,9 +1,10 @@
+import { ReactElement } from 'react';
 import styles from './List.common.module.scss';
 
 interface Props {
     title?: string;
     type?: "buttons" | "text" | "plain";
-    content: JSX.Element[] | string[];
+    content: (JSX.Element | string | ReactElement)[];
     id: string;
     header?: 5 | 6;
     isNested?: boolean
