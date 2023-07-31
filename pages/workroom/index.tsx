@@ -1,10 +1,17 @@
 import React from 'react'
 import CountdownImageList from '../Sections/CountdownImageList'
 import { UrlStateContext, UrlStateContextType } from '../_app'
+import Head from 'next/head';
 
 export default function Workroom() {
   
   const { setUrls, baseUrl } = React.useContext(UrlStateContext) as UrlStateContextType;
+
+  const websiteInfo = {
+    title: `Hyun's Workroom`,
+    url: `https://${baseUrl}/workroom`,
+    description: 'This is where Hyun shows off his greatest but perhaps not latest work.'
+  }
   
   React.useEffect(() => {
     setUrls([baseUrl,'Workroom']);
@@ -13,6 +20,15 @@ export default function Workroom() {
 
   return (
     <>
+      <Head>
+        <title key="title">{websiteInfo.title}</title>
+        <link rel="canonical" href={websiteInfo.url} key="canonical" />
+        <meta name="twitter:title" content={websiteInfo.title} key="twname" />
+        <meta property="og:title" content={websiteInfo.title} key="ogtitle" />
+        <meta name="description" content={websiteInfo.description} key="desc" />
+        <meta name="og:description" content={websiteInfo.description} key="ogdesc" />
+        <meta name="twitter:description" content={websiteInfo.description} key="twdesc" />
+      </Head>
       <div className="sections-container">
         <CountdownImageList
           projects={[

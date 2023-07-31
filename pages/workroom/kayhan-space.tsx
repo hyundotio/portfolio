@@ -9,10 +9,17 @@ import Media from '../Components/Media';
 import LayeredButton from '../Components/LayeredButton';
 import PopupIcon from '../Assets/Popup.svg'
 import NextImageBlurred from '../Components/BlurImage';
+import Head from 'next/head';
 
 export default function Workroom() {
   
   const { setUrls, baseUrl } = React.useContext(UrlStateContext) as UrlStateContextType;
+
+  const websiteInfo = {
+    title: `Hyun's involvement at Kayhan Space`,
+    url: `https://${baseUrl}/workroom/kayhan-space`,
+    description: 'This is where Hyun talks about stuff he did at Kayhan Space from 2021 to 2023.'
+  }
   
   React.useEffect(() => {
     setUrls([baseUrl,'Workroom','Kayhan Space']);
@@ -21,6 +28,15 @@ export default function Workroom() {
 
   return (
     <>
+        <Head>
+            <title key="title">{websiteInfo.title}</title>
+            <link rel="canonical" href={websiteInfo.url} key="canonical" />
+            <meta name="twitter:title" content={websiteInfo.title} key="twname" />
+            <meta property="og:title" content={websiteInfo.title} key="ogtitle" />
+            <meta name="description" content={websiteInfo.description} key="desc" />
+            <meta name="og:description" content={websiteInfo.description} key="ogdesc" />
+            <meta name="twitter:description" content={websiteInfo.description} key="twdesc" />
+        </Head>
         <div className="sections-container">
             <TwoColSection
                 colLeft={

@@ -44,10 +44,11 @@ export const UrlStateContext = React.createContext<UrlStateContextType | null>(n
 export const ZoomedImageContext = React.createContext<ZoomedImageContextType | null>(null);
 
 const baseUrl = `hyun.io`;
+
 const websiteInfo = {
     title: `Hyun's Portfolio`,
     description: `Hyun's website.`,
-    url: baseUrl
+    url: `https://${baseUrl}`
 }
 
 function Hyun({ Component, pageProps }: AppProps) {
@@ -84,15 +85,15 @@ function Hyun({ Component, pageProps }: AppProps) {
                 <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
                 <meta property="og:type" content="website" key="ogtype" />
                 <title key="title">{websiteInfo.title}</title>
-                <link rel="canonical" href={`https://${baseUrl}`} key="canonical" />
+                <link rel="canonical" href={websiteInfo.url} key="canonical" />
                 <meta name="twitter:title" content={websiteInfo.title} key="twname" />
                 <meta property="og:title" content={websiteInfo.title} key="ogtitle" />
                 <meta name="description" content={websiteInfo.description} key="desc" />
                 <meta name="og:description" content={websiteInfo.description} key="ogdesc" />
                 <meta name="twitter:description" content={websiteInfo.description} key="twdesc" />
                 <meta property="og:url" content={websiteInfo.url} key="ogurl" />
-                <meta property="og:image" content={`https://${baseUrl}/og.png`} key="ogimg" />
-                <meta name="twitter:image" content={`https://${baseUrl}/og.png`} key="twimg" />
+                <meta property="og:image" content={`${websiteInfo.url}/og.png`} key="ogimg" />
+                <meta name="twitter:image" content={`${websiteInfo.url}/og.png`} key="twimg" />
                 <meta name="twitter:card" content="summary_large_image" key="twlrgimg" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
