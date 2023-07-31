@@ -53,6 +53,7 @@ const Menu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
                                             isInternalLink
                                             href="/workroom/hawkeye-360"
                                             text="HawkEye 360"
+                                            disabled
                                             onClick={() => props.setActive(false)}
                                         />,
                                         <TextLink
@@ -60,6 +61,7 @@ const Menu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
                                             isInternalLink
                                             href="/workroom/ibm"
                                             text="IBM"
+                                            disabled
                                             onClick={() => props.setActive(false)}
                                         />,
                                         <TextLink
@@ -67,11 +69,12 @@ const Menu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
                                             isInternalLink
                                             href="/workroom/odds-and-ends"
                                             text="Odds & Ends"
+                                            disabled
                                             onClick={() => props.setActive(false)}
                                         />,
                                     ]}
                                 />,
-                                <TextLink isInternalLink href="/me" text="Me" onClick={() => props.setActive(false)} />
+                                <TextLink disabled isInternalLink href="/me" text="Me" onClick={() => props.setActive(false)} />
                             ]}
                         />
                         

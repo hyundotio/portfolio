@@ -10,6 +10,7 @@ interface Props {
     icon?: JSX.Element;
     onClick?: React.MouseEventHandler;
     className?: string;
+    disabled?: boolean;
 }
 
 const TextLink = (props: Props) => {
@@ -17,9 +18,9 @@ const TextLink = (props: Props) => {
         props.isInternalLink ? 
         <Link
             download={props.isDownload}
-            onClick={props.onClick}
-            href={props.href}
-            className={`${props.kind === "white" ? styles["text-link-white"] : styles["text-link"]} ${props.className ? props.className : ''}`}
+            onClick={props.disabled ?  undefined : props.onClick}
+            href={props.disabled ? '#' : props.href}
+            className={`${props.kind === "white" ? styles["text-link-white"] : styles["text-link"]} ${props.disabled ? styles['disabled'] : ''} ${props.className ? props.className : ''}`}
         >
             {props.text ? props.text : props.href}
             {props.icon ? props.icon : null}
@@ -28,9 +29,9 @@ const TextLink = (props: Props) => {
             download={props.isDownload}
             rel="noopener noreferrer"
             target="_blank"
-            onClick={props.onClick}
-            href={props.href}
-            className={`${props.kind === "white" ? styles["text-link-white"] : styles["text-link"]} ${props.className ? props.className : ''}`}
+            onClick={props.disabled ?  undefined : props.onClick}
+            href={props.disabled ? '#' : props.href}
+            className={`${props.kind === "white" ? styles["text-link-white"] : styles["text-link"]} ${props.disabled ? styles['disabled'] : ''} ${props.className ? props.className : ''}`}
         >
             {props.text ? props.text : props.href}
             {props.icon ? props.icon : null}

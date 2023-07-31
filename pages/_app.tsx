@@ -6,7 +6,6 @@ import React from 'react';
 import Breadcrumbs from './Components/Breadcrumbs';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
-import Menu from './Components/Menu';
 import RealFooter from './Components/RealFooter';
 
 export type ThemeContextType = {

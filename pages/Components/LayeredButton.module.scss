@@ -4,6 +4,7 @@
     border: 1.33px solid var(--link);
     box-sizing: border-box;
     font-family: 'alliance';
+    text-decoration: none;
     font-weight: 200;
     line-height: 100%;
     color: var(--link);
@@ -12,6 +13,7 @@
     padding: 0;
     height: 2.75rem;
     overflow: hidden;
+    display: block;
     cursor: pointer;
     &.active {
         .layer-2 {
@@ -46,6 +48,7 @@
     padding: 0 1rem;
     box-sizing: border-box;
     justify-content: space-between;
+    text-decoration: none;
     transition: background-color ease-out 0.12s;
     svg {
         margin-left: 4rem;
@@ -70,6 +73,7 @@
     color: var(--link);
     clip-path: inset(0 0 0 0);
     transition: clip-path 0.4s ease-out;
+    text-decoration: none;
     height: 2.75rem;
     justify-content: space-between;
     svg {
@@ -78,5 +82,39 @@
         path {
         fill: var(--link);
         }
+    }
+}
+
+.disabled {
+    color: var(--text);
+    cursor: not-allowed;
+    border-color: var(--text);
+    svg {
+        fill: var(--text);
+        path {
+            fill: var(--text);
+        }
+    }
+    .layer-1, .layer-2 { 
+        color: var(--text);
+        text-decoration: line-through;
+    }
+    &.active {
+        .layer-2 {
+            clip-path: inset(0 0 0 0);
+        }
+    }
+    &:hover {
+        .layer-2 {
+            clip-path: inset(0 0 0 0) !important;
+        }
+    }
+    &:active {
+        .layer-1 {
+            background-color: var(--link_active);
+        }
+    }
+    &:focus {
+        outline: 0;
     }
 }

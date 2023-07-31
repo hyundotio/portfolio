@@ -1,6 +1,6 @@
 interface Props {
     title?: string;
-    content: string;
+    content: JSX.Element | string;
     isLarge?: boolean
 }
 
@@ -11,7 +11,14 @@ const Description = (props: Props) => {
                 props.title ? 
                 <h5>{props.title}</h5> : null
             }
-            <p className={props.isLarge ? 'text_l' : ''}>{props.content}</p>
+            <div className={props.isLarge ? 'paragraphs text_l' : 'paragraphs'}>
+                {
+                    typeof props.content === 'string' ? 
+                    <p>{props.content}</p> : 
+                    props.content
+                }
+            </div>
+            
         </div>
     )
 }

@@ -8,9 +8,11 @@ import List from './Components/List'
 import React from 'react'
 import { UrlStateContext, UrlStateContextType } from './_app'
 import styles from './index.module.scss';
+import { useRouter } from 'next/router'
 
 export default function Home() {
   
+  const router = useRouter();
   const { setUrls, baseUrl } = React.useContext(UrlStateContext) as UrlStateContextType;
   
   React.useEffect(() => {
@@ -24,7 +26,7 @@ export default function Home() {
           colLeft={
             <Description
               title={`TL;DR`}
-              content={`Qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam.`}
+              content={`Hello I'm Hyun. I am a product designer and a "creative developer". At the moment, I think and make things at Kayhan Space.`}
             />
           }
         />
@@ -35,7 +37,7 @@ export default function Home() {
                 <Description
                   isLarge
                   title="Self"
-                  content={`At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident.`}
+                  content={`Okay, this website is not finished right now. Only one page works (Kayhan Space), it is not mobile friendly, and it's exists to test out all the components I am making. Will you read this before you judge? Only you'll know.`}
                 />
               </div>
               <div className="row">
@@ -46,12 +48,15 @@ export default function Home() {
                       id="home-cta"
                       content={[
                         <LayeredButton
-                          text="More about me"
+                          text="More about me (Disabled test)"
                           icon={<ArrowRightIcon />}
+                          disabled
                         />,
                         <LayeredButton
                           text="Download Resume (.pdf)"
                           icon={<DownloadIcon />}
+                          href={'./dl/resume.pdf'}
+                          openNewTab
                         />
                       ]}
                     />

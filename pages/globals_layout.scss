@@ -24,11 +24,29 @@
     border-radius: 1px;
     height: 100%;
     position: relative;
-    background-color: var(--link);  
+    background-color: var(--text);
     img {
         margin: 1rem;
         height: calc(100% - 2rem) !important;
         width: calc(100% - 2rem) !important;
         object-fit: contain;
+    }
+    &.logo {
+        img {
+            margin: 1rem;
+            height: calc(44% - 2rem) !important;
+            width: calc(44% - 2rem) !important;
+            object-fit: contain;
+            position: relative !important;
+        }
+    }
+}
+
+.paragraphs {
+    p {
+        margin-bottom: 1rem;
+        &:last-of-type {
+            margin-bottom: 0;
+        }
     }
 }

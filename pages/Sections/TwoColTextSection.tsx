@@ -1,6 +1,6 @@
 interface Props {
     title?: string;
-    content: string;
+    content: JSX.Element | string;
 }
 
 const TwoColTextSection = (props: Props) => {
@@ -14,9 +14,13 @@ const TwoColTextSection = (props: Props) => {
                             {props.title}
                         </h5> : null
                     }
-                    <p>
-                        {props.content}
-                    </p>
+                    <div className={'paragraphs'}>
+                        {
+                            typeof props.content === 'string' ? 
+                            <p>{props.content}</p> : 
+                            props.content
+                        }
+                    </div>
                 </div>
             </div>
         </section>

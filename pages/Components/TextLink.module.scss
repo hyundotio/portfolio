@@ -1,3 +1,5 @@
+
+
 .text-link {
     text-decoration: none;
     color: var(--link);
@@ -57,5 +59,17 @@
       outline: 1.33px solid var(--layer-contrast_text);
       outline-offset: 1px;
       outline-style: dashed;
+    }
+  }
+  
+  .disabled {
+    cursor: not-allowed;
+    text-decoration: line-through;
+    color: var(--text);
+    &:hover, &:active, &:focus {
+      color: var(--text);
+    }
+    &:focus {
+      outline: 0;
     }
   }

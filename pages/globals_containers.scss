@@ -27,6 +27,8 @@ body, html {
 
 main.content-container {
     min-height: calc(100vh - 2.75rem);
+    display: flex;
+    flex-direction: column;
 }
 
 .content-container {
