@@ -1,4 +1,3 @@
-import { ReactElement } from 'react';
 import styles from './List.common.module.scss';
 import React from 'react';
 

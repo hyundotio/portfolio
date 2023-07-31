@@ -7,8 +7,6 @@ import Breadcrumbs from './Components/Breadcrumbs';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import RealFooter from './Components/RealFooter';
-import NextImageBlurred from './Components/BlurImage';
-import IconButton from './Components/IconButton';
 import ZoomedImage from './Components/ZoomedImage';
 
 type ZoomedImage = {
@@ -81,7 +79,6 @@ function Hyun({ Component, pageProps }: AppProps) {
     return (
         <>
             <Head>
-                <link rel="icon" href="/favicon.ico" key="favicon" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" key="viewport" />
                 <meta property="og:type" content="website" key="ogtype" />
                 <title key="title">{websiteInfo.title}</title>
@@ -95,10 +92,31 @@ function Hyun({ Component, pageProps }: AppProps) {
                 <meta property="og:image" content={`${websiteInfo.url}/og.png`} key="ogimg" />
                 <meta name="twitter:image" content={`${websiteInfo.url}/og.png`} key="twimg" />
                 <meta name="twitter:card" content="summary_large_image" key="twlrgimg" />
-                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-                <link rel="manifest" href="/site.webmanifest" />
+                {
+                    themeClassName !== 'dark' ?
+                        <link rel="icon" href="/favicon.ico" key="favicon" /> :
+                        <link rel="icon" href="/dark_favicon.ico" key="favicon" />
+                }
+                {
+                    themeClassName !== 'dark' ?
+                        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" /> :
+                        <link rel="apple-touch-icon" sizes="180x180" href="/dark_apple-touch-icon.png" />
+                }
+                {
+                    themeClassName !== 'dark' ?
+                        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" /> :
+                        <link rel="icon" type="image/png" sizes="32x32" href="/dark_favicon-32x32.png" />
+                }
+                {
+                    themeClassName !== 'dark' ?
+                        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" /> :
+                        <link rel="icon" type="image/png" sizes="16x16" href="/dark_favicon-16x16.png" />
+                }
+                {
+                    themeClassName !== 'dark' ?
+                        <link rel="manifest" href="/site.webmanifest" /> :
+                        <link rel="manifest" href="/dark_site.webmanifest" />
+                }
                 {
                     themeClassName !== 'dark' ?
                         <meta name="theme-color" content="#F4F4F4" key="themecolor" /> :
