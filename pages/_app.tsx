@@ -94,8 +94,10 @@ function Hyun({ Component, pageProps }: AppProps) {
                 <meta property="og:image" content={`${websiteInfo.url}/og.png`} key="ogimg" />
                 <meta name="twitter:image" content={`${websiteInfo.url}/og.png`} key="twimg" />
                 <meta name="twitter:card" content="summary_large_image" key="twlrgimg" />
-                <link rel="apple-touch-icon" href="/logo192.png" key="iosicon" />
-                <link rel="manifest" href="/site.webmanifest" charSet="utf-8" key="manifest" />
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="manifest" href="/site.webmanifest" />
                 {
                     themeClassName !== 'dark' ?
                         <meta name="theme-color" content="#F4F4F4" key="themecolor" /> :
