@@ -8,7 +8,7 @@ const Footer = () => {
             <div className={`content-container ${styles["footer-contents"]}`}>
                 <div className={styles["footer-reserved"]}>
                     <TextLink isInternalLink kind="white" href="" text="hyun.io" />
-                    <span>it's 2023</span>
+                    <span>it's {new Date().getFullYear()}</span>
                 </div>
                 <div />
                 <List  
