@@ -24,8 +24,13 @@ const RealFooter = () => {
                         />
                         <TextLink
                             kind='white'
-                            href="https://www.linkedin.com/in/hyunseo/"
+                            href="https://www.linkedin.com/in/hyunseo"
                             text="[Social] LinkedIn"
+                        />
+                        <TextLink
+                            kind='white'
+                            href="https://github.com/hyundotio/portfolio"
+                            text="[Source] GitHub"
                         />
                     </List>
                 </div>
