@@ -80,9 +80,9 @@ export default function Workroom() {
             <List
                 title='Tools used'
                 content={[
-                    'TypeScript, SASS',
-                    'Strapi, NextJS, React',
-                    'Figma',
+                    'TypeScript and SASS',
+                    'Strapi, NextJS, and React',
+                    'Figma, Illustrator',
                     'After Effects',
                     'Photoshop'
                 ]}
