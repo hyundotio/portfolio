@@ -1,6 +1,15 @@
+import React from 'react';
 import styles from './404.module.scss';
+import { UrlStateContext, UrlStateContextType } from './_app';
 
 const Page = () => {
+
+    const { setUrls, baseUrl } = React.useContext(UrlStateContext) as UrlStateContextType;
+  
+    React.useEffect(() => {
+        setUrls([baseUrl,'404']);
+    }, [])
+
     return (
         <div className={styles['missing-page-container']}>
             <h1 className={styles['glitch']}>
