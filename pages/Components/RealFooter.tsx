@@ -13,7 +13,6 @@ const RealFooter = () => {
                     >
                         {`In case you missed it...`}
                         <TextLink
-                            isInternalLink
                             kind='white'
                             href="/dl/resume.pdf"
                             text="[Resume] Download .pdf"
