@@ -4,6 +4,7 @@
     text-decoration: none;
     color: var(--link);
     display: inline-flex;
+    transition: color 0.12s linear, fill 0.12s linear;
     svg {
       margin-left: 0.75rem;
       height: 1rem;
@@ -32,6 +33,7 @@
   }
   
   .text-link-white {
+    transition: color 0.12s linear, fill 0.12s linear;
     text-decoration: none;
     color: var(--layer-contrast_text);
     display: inline-flex;
