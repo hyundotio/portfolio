@@ -95,8 +95,13 @@
             fill: var(--text);
         }
     }
-    .layer-1, .layer-2 { 
+    .layer-1 {
+        background: var(--text);
+    }
+    .layer-2 {
         color: var(--text);
+    }
+    .layer-1, .layer-2 { 
         text-decoration: line-through;
     }
     &.active {
