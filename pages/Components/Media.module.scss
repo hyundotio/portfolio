@@ -16,6 +16,13 @@
     width: 100%;
     aspect-ratio: 16 / 9;
     border: 1.33px solid var(--text);
+    transition: background-color 0.12s linear;
+    &:hover {
+        background-color: var(--link_hover) !important;
+    }
+    &:active {
+        background-color: var(--link_active) !important;
+    }
     img {
         object-fit: contain;
         height: calc(100% - 2rem) !important;
@@ -38,6 +45,34 @@
         margin-right: 1rem;
         &:last-of-type {
             margin-right: 0;
+        }
+    }
+}
+
+.zoom-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 2.75rem;
+    width: 2.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    svg {
+        position: relative;
+        z-index: 2;
+        fill: var(--layer-contrast_text);
+        path {
+            fill: var(--layer-contrast_text);
+        }
+    }
+    svg:nth-of-type(2) {
+        position: absolute;
+        z-index: 1;
+        margin: 2px -2px 0 0;
+        fill: var(--text);
+        path {
+            fill: var(--text);
         }
     }
 }

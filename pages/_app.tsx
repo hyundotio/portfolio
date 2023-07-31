@@ -7,11 +7,20 @@ import Breadcrumbs from './Components/Breadcrumbs';
 import Header from './Components/Header';
 import Footer from './Components/Footer';
 import RealFooter from './Components/RealFooter';
+import NextImageBlurred from './Components/BlurImage';
+import IconButton from './Components/IconButton';
+import ZoomedImage from './Components/ZoomedImage';
+
+type ZoomedImage = {
+    src: string,
+    alt: string
+}
 
 export type ThemeContextType = {
     themeClassName: string,
     setThemeClassName: (val: string) => void;
     setLockScroll: (val: boolean) => void;
+    setBlurred: (val: boolean) => void;
 }
 
 export type UrlStateContextType = {
@@ -25,9 +34,14 @@ export type MenuStateContextType = {
     setMenuOpened: (val: boolean) => void;
 }
 
+export type ZoomedImageContextType = {
+    setZoomedImage: (val: ZoomedImage) => void;
+}
+
 export const ThemeContext = React.createContext<ThemeContextType | null>(null);
 export const MenuStateContext = React.createContext<MenuStateContextType | null>(null);
 export const UrlStateContext = React.createContext<UrlStateContextType | null>(null);
+export const ZoomedImageContext = React.createContext<ZoomedImageContextType | null>(null);
 
 const baseUrl = `hyun.io`;
 const websiteInfo = {
@@ -39,8 +53,10 @@ const websiteInfo = {
 function Hyun({ Component, pageProps }: AppProps) {
     const [menuOpened, setMenuOpened] = React.useState(false);
     const [themeClassName, setThemeClassName] = React.useState('light');
+    const [blurred, setBlurred] = React.useState(false);
     const [lockScroll, setLockScroll] = React.useState(false);
     const [urls, setUrls] = React.useState(['hyun.io']);
+    const [zoomedImage, setZoomedImage] = React.useState<ZoomedImage | null>(null);
 
     React.useEffect(() => {
         let bodyClassName = '';
@@ -53,7 +69,13 @@ function Hyun({ Component, pageProps }: AppProps) {
             bodyClassName += ' scroll-locked';
         }
         document.getElementsByTagName('body')[0].className = bodyClassName;
-    }, [themeClassName, lockScroll])
+    }, [themeClassName, lockScroll]);
+
+    function closeZoomedImage() {
+        setBlurred(false);
+        setLockScroll(false);
+        setZoomedImage(null);
+    }
 
     return (
         <>
@@ -83,18 +105,28 @@ function Hyun({ Component, pageProps }: AppProps) {
             </Head>
             <UrlStateContext.Provider value={{ baseUrl, urls, setUrls }}>
                 <MenuStateContext.Provider value={{ menuOpened, setMenuOpened }}>
-                    <ThemeContext.Provider value={{ themeClassName, setThemeClassName, setLockScroll }}>
-                        <>
-                            <Breadcrumbs />
-                            <div className="master-container">
-                                <main className="content-container">
-                                    <Header />
-                                    <Component {...pageProps} />
-                                </main>
-                                <Footer />
-                                <RealFooter />
+                    <ThemeContext.Provider value={{ themeClassName, setThemeClassName, setLockScroll, setBlurred }}>
+                        <ZoomedImageContext.Provider value={{ setZoomedImage }}>
+                            <div className={`b${blurred ? ' blurred' : ''}`}>
+                                <Breadcrumbs />
+                                <div className="master-container">
+                                    <main className="content-container">
+                                        <Header />
+                                        <Component {...pageProps} />
+                                    </main>
+                                    <Footer />
+                                    <RealFooter />
+                                </div>
                             </div>
-                        </>
+                            {
+                                blurred && zoomedImage ? 
+                                <ZoomedImage
+                                    src={zoomedImage.src}
+                                    alt={zoomedImage.alt}
+                                    closeFunction={closeZoomedImage}
+                                /> : null
+                            }
+                        </ZoomedImageContext.Provider>
                     </ThemeContext.Provider>
                 </MenuStateContext.Provider>
             </UrlStateContext.Provider>

@@ -24,7 +24,7 @@
     border-radius: 1px;
     height: 100%;
     position: relative;
-    background-color: var(--text);
+    background-color: var(--layer-contrast_bg);
     img {
         margin: 1rem;
         height: calc(100% - 2rem) !important;
@@ -49,4 +49,18 @@
             margin-bottom: 0;
         }
     }
+}
+
+.b {
+    z-index: 1;
+    position: relative;
+    transition: filter 0.2s linear, transform 0.2s linear;
+    filter: blur(0px);
+    &.blurred {
+        transform: scale(1.05);
+        filter: blur(16px);
+    }
+}
+.scroll-locked {
+    overflow: hidden;
 }

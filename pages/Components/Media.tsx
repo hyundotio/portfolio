@@ -4,6 +4,8 @@ import NextImageBlurred from './BlurImage';
 import IconButton from './IconButton';
 import ArrowRightIcon from '../Assets/Arrow--Right.svg'
 import ArrowLeftIcon from '../Assets/Arrow--Left.svg'
+import ZoomIcon from '../Assets/Zoom.svg'
+import { ThemeContext, ThemeContextType, ZoomedImageContext, ZoomedImageContextType } from '../_app';
 
 
 interface Props {
@@ -22,6 +24,9 @@ const Media = (props: Props) => {
         const activeItem = props.content.findIndex(c => c.active);
         return activeItem === -1 ? 0 : activeItem
     });
+
+    const { setLockScroll, setBlurred } = React.useContext(ThemeContext) as ThemeContextType;
+    const { setZoomedImage } = React.useContext(ZoomedImageContext) as ZoomedImageContextType;
 
     function nextImage() {
         const maxIdx = props.content.length - 1;
@@ -50,12 +55,27 @@ const Media = (props: Props) => {
                         props.content.map((c, i) =>
                             activeIdx === i ?  
                             <div className={styles['media-container']} key={`${props.title.replace(/ /g,"_")}-${i}`}>
-                                <div className={styles['image-container']} style={{backgroundColor: props.bgColor ? props.bgColor : '#0028B6'}}>
+                                <div
+                                    className={styles['image-container']}
+                                    onClick={() => {
+                                        setBlurred(true);
+                                        setLockScroll(true);
+                                        setZoomedImage({
+                                            src: c.src,
+                                            alt: c.caption
+                                        })
+                                    }}
+                                    style={{backgroundColor: props.bgColor ? props.bgColor : '#0028B6'}}
+                                >
                                     <NextImageBlurred
                                         alt={c.caption}
                                         src={c.src}
                                         fill
                                     />
+                                    <div className={styles['zoom-button']}>
+                                        <ZoomIcon />
+                                        <ZoomIcon />
+                                    </div>
                                 </div>
                                 <div className={styles['caption-container']}>
                                     <div className="paragraphs">
