@@ -10,26 +10,25 @@ const RealFooter = () => {
                     <List
                         id="real-footer-id"
                         type='plain'
-                        content={[
-                            'In case you missed it...',
-                            <TextLink
-                                isInternalLink
-                                kind='white'
-                                href="/dl/resume.pdf"
-                                text="[Resume] Download .pdf"
-                            />,
-                            <TextLink
-                                kind='white'
-                                href="mailto:hi@hyun.io"
-                                text="[Email] hi@hyun.io"
-                            />,
-                            <TextLink
-                                kind='white'
-                                href="https://www.linkedin.com/in/hyunseo/"
-                                text="[Social] LinkedIn"
-                            />
-                        ]}
-                    />
+                    >
+                        {`In case you missed it...`}
+                        <TextLink
+                            isInternalLink
+                            kind='white'
+                            href="/dl/resume.pdf"
+                            text="[Resume] Download .pdf"
+                        />
+                        <TextLink
+                            kind='white'
+                            href="mailto:hi@hyun.io"
+                            text="[Email] hi@hyun.io"
+                        />
+                        <TextLink
+                            kind='white'
+                            href="https://www.linkedin.com/in/hyunseo/"
+                            text="[Social] LinkedIn"
+                        />
+                    </List>
                 </div>
             </div>
         </div>

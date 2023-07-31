@@ -8,15 +8,14 @@ import List from './Components/List'
 import React from 'react'
 import { UrlStateContext, UrlStateContextType } from './_app'
 import styles from './index.module.scss';
-import { useRouter } from 'next/router'
 
 export default function Home() {
   
-  const router = useRouter();
   const { setUrls, baseUrl } = React.useContext(UrlStateContext) as UrlStateContextType;
   
   React.useEffect(() => {
     setUrls([baseUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   
   return (
@@ -46,20 +45,19 @@ export default function Home() {
                     <List
                       type="buttons"
                       id="home-cta"
-                      content={[
-                        <LayeredButton
-                          text="More about me (Disabled test)"
-                          icon={<ArrowRightIcon />}
-                          disabled
-                        />,
-                        <LayeredButton
-                          text="Download Resume (.pdf)"
-                          icon={<DownloadIcon />}
-                          href={'./dl/resume.pdf'}
-                          openNewTab
+                    >
+                      <LayeredButton
+                        text="More about me (Disabled test)"
+                        icon={<ArrowRightIcon />}
+                        disabled
+                      />
+                      <LayeredButton
+                        text="Download Resume (.pdf)"
+                        icon={<DownloadIcon />}
+                        href={'./dl/resume.pdf'}
+                        openNewTab
                         />
-                      ]}
-                    />
+                    </List>
                   }
                 />
               </div>

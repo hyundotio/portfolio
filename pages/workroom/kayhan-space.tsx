@@ -16,6 +16,7 @@ export default function Workroom() {
   
   React.useEffect(() => {
     setUrls([baseUrl,'Workroom','Kayhan Space']);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -69,25 +70,24 @@ export default function Workroom() {
                 content={
                     <>
                         <p>
-                            As the first design talent, I got to not only design interfaces, but be part of the product strategy and development. From verbal ideation to implementing Amazon's PRFAQ product development process to make the idea a reality and of course, designing the product and developing it.
+                            {`As the first design talent, I got to not only design interfaces, but be part of the product strategy and development. From verbal ideation to implementing Amazon's PRFAQ product development process to make the idea a reality and of course, designing the product and developing it.`}
                             <br />
                             <br />
-                            On top of all this, I rebranded the entire visual identity of the company that follows the look and feel of the product.
+                            {`On top of all this, I rebranded the entire visual identity of the company that follows the look and feel of the product.`}
                         </p>
                     </>
                 }
             />
             <List
                 title='Tools used'
-                content={[
-                    'TypeScript and SASS',
-                    'Strapi, NextJS, and React',
-                    'Figma, Illustrator',
-                    'After Effects',
-                    'Photoshop'
-                ]}
                 id={'ks-tools-list'}
-            />
+            >
+                <>{`TypeScript and SASS`}</>
+                <>{`Strapi, NextJS, and React`}</>
+                <>{`Figma, Illustrator`}</>
+                <>{`After Effects`}</>
+                <>{`Photoshop`}</>
+            </List>
             <Media
                 title={'Artifacts'}
                 bgColor='#7D48ED'
@@ -115,21 +115,20 @@ export default function Workroom() {
                         title='Links'
                         type="buttons"
                         id="kayhan-links"
-                        content={[
-                            <LayeredButton
-                                text="Corporate website"
-                                icon={<PopupIcon />}
-                                href={'https://kayhan.space'}
-                                openNewTab
-                            />,
-                            <LayeredButton
-                                text="Corporate LinkedIn"
-                                icon={<PopupIcon />}
-                                href={'https://www.linkedin.com/company/kayhan-space'}
-                                openNewTab
-                            />
-                        ]}
-                    />
+                    >
+                        <LayeredButton
+                            text="Corporate website"
+                            icon={<PopupIcon />}
+                            href={'https://kayhan.space'}
+                            openNewTab
+                        />
+                        <LayeredButton
+                            text="Corporate LinkedIn"
+                            icon={<PopupIcon />}
+                            href={'https://www.linkedin.com/company/kayhan-space'}
+                            openNewTab
+                        />
+                    </List>
                   }
             />
         </div>

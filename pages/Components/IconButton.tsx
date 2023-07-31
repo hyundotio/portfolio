@@ -19,5 +19,6 @@ const IconButton = React.forwardRef<HTMLButtonElement, Props>((props, ref) => {
         <button ref={ref} className={classNameStr} onClick={props.onClick}>{props.icon}</button>
     )
 })
+IconButton.displayName = 'IconButton';
 
 export default IconButton;

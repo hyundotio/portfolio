@@ -25,6 +25,17 @@ interface Props {
     projects: Project[]
 }
 
+const blankProject: Project = {
+    backgroundColor: '',
+    imageSrc: '',
+    title: '',
+    imageCaption: '',
+    timeRange: '',
+    summary: '',
+    tldr: '',
+    href: ''
+}
+
 const CountdownImageList = (props: Props) => {
     const [idx, setIdx] = React.useState(-1);
     const [overrideIdx, setOverrideIdx] = React.useState<number | undefined>();
@@ -35,13 +46,15 @@ const CountdownImageList = (props: Props) => {
     const router = useRouter();
 
     const timer = React.useRef(() => {
-        setFastForward(false);
-        setIdx(i => i === (props.projects.length - 1) ? 0 : i + 1);
-        timerId.current = setTimeout(timer.current, 10000);
+        if (props.projects) {
+            setFastForward(false);
+            setIdx(i => i === (props.projects.length - 1) ? 0 : i + 1);
+            timerId.current = setTimeout(timer.current, 10000);
+        }
     });
     const timerId = React.useRef<NodeJS.Timeout>();
 
-    const longestStrProject = props.projects.reduce((max, project) => project.summary.length > max.summary.length ? project : max);
+    const longestStrProject = props.projects ? props.projects.reduce((max, project) => project.summary.length > max.summary.length ? project : max) : blankProject;
 
     React.useEffect(() => {
         timerId.current = setTimeout(timer.current, 1);
@@ -80,6 +93,7 @@ const CountdownImageList = (props: Props) => {
     }, [idx, overrideIdx])
     
     return (
+        props.projects ?
         <>
             <TwoColSection
                 colLeft={
@@ -137,7 +151,7 @@ const CountdownImageList = (props: Props) => {
                 }
             />
             <TwoColSection
-              colLeft={
+            colLeft={
                 <div className={styles['ghost-text-container']}>
                     <div className={styles['ghost-text']}>
                         <Description
@@ -152,26 +166,26 @@ const CountdownImageList = (props: Props) => {
                         />
                     </div>
                 </div>
-              }
-              colRight={
+            }
+            colRight={
                 <div className="spread-v">
-                  <div className="row">
+                <div className="row">
                     <Description
                         title="TL;DR"
                         content={props.projects[renderIdx].tldr}
                     />
-                  </div>
-                  <div className="row">
+                </div>
+                <div className="row">
                     <IconButton
                         icon={<ArrowRightIcon />}
                         onClick={() => router.push(props.projects[renderIdx].href)}
                     />
-                  </div>
+                </div>
                 </div>
                 
-              }
+            }
             />
-        </>
+        </> : null
     )
 }
 

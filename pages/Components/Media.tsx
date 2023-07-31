@@ -21,7 +21,7 @@ interface Props {
 
 const Media = (props: Props) => {
     const [activeIdx, setActiveIdx] = React.useState(() => {
-        const activeItem = props.content.findIndex(c => c.active);
+        const activeItem = props.content ? props.content.findIndex(c => c.active) : -1;
         return activeItem === -1 ? 0 : activeItem
     });
 
@@ -29,12 +29,16 @@ const Media = (props: Props) => {
     const { setZoomedImage } = React.useContext(ZoomedImageContext) as ZoomedImageContextType;
 
     function nextImage() {
-        const maxIdx = props.content.length - 1;
-        setActiveIdx(idx => idx + 1 > maxIdx ? 0 : idx + 1);
+        if (props.content) {
+            const maxIdx = props.content.length - 1;
+            setActiveIdx(idx => idx + 1 > maxIdx ? 0 : idx + 1);
+        }
     }
 
     function prevImage() {
-        setActiveIdx(idx => idx - 1 < 0 ? props.content.length - 1 : idx - 1);
+        if (props.content) {
+            setActiveIdx(idx => idx - 1 < 0 ? props.content.length - 1 : idx - 1);
+        }
     }
 
     return (
@@ -45,14 +49,14 @@ const Media = (props: Props) => {
                         <div className={styles['media-title']}>
                             <h5>
                                 {props.title} {
-                                    props.content.length > 1 ?
-                                    `(${activeIdx + 1}/${props.content.length})` : null
+                                    props.content ? props.content.length > 1 ?
+                                    `(${activeIdx + 1}/${props.content.length})` : null : null
                                 }
                             </h5>
                         </div>
                     </div>
                     {
-                        props.content.map((c, i) =>
+                        props.content ? props.content.map((c, i) =>
                             activeIdx === i ?  
                             <div className={styles['media-container']} key={`${props.title.replace(/ /g,"_")}-${i}`}>
                                 <div
@@ -100,7 +104,7 @@ const Media = (props: Props) => {
                                     </div>
                                 </div>
                             </div> : null
-                        )
+                        ) : null
                     }
                 </div>
             </div>

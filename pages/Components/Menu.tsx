@@ -21,62 +21,66 @@ const Menu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
                         <List  
                             id="nav-list-1"
                             type="plain"
-                            content={[
+                        >
+                            <TextLink
+                                className={'/' === pathname ? styles['active-link'] : ''}
+                                isInternalLink
+                                href="/"
+                                text="Landing page"
+                                onClick={() => props.setActive(false)}
+                            />
+                            <TextLink
+                                className={pathname.indexOf('workroom') > -1 ? styles['active-link'] : ''}
+                                isInternalLink
+                                href="/workroom"
+                                text="Workroom"
+                                onClick={() => props.setActive(false)}
+                            />
+                            <List
+                                id="nav-list-2"
+                                type="plain"
+                                isNested
+                            >
                                 <TextLink
-                                    className={'/' === pathname ? styles['active-link'] : ''}
+                                    className={'/workroom/kayhan-space' === pathname ? styles['active-link'] : ''}
                                     isInternalLink
-                                    href="/"
-                                    text="Landing page"
+                                    href="/workroom/kayhan-space"
+                                    text="Kayhan Space"
                                     onClick={() => props.setActive(false)}
-                                />,
+                                />
                                 <TextLink
-                                    className={pathname.indexOf('workroom') > -1 ? styles['active-link'] : ''}
+                                    className={'/workroom/hawkeye-360' === pathname ? styles['active-link'] : ''}
                                     isInternalLink
-                                    href="/workroom"
-                                    text="Workroom"
+                                    href="/workroom/hawkeye-360"
+                                    text="HawkEye 360"
+                                    disabled
                                     onClick={() => props.setActive(false)}
-                                />,
-                                <List  
-                                    id="nav-list-2"
-                                    type="plain"
-                                    isNested
-                                    content={[
-                                        <TextLink
-                                            className={'/workroom/kayhan-space' === pathname ? styles['active-link'] : ''}
-                                            isInternalLink
-                                            href="/workroom/kayhan-space"
-                                            text="Kayhan Space"
-                                            onClick={() => props.setActive(false)}
-                                        />,
-                                        <TextLink
-                                            className={'/workroom/hawkeye-360' === pathname ? styles['active-link'] : ''}
-                                            isInternalLink
-                                            href="/workroom/hawkeye-360"
-                                            text="HawkEye 360"
-                                            disabled
-                                            onClick={() => props.setActive(false)}
-                                        />,
-                                        <TextLink
-                                            className={'/workroom/ibm' === pathname ? styles['active-link'] : ''}
-                                            isInternalLink
-                                            href="/workroom/ibm"
-                                            text="IBM"
-                                            disabled
-                                            onClick={() => props.setActive(false)}
-                                        />,
-                                        <TextLink
-                                            className={'/workroom/odds-and-ends' === pathname ? styles['active-link'] : ''}
-                                            isInternalLink
-                                            href="/workroom/odds-and-ends"
-                                            text="Odds & Ends"
-                                            disabled
-                                            onClick={() => props.setActive(false)}
-                                        />,
-                                    ]}
-                                />,
-                                <TextLink disabled isInternalLink href="/me" text="Me" onClick={() => props.setActive(false)} />
-                            ]}
-                        />
+                                />
+                                <TextLink
+                                    className={'/workroom/ibm' === pathname ? styles['active-link'] : ''}
+                                    isInternalLink
+                                    href="/workroom/ibm"
+                                    text="IBM"
+                                    disabled
+                                    onClick={() => props.setActive(false)}
+                                />
+                                <TextLink
+                                    className={'/workroom/odds-and-ends' === pathname ? styles['active-link'] : ''}
+                                    isInternalLink
+                                    href="/workroom/odds-and-ends"
+                                    text="Odds & Ends"
+                                    disabled
+                                    onClick={() => props.setActive(false)}
+                                />
+                            </List>
+                            <TextLink
+                                isInternalLink
+                                href="/me"
+                                text="Me"
+                                disabled
+                                onClick={() => props.setActive(false)}
+                            />
+                        </List>
                         
                     </div>
                 </div>
@@ -85,5 +89,6 @@ const Menu = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
         
     )
 });
+Menu.displayName = 'Menu';
 
 export default Menu;

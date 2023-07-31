@@ -90,20 +90,18 @@ const Header = () => {
                     <List
                         type="plain"
                         id="header-1"
-                        content={[
-                            <span>Hyun Seo</span>,
-                            <TextLink href="mailto:hi@hyun.io" text="hi@hyun.io" icon={<EmailIcon />} />,
-                            <TextLink href="#" text="4096R/33121E42" icon={<PopupIcon />} />
-                        ]}
-                    />
+                    >
+                        <span key='heeader-name'>Hyun Seo</span>
+                        <TextLink key='heeader-email' href="mailto:hi@hyun.io" text="hi@hyun.io" icon={<EmailIcon />} />
+                        <TextLink key='heeader-email-key' href="#" text="4096R/33121E42" icon={<PopupIcon />} />
+                    </List>
                     <List
                         type="plain"
                         id="header-2"
-                        content={[
-                            <span>UTC/Z +5 EST</span>,
-                            <span>S.E. Pennsylvania, USA</span>
-                        ]}
-                    />
+                    >
+                        <span key='heeader-timezone'>UTC/Z +5 EST</span>
+                        <span key='heeader-location'>S.E. Pennsylvania, USA</span>
+                    </List>
                 </aside>
             </div>
         </header>
