@@ -2,9 +2,13 @@ import List from './List';
 import styles from './RealFooter.module.scss';
 import TextLink from './TextLink';
 
-const RealFooter = () => {
+interface Props {
+    fullscreen?: boolean;
+}
+
+const RealFooter = (props: Props) => {
     return (
-        <div className={styles['real-footer-container']}>
+        <div className={`${styles['real-footer-container']} ${props.fullscreen ? styles['fullscreen'] : ''}`}>
             <div className={`${styles['real-footer-contents']} content-container`}>
                 <div className="text_l">
                     <List

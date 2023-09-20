@@ -30,6 +30,17 @@
       outline-offset: 1px;
       outline-style: dashed;
     }
+    &.disabled {
+      cursor: not-allowed;
+      text-decoration: line-through;
+      color: var(--text);
+      &:hover, &:active, &:focus {
+        color: var(--text);
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
   }
   
   .text-link-white {
@@ -62,16 +73,17 @@
       outline-offset: 1px;
       outline-style: dashed;
     }
+    &.disabled {
+      cursor: not-allowed;
+      text-decoration: line-through;
+      color: var(--layer-contrast_text);
+      &:hover, &:active, &:focus {
+        color: var(--layer-contrast_text);
+      }
+      &:focus {
+        outline: 0;
+      }
+    }
   }
   
-  .disabled {
-    cursor: not-allowed;
-    text-decoration: line-through;
-    color: var(--text);
-    &:hover, &:active, &:focus {
-      color: var(--text);
-    }
-    &:focus {
-      outline: 0;
-    }
-  }
+  

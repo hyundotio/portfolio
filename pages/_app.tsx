@@ -3,11 +3,8 @@ import './globals.scss';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import React from 'react';
-import Breadcrumbs from './Components/Breadcrumbs';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-import RealFooter from './Components/RealFooter';
 import ZoomedImage from './Components/ZoomedImage';
+import TemporaryPage from './Components/TemporaryPage';
 
 type ZoomedImage = {
     src: string,
@@ -128,25 +125,7 @@ function Hyun({ Component, pageProps }: AppProps) {
                 <MenuStateContext.Provider value={{ menuOpened, setMenuOpened }}>
                     <ThemeContext.Provider value={{ themeClassName, setThemeClassName, setLockScroll, setBlurred }}>
                         <ZoomedImageContext.Provider value={{ setZoomedImage }}>
-                            <div className={`b${blurred ? ' blurred' : ''}`}>
-                                <Breadcrumbs />
-                                <div className="master-container">
-                                    <main className="content-container">
-                                        <Header />
-                                        <Component {...pageProps} />
-                                    </main>
-                                    <Footer />
-                                    <RealFooter />
-                                </div>
-                            </div>
-                            {
-                                blurred && zoomedImage ? 
-                                <ZoomedImage
-                                    src={zoomedImage.src}
-                                    alt={zoomedImage.alt}
-                                    closeFunction={closeZoomedImage}
-                                /> : null
-                            }
+                            <TemporaryPage fullscreen />
                         </ZoomedImageContext.Provider>
                     </ThemeContext.Provider>
                 </MenuStateContext.Provider>
