@@ -9,6 +9,16 @@ const nextConfig: NextConfig = {
     root: process.cwd(),
   },
 
+  async redirects() {
+    return [
+      {
+        source: "/dl/resume.pdf",
+        destination: "/assets/downloads/resume/resume.pdf",
+        permanent: true,
+      },
+    ];
+  },
+
   async rewrites() {
     return [
       {
