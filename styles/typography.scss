@@ -1,0 +1,75 @@
+%type-font {
+  font-family: var(--font-ui);
+  font-style: normal;
+}
+
+%type-font-mono {
+  font-family: var(--font-monospace-alt);
+  font-style: normal;
+}
+
+%type-main-heading {
+  @extend %type-font;
+  font-size: var(--type-main-heading-size);
+  font-weight: 600;
+  line-height: 0.92;
+  letter-spacing: -0.62rem;
+}
+
+%type-big-heading {
+  @extend %type-font;
+  font-size: var(--type-big-heading-size);
+  font-weight: 600;
+  line-height: 0.95;
+  letter-spacing: -0.33rem;
+}
+
+%type-section-heading {
+  @extend %type-font;
+  font-size: var(--type-section-heading-size);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.12rem;
+}
+
+%type-paragraph-heading {
+  @extend %type-font;
+  font-size: var(--type-paragraph-heading-size);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -0.05rem;
+}
+
+%type-text {
+  @extend %type-font-mono;
+  font-size: var(--type-body-size);
+  font-weight: 400;
+  line-height: 1.33;
+}
+
+%type-label {
+  @extend %type-font-mono;
+  font-size: var(--type-label-size);
+  line-height: 1.05;
+  text-transform: uppercase;
+}
+
+.type-main-heading {
+  @extend %type-main-heading;
+}
+
+.type-big-heading {
+  @extend %type-big-heading;
+}
+
+.type-section-heading {
+  @extend %type-section-heading;
+}
+
+.type-text {
+  @extend %type-text;
+}
+
+.type-label {
+  @extend %type-label;
+}

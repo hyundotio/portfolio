@@ -1,0 +1,42 @@
+@use "@/styles/typography.scss" as *;
+
+.resume-container {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-height: min(68vh, 860px);
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overscroll-behavior: contain;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  scrollbar-gutter: stable;
+  contain: layout paint;
+}
+
+@media (max-width: 720px) {
+  .resume-container {
+    max-height: min(66vh, 720px);
+  }
+}
+
+.preview-link {
+  display: block;
+  flex: 0 0 auto;
+  color: inherit;
+}
+
+.preview-link:focus-visible {
+  outline: 2px solid var(--foreground);
+  outline-offset: -0.5rem;
+}
+
+.preview {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  transform: translateZ(0);
+}

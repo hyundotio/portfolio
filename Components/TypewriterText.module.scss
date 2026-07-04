@@ -1,0 +1,89 @@
+/* --- Standard Container --- */
+.container {
+  position: relative;
+  display: grid;
+  min-width: 0;
+}
+
+/* --- List Mode Container --- */
+.list-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.bullet {
+  flex-shrink: 0;
+  user-select: none;
+  transition: opacity 0.2s ease; /* Optional: Makes the bullet fade out nicely */
+  opacity: 1;
+}
+
+/* NEW: Hides the bullet when text is empty */
+.bullet-hidden {
+  opacity: 0;
+}
+
+.text-wrapper {
+  position: relative;
+  flex-grow: 1;
+  display: grid;
+  min-width: 0;
+}
+
+/* --- Core Text Logic --- */
+
+.ghost {
+  grid-area: 1 / 1;
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  overflow-wrap: inherit;
+  word-break: inherit;
+  white-space: pre-wrap; /* Preserves spaces/wrapping */
+}
+
+.typed {
+  grid-area: 1 / 1;
+  width: 100%;
+  display: block;
+  font: inherit;
+  color: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+  overflow-wrap: inherit;
+  word-break: inherit;
+  white-space: pre-wrap; /* Ensures typed text wraps exactly like ghost */
+  position: absolute;
+  top: 0;
+}
+
+.segment {
+  display: inline;
+  font: inherit;
+  line-height: inherit;
+  letter-spacing: inherit;
+}
+
+.cursor {
+  display: inline-block;
+  margin-left: 0.05em;
+  animation: blink 1s steps(1, end) infinite;
+}
+
+@keyframes blink {
+  0%,
+  49% {
+    opacity: 1;
+  }
+
+  50%,
+  100% {
+    opacity: 0;
+  }
+}

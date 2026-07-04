@@ -1,0 +1,181 @@
+@use "@/styles/typography.scss" as *;
+
+/* app/layout.module.scss */
+
+.app-shell {
+  position: relative;
+  min-height: 100vh;
+  --detail-content-top: clamp(5.5rem, 9vw, 7.5rem);
+  --detail-intro-height: clamp(32rem, 66vh, 44rem);
+  --detail-hero-height: 100vh;
+  --detail-canvas-top: var(--detail-intro-height);
+  --detail-canvas-width: 100%;
+  --detail-canvas-height: var(--detail-hero-height);
+  --detail-canvas-left: 0;
+}
+
+@supports (height: 100svh) {
+  .app-shell {
+    --detail-hero-height: 100svh;
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.canvas-container {
+  background: var(--viz-background);
+  overflow: hidden;
+  transform: translateZ(0);
+  z-index: 1;
+  transition: background-color 0.2s ease;
+}
+
+.canvas-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: var(--detail-hero-height);
+}
+
+.canvas-container-full {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: var(--detail-hero-height);
+  left: 0;
+  top: 0;
+}
+
+.canvas-container-detail {
+  position: absolute;
+  top: var(--detail-canvas-top);
+  left: var(--detail-canvas-left);
+  width: var(--detail-canvas-width);
+  height: var(--detail-canvas-height);
+}
+
+.canvas-container-detail-entering {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: var(--detail-hero-height);
+  will-change: top;
+  animation: canvas-to-detail-section 760ms cubic-bezier(0.24, 0.88, 0.22, 1)
+    forwards;
+}
+
+.canvas-container-detail-exiting {
+  position: fixed;
+  top: var(--detail-canvas-top);
+  left: 0;
+  width: 100vw;
+  height: var(--detail-hero-height);
+  will-change: top;
+  animation: canvas-from-detail-section 620ms cubic-bezier(0.22, 0.8, 0.24, 1)
+    forwards;
+}
+
+.canvas-stage-full {
+  top: 0;
+  left: 0;
+}
+
+.canvas-stage-detail {
+  top: 0;
+  left: 0;
+}
+
+.canvas-stage-detail-entering {
+  top: 0;
+  left: 0;
+}
+
+.canvas-stage-detail-exiting {
+  top: 0;
+  left: 0;
+}
+
+.main-orchestrator {
+  position: relative;
+  z-index: 2;
+  pointer-events: none;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+}
+
+.main-orchestrator > * {
+  pointer-events: all;
+}
+
+.main-orchestrator-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.main-orchestrator-hidden > * {
+  pointer-events: none;
+}
+
+@keyframes canvas-to-detail-section {
+  from {
+    top: 0;
+  }
+
+  to {
+    top: var(--detail-canvas-top);
+  }
+}
+
+@keyframes canvas-from-detail-section {
+  from {
+    top: var(--detail-canvas-top);
+  }
+
+  to {
+    top: 0;
+  }
+}
+
+.ui-overlay {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 1rem;
+  pointer-events: auto;
+
+  button {
+    @extend %type-label;
+    padding: 10px 24px;
+    background: var(--surface-soft);
+    border: 1px solid var(--border-strong);
+    color: var(--foreground);
+    border-radius: 8px;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+
+    &:hover,
+    &.active {
+      background: white;
+      color: var(--background);
+    }
+  }
+}
+
+@media (max-width: 780px) {
+  .app-shell {
+    --detail-content-top: 4.5rem;
+    --detail-intro-height: clamp(24rem, 70vh, 48rem);
+  }
+}
