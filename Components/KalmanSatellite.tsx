@@ -40,13 +40,17 @@ const PROPAGATION_TRACK_STEP_SEC = 60;
 function getCanvasTypeFont(type: "label" | "text") {
   if (typeof window === "undefined") {
     return type === "label"
-      ? "600 0.75rem Inter, sans-serif"
+      ? '600 0.75rem "PxPlus IBM VGA8", monospace'
       : "400 1rem Inter, sans-serif";
   }
 
   const rootStyles = getComputedStyle(document.documentElement);
   const bodyStyles = getComputedStyle(document.body);
-  const fontFamily = bodyStyles.fontFamily || "Inter, sans-serif";
+  const fontFamily =
+    (type === "label"
+      ? rootStyles.getPropertyValue("--font-monospace").trim()
+      : bodyStyles.fontFamily) ||
+    (type === "label" ? '"PxPlus IBM VGA8", monospace' : "Inter, sans-serif");
   const fontSize =
     rootStyles
       .getPropertyValue(type === "label" ? "--type-label-size" : "--type-body-size")
@@ -1351,7 +1355,7 @@ function ResidualScope({
         odCanvasColorFallbacks.textSubtle,
       );
       ctx.font = getCanvasTypeFont("text");
-      ctx.fillText("NO LIVE RESIDUAL", center - 48, center + 4);
+      ctx.fillText("No live residual", center - 48, center + 4);
       return;
     }
 
@@ -1497,7 +1501,7 @@ function OperationsLog({
           color: odColorTokens.textHeading,
         }}
       >
-        OPERATIONS LOG
+        Operations log
       </div>
       <div
         className="type-text"
@@ -1528,7 +1532,7 @@ function OperationsLog({
             >
               <span style={{ color: odColorTokens.textSubtle }}>[{entry.time}]</span>
               <span style={{ color: entry.type === "ALERT" ? odColorTokens.dangerSoft : odColorTokens.accentSoft }}>
-                {entry.type}
+                {entry.type === "ALERT" ? "Alert" : "Info"}
               </span>
               <span>{entry.message}</span>
             </div>
@@ -2248,7 +2252,7 @@ export default function KalmanSatellite() {
   const handleResetClick = () => {
     setManeuverEvents([]);
     resetSession([], 0);
-    addNotification("SESSION RESET", "info");
+    addNotification("Session reset", "info");
   };
 
   const handleManeuver = () => {
@@ -2282,7 +2286,7 @@ export default function KalmanSatellite() {
   const handleBlackoutToggle = () => {
     const nextValue = !blackout;
     setBlackout(nextValue);
-    addNotification(nextValue ? "GNSS HOLD" : "GNSS RESTORED", nextValue ? "alert" : "info");
+    addNotification(nextValue ? "GNSS hold" : "GNSS restored", nextValue ? "alert" : "info");
     logEvent(nextValue ? "ALERT" : "INFO", nextValue ? "Measurement updates paused." : "Measurement updates restored.");
   };
 
@@ -2300,7 +2304,7 @@ export default function KalmanSatellite() {
       setSourceMode("upload");
       setPaused(false);
       setBlackout(false);
-      addNotification("GNSS LOG LOADED", "info");
+      addNotification("GNSS log loaded", "info");
       logEvent("INFO", `Imported GNSS sample array ${file.name}.`);
     } catch (error) {
       const message = error instanceof Error ? error.message : "Failed to load GNSS file.";
@@ -2319,7 +2323,7 @@ export default function KalmanSatellite() {
     try {
       const importedProfiles = parseChipProfiles(await file.text());
       setChipProfiles((previous) => mergeChipProfiles(previous, importedProfiles));
-      addNotification("BIAS LIBRARY UPDATED", "info");
+      addNotification("Bias library updated", "info");
       logEvent("INFO", `Imported ${importedProfiles.length} chip bias template(s).`);
     } catch (error) {
       const message = error instanceof Error ? error.message : "Failed to import chip profiles.";
@@ -2362,7 +2366,7 @@ export default function KalmanSatellite() {
     anchor.click();
     URL.revokeObjectURL(url);
 
-    addNotification("SIM ARRAY EXPORTED", "info");
+    addNotification("Sim array exported", "info");
     logEvent(
       "INFO",
       `Exported ${simulatedSamplesRef.current.length} simulated GNSS samples with clean ephemeris.`,
@@ -2546,7 +2550,7 @@ export default function KalmanSatellite() {
     if (streamTimeSec >= totalTimelineSec - 1e-9 && !uploadFinishedRef.current) {
       uploadFinishedRef.current = true;
       startTransition(() => setPaused(true));
-      addNotification("PLAYBACK COMPLETE", "info");
+      addNotification("Playback complete", "info");
       logEvent("INFO", "OD playback reached the 3-day prediction horizon.");
     }
 
@@ -2618,8 +2622,8 @@ export default function KalmanSatellite() {
     ? "EKF separation vs clean ephemeris (km)"
     : "Innovation norm (km)";
   const scopeLabel = hud.reference
-    ? "NOISY GNSS VS CLEAN EPHEMERIS"
-    : "NOISY GNSS VS FILTER EPHEMERIS";
+    ? "Noisy GNSS vs clean ephemeris"
+    : "Noisy GNSS vs filter ephemeris";
   const observationDurationSec = getObservationDurationSec();
   const playbackPhaseLabel =
     hud.streamTimeSec <= observationDurationSec + 1e-9
@@ -2690,7 +2694,7 @@ export default function KalmanSatellite() {
         >
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <HudPanel
-              title="GNSS INGEST"
+              title="GNSS ingest"
               subtitle="Work from a GNSS sample array. Each row is a point-in-time sample with position, optional velocity, and covariance."
             >
               <div style={{ display: "flex", gap: 8 }}>
@@ -2813,7 +2817,7 @@ export default function KalmanSatellite() {
             </HudPanel>
 
             <HudPanel
-              title="RECEIVER BIAS TEMPLATE"
+              title="Receiver bias template"
               subtitle="Bias is pre-determined, but the library is importable so new chips can be added without changing the OD code."
             >
               <label
@@ -2867,7 +2871,7 @@ export default function KalmanSatellite() {
             </HudPanel>
 
             <HudPanel
-              title="EKF TUNING"
+              title="EKF tuning"
               subtitle="Tune a real covariance model: receiver sigma scales R and white-acceleration noise drives the discrete Q matrix."
             >
               <div>
@@ -3035,7 +3039,7 @@ export default function KalmanSatellite() {
               </div>
             </HudPanel>
 
-            <HudPanel title="OPERATIONS" subtitle="OD mode owns the screen: no work-switch bindings, no other satellites, and the camera is dedicated to orbit controls.">
+            <HudPanel title="Operations" subtitle="OD mode owns the screen: no work-switch bindings, no other satellites, and the camera is dedicated to orbit controls.">
               <div
                 style={{
                   display: "grid",
@@ -3238,7 +3242,7 @@ export default function KalmanSatellite() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
             <HudPanel
-              title="OD STATUS"
+              title="OD status"
               subtitle="Readout is one point in time. During ingest it shows the current GNSS sample; after ingest it switches to propagated EKF and clean/reference states."
             >
               <div
@@ -3415,7 +3419,7 @@ export default function KalmanSatellite() {
               </div>
             </HudPanel>
 
-            <HudPanel title="SEPARATION PLAYBACK" subtitle="Primary chart: noisy GNSS separation from the clean propagated ephemeris. Secondary chart: how well the EKF is converging back onto it.">
+            <HudPanel title="Separation playback" subtitle="Primary chart: noisy GNSS separation from the clean propagated ephemeris. Secondary chart: how well the EKF is converging back onto it.">
               <TimeSeriesPlot
                 data={history.measurementSeparation}
                 label={measurementLabel}
@@ -3436,7 +3440,7 @@ export default function KalmanSatellite() {
               />
             </HudPanel>
 
-            <HudPanel title="RESIDUAL SCOPE" subtitle="Top-down view of the noisy GNSS fix relative to the clean ephemeris.">
+            <HudPanel title="Residual scope" subtitle="Top-down view of the noisy GNSS fix relative to the clean ephemeris.">
               <ResidualScope
                 measured={hud.measurement}
                 reference={hud.reference ?? hud.estimate}

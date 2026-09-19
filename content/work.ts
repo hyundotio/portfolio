@@ -43,7 +43,7 @@ export interface WorkDetailMediaCard {
 }
 
 // 2. Your Data
-export const WORK_DATA = [
+const WORK_ENTRIES = [
   {
     id: "ibm",
     company: "IBM",
@@ -389,18 +389,18 @@ export const WORK_DATA = [
     period: "’21/11–Current",
     heading: "Helped rebuild the company around product",
     description:
-      "At Kayhan Space, I grew from Head of Design into Chief Product Officer while helping transform the company from a specialized technical product into a broader product-led business with stronger UX, public reach, AI-native workflows, and commercially meaningful pull.",
+      "At Kayhan Space, I grew from Head of Design into Chief Product Officer while helping transform the company from a specialized technical product into a broader product-led business with stronger UX, public reach, AI-native workflows, and automated orbital intelligence for journalists and analysts.",
     metaDescription:
-      "Explore Hyun Seo's Kayhan Space work across Satcat, orbital operations UX, brand, AI workflows, and product leadership.",
+      "Explore Hyun Seo's Kayhan Space work across Satcat, Satcat AI Analyst, orbital operations UX, investigative intelligence, brand, AI workflows, and product leadership.",
     highlights: [
       "Drove Satcat from product thesis to a public platform with thousands of registered users, hundreds of thousands of visitors, and millions of page views over the last 24 months.",
-      "Designed and developed major product surfaces across orbital operations, Satcat Terminal, corporate brand, website, and customer-facing workflows.",
+      "Designed and developed major product surfaces across orbital operations, space business analysis, and AI-assisted defense intelligence. Extended the AI Analyst through recurring work with journalists and analysts, including CNN and Reuters.",
       "Helped build a design- and user-centric culture while moving the company toward AI-native workflows across engineering, analytics, documentation, product knowledge, and enablement.",
     ],
     detailIntro:
       "Kayhan Space became the most complete test of my range so far. I did not operate inside a narrow product-design lane; I helped shape how the company built, communicated, and shipped. That included product strategy, UX, brand, technical feasibility, internal operating processes, AI-native development practices, engineering culture, and direct implementation. The result was not just a better interface, but a broader product-led company with stronger reach, clearer UX, and more commercial pull.",
     detailMetaDescription:
-      "Case study on Kayhan Space product leadership across Satcat, orbital operations, Satcat Terminal, brand, and AI workflows.",
+      "Case study on Kayhan Space product leadership across Satcat, Satcat AI Analyst, orbital operations, investigative intelligence, brand, and AI workflows.",
     detailSections: [
       {
         title: "Scope of the role",
@@ -481,8 +481,8 @@ export const WORK_DATA = [
       {
         title: "Satcat Terminal and space data for non-space users",
         body: [
-          "I designed and developed Satcat Terminal, extending the platform beyond satellite operators by making orbital intelligence accessible to financial, insurance, media, and analyst audiences without requiring astrodynamics expertise.",
-          "That product direction came from a broader thesis: the number of satellite operators and launch providers is limited, but the number of people who need to understand space activity is much larger. Investors, journalists, insurers, analysts, and enterprise decision-makers need space data made clear and actionable, not hidden behind expert-only orbital mechanics workflows.",
+          "I designed and developed Satcat Terminal and Satcat AI Analyst, extending the platform beyond satellite operators by making orbital intelligence accessible to financial, insurance, media, and analyst audiences without requiring astrodynamics expertise.",
+          "That product direction came from a broader thesis: the number of satellite operators and launch providers is limited, but the number of people who need to understand space activity is much larger. Satcat AI Analyst already automated core orbital-investigation workflows, giving us a foundation for deeper custom analysis while creating a path to fold new methods back into the product.",
         ],
         mediaCards: [
           {
@@ -496,9 +496,9 @@ export const WORK_DATA = [
             subtitleLinkTitle: "See Coverage by SpaceNews",
           },
           {
-            title: "Plain-language space data queries",
+            title: "Satcat AI Analyst",
             src: "/assets/work/kayhan-terminal-ai-query.png",
-            alt: "Satcat Terminal AI query interface showing a plain-language question and a structured orbital intelligence response.",
+            alt: "Satcat AI Analyst interface showing a plain-language question and a structured orbital intelligence response generated without manual analyst work.",
             width: 2041,
             height: 1164,
             subtitleLink:
@@ -524,6 +524,56 @@ export const WORK_DATA = [
             subtitleLink:
               "https://www.businesswire.com/news/home/20260320098727/en/Kayhan-Space-Opens-Satellite-Intelligence-to-Investors-and-Financial-Professionals-for-the-First-Time",
             subtitleLinkTitle: "Read related press release",
+          },
+        ],
+      },
+      {
+        title: "Investigative analysis as a product capability",
+        body: [
+          "Beyond the product itself, a recurring part of my work at Kayhan was helping journalists and analysts make sense of time-sensitive space activity. I frequently translated orbital data into defensible answers by reconstructing historical satellite activity and evaluating data collections across orbital geometry, illumination, cloud cover, and various sensor limitations.",
+          "The most visible example was a CNN investigation into whether Russian reconnaissance satellites could have supported Iranian targeting of U.S. military assets. For that collaboration, I produced detailed reports, source data, interactive web tools, 3D reconstructions, explanatory animations, and broadcast-ready graphics and After Effects assets. CNN used the analysis and visuals throughout its finished investigation, which aired across multiple programs and became part of broader national-security coverage.",
+          "Satcat AI Analyst made work at this depth possible by automating much of the underlying orbital investigation. After the CNN collaboration, I folded the custom methods and new requirements back into the product, extending the system so increasingly sophisticated investigations could be repeated end to end without a human analyst manually assembling each one.",
+        ],
+        mediaCards: [
+          {
+            isVideo: true,
+            autostart: false,
+            loop: false,
+            title: "CNN Investigates",
+            src: "/api/blob?pathname=assets/work/kayhan-cnn-investigation.mp4",
+            alt: "CNN's one-minute investigative report featuring Kayhan Space orbital analysis, 3D models, technical visualizations, and broadcast graphics.",
+            width: 1920,
+            height: 1080,
+            subtitle:
+              "CNN report featuring analysis and visual assets produced for the investigation",
+          },
+          {
+            title: "Testing collection constraints",
+            src: "/assets/work/kayhan-cnn-collection-constraints.png",
+            alt: "Selected pages from a technical report provided to CNN showing satellite classifications, source data, access geometry, and collection-feasibility analysis.",
+            width: 2041,
+            height: 1164,
+            subtitle:
+              "Selected pages from the technical analysis delivered to CNN",
+          },
+          {
+            title: "Interactive web analysis",
+            src: "/assets/work/kayhan-cnn-interactive-analysis.png",
+            alt: "Browser-based analysis delivered to CNN showing requested dates, weather and cloud constraints, viewing geometry, and candidate satellite passes.",
+            width: 2041,
+            height: 1164,
+            subtitle:
+              "Purpose-built web analysis for exploring evidence and constraints",
+          },
+          {
+            title: "CNN credit and public record",
+            src: "/assets/work/kayhan-cnn-transcript-credit.png",
+            alt: "CNN transcript excerpt crediting Kayhan Space for helping assess the orbital data and provide imagery, alongside CNN's report that Moscow called the allegation fake news.",
+            width: 2041,
+            height: 1164,
+            subtitleLink:
+              "https://transcripts.cnn.com/show/ctw/date/2026-09-16/segment/02",
+            subtitleLinkTitle: "Read the CNN transcript",
           },
         ],
       },
@@ -637,6 +687,14 @@ export const WORK_DATA = [
       },
     ],
   },
+] as const;
+
+// Keep the current role first while preserving the existing sequence of the
+// remaining work entries.
+export const WORK_DATA = [
+  WORK_ENTRIES[2],
+  WORK_ENTRIES[0],
+  WORK_ENTRIES[1],
 ] as const;
 
 // 3. Derived Types

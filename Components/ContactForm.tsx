@@ -30,7 +30,7 @@ export default function ContactForm() {
     <form onSubmit={handleSubmit} className={styles.form}>
       <h2>Get in touch</h2>
       <div className={styles.field}>
-        <label htmlFor="name">NAME</label>
+        <label htmlFor="name">Name</label>
         <input
           type="text"
           id="name"
@@ -40,7 +40,7 @@ export default function ContactForm() {
         />
       </div>
       <div className={styles.field}>
-        <label htmlFor="email">EMAIL</label>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           id="email"
@@ -50,7 +50,7 @@ export default function ContactForm() {
         />
       </div>
       <div className={styles.field}>
-        <label htmlFor="message">MESSAGE</label>
+        <label htmlFor="message">Message</label>
         <textarea
           id="message"
           name="message"
@@ -60,7 +60,7 @@ export default function ContactForm() {
         />
       </div>
       <button type="submit" disabled={status === "loading"}>
-        {status === "loading" ? "DISPATCHING..." : "SEND MESSAGE"}
+        {status === "loading" ? "Dispatching..." : "Send message"}
       </button>
       {status === "success" && (
         <p className={styles.success}>Message sent successfully.</p>

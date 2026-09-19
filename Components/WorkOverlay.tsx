@@ -30,7 +30,11 @@ const WorkOverlay = ({ activeWork, isVisible }: WorkProps) => {
             className={styles["preview-card-scroll"]}
             data-work-preview-scroll
           >
-            <TypewriterText text={activeWork.period} shouldType={isVisible} />
+            <TypewriterText
+              className={styles["work-period"]}
+              text={activeWork.period}
+              shouldType={isVisible}
+            />
             <div
               key={`${activeWork.id}-content`}
               className={styles["preview-card-content"]}

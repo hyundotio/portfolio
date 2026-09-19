@@ -6,32 +6,20 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Departure Mono";
-  src:
-    url("/assets/fonts/departure-mono-regular.woff2") format("woff2"),
-    url("/assets/fonts/departure-mono-regular.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
   --font-ui: var(--font-inter);
-  --font-monospace:
-    "Departure Mono", "Quinquefive", "SFMono-Regular", Consolas,
-    "Liberation Mono", monospace;
-  --font-monospace-alt:
-    "PxPlus IBM VGA8", "Departure Mono", "Quinquefive", "SFMono-Regular",
-    Consolas, "Liberation Mono", monospace;
+  --font-monospace: "PxPlus IBM VGA8", monospace;
 
   --type-main-heading-size: 8rem;
   --type-big-heading-size: 6rem;
-  --type-section-heading-size: 2.25rem;
-  --type-paragraph-heading-size: 1.375rem;
+  --type-section-heading-size: 2rem;
+  --type-paragraph-heading-size: 1.25rem;
   --type-body-size-sm: 0.875rem;
-  --type-body-size: 1rem;
-  --type-label-size: 1rem;
+  --type-body-size: 0.875rem;
+  --type-work-snippet-size: 1rem;
+  --type-body-line-height: 1.6;
+  --type-work-snippet-line-height: 1.5;
+  --type-label-size: 0.9375rem;
 
   --background: #050505;
 

@@ -4,7 +4,7 @@
 }
 
 %type-font-mono {
-  font-family: var(--font-monospace-alt);
+  font-family: var(--font-monospace);
   font-style: normal;
 }
 
@@ -41,17 +41,23 @@
 }
 
 %type-text {
-  @extend %type-font-mono;
+  @extend %type-font;
   font-size: var(--type-body-size);
   font-weight: 400;
-  line-height: 1.33;
+  line-height: var(--type-body-line-height);
+}
+
+%type-work-snippet {
+  @extend %type-font-mono;
+  font-size: var(--type-work-snippet-size);
+  font-weight: 400;
+  line-height: var(--type-work-snippet-line-height);
 }
 
 %type-label {
   @extend %type-font-mono;
   font-size: var(--type-label-size);
   line-height: 1.05;
-  text-transform: uppercase;
 }
 
 .type-main-heading {
@@ -68,6 +74,10 @@
 
 .type-text {
   @extend %type-text;
+}
+
+.type-work-snippet {
+  @extend %type-work-snippet;
 }
 
 .type-label {

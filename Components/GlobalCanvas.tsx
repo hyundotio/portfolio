@@ -1,7 +1,7 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { memo, Suspense } from "react";
+import { memo, Suspense, useEffect, useState } from "react";
 import Experience from "@/Components/Experience";
 import { Loader } from "@react-three/drei";
 import { SceneState, WORK_DATA } from "@/content/work";
@@ -16,6 +16,20 @@ const DEFAULT_CAMERA = {
 const GL_OPTIONS = {
   antialias: true,
 };
+
+const MAX_RENDER_WIDTH = 1920;
+const MAX_RENDER_HEIGHT = 1080;
+
+function getCanvasDpr() {
+  const viewportWidth = Math.max(window.innerWidth, 1);
+  const viewportHeight = Math.max(window.innerHeight, 1);
+
+  return Math.min(
+    window.devicePixelRatio || 1,
+    MAX_RENDER_WIDTH / viewportWidth,
+    MAX_RENDER_HEIGHT / viewportHeight,
+  );
+}
 
 function resolveSceneState(
   pathname: string,
@@ -44,15 +58,17 @@ function resolveSceneState(
 interface GlobalCanvasViewProps {
   sceneState: SceneState;
   theme: "dark" | "light";
+  dpr: number;
 }
 
 const GlobalCanvasView = memo(function GlobalCanvasView({
   sceneState,
   theme,
+  dpr,
 }: GlobalCanvasViewProps) {
   return (
     <>
-      <Canvas camera={DEFAULT_CAMERA} gl={GL_OPTIONS}>
+      <Canvas camera={DEFAULT_CAMERA} dpr={dpr} gl={GL_OPTIONS}>
         <Suspense fallback={null}>
           <Experience sceneState={sceneState} theme={theme} />
         </Suspense>
@@ -64,6 +80,7 @@ const GlobalCanvasView = memo(function GlobalCanvasView({
 
 export default function GlobalCanvas() {
   const { theme } = useTheme();
+  const [dpr, setDpr] = useState(1);
   const odModeEnabled = useViewStore((state) => state.odModeEnabled);
   const visualPathname = useViewStore((state) => state.visualPathname);
   const sceneState = resolveSceneState(
@@ -71,5 +88,14 @@ export default function GlobalCanvas() {
     odModeEnabled,
   );
 
-  return <GlobalCanvasView sceneState={sceneState} theme={theme} />;
+  useEffect(() => {
+    const updateDpr = () => setDpr(getCanvasDpr());
+
+    updateDpr();
+    window.addEventListener("resize", updateDpr);
+
+    return () => window.removeEventListener("resize", updateDpr);
+  }, []);
+
+  return <GlobalCanvasView sceneState={sceneState} theme={theme} dpr={dpr} />;
 }

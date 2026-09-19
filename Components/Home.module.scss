@@ -290,6 +290,7 @@
   width: 100%;
 
   .work-period {
+    @extend %type-label;
     display: inline;
   }
 
@@ -301,25 +302,19 @@
   h3,
   h4,
   h5 {
-    text-transform: uppercase;
     margin-bottom: 0.5rem;
   }
 
   h3,
+  h4,
   h5 {
     @extend %type-label;
   }
 
-  h4 {
-    @extend %type-section-heading;
-  }
-
   p,
-  ul,
-  :global(.typewriter-text-typed) {
+  ul {
     @extend %type-text;
     font-size: var(--type-body-size);
-    font-family: var(--font-monospace-alt);
     letter-spacing: initial;
   }
 
