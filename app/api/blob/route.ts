@@ -9,6 +9,7 @@ const ALLOWED_VIDEO_PATHS = new Set([
   "assets/work/ibm-qiskit-getting-started.mp4",
   "assets/work/ibm-quantum-education-ux.mp4",
   "assets/work/ibm-spatial-interaction-prototype.mp4",
+  "assets/work/kayhan-cnn-investigation.mp4",
 ]);
 
 function getBlobAuthOptions() {
