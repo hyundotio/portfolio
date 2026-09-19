@@ -11,6 +11,7 @@ const TRAIL_SLOTS = 16;
 
 const fragmentShader = /* glsl */ `
   uniform vec2 uResolution;
+  uniform vec2 uDitherResolution;
   uniform vec2 uTrail[${TRAIL_SLOTS}];
   uniform vec2 uTrailFlow[${TRAIL_SLOTS}];
   uniform float uTrailStrength[${TRAIL_SLOTS}];
@@ -59,6 +60,7 @@ const fragmentShader = /* glsl */ `
 
   void mainImage(const in vec4 inputColor, const in vec2 uv, out vec4 outputColor) {
     vec2 pixel = uv * uResolution;
+    vec2 ditherPixel = floor(uv * uDitherResolution);
     vec2 warp = vec2(0.0);
     float distortionStrength = 0.0;
     float steppedTime = floor(uTime * 24.0) / 24.0;
@@ -152,7 +154,9 @@ const fragmentShader = /* glsl */ `
     );
 
 #ifdef WORK_ONE_BIT_DITHER
-    float ditherThreshold = (bayer4(pixel) + 0.5) / 16.0;
+    // Anchor the Bayer matrix to actual render pixels. Sampling it in CSS
+    // pixels aliases into large grid gaps whenever the canvas DPR is below 1.
+    float ditherThreshold = (bayer4(ditherPixel) + 0.5) / 18.0;
     float luma = dot(finalColor.rgb, vec3(0.2126, 0.7152, 0.0722));
     luma = clamp(pow(max(luma, 0.0), uToneGamma) + uToneLift, 0.0, 1.0);
     float toneRange = max(uToneSteps - 1.0, 1.0);
@@ -178,6 +182,7 @@ class CursorDitherEffectImpl extends Effect {
       : undefined;
     const uniforms = new Map<string, THREE.Uniform>([
       ["uResolution", new THREE.Uniform(new THREE.Vector2(1, 1))],
+      ["uDitherResolution", new THREE.Uniform(new THREE.Vector2(1, 1))],
       [
         "uTrail",
         new THREE.Uniform(
@@ -233,6 +238,7 @@ export default function WorkCursorDitherEffect({
 }) {
   const { gl, size } = useThree();
   const effect = useMemo(() => new CursorDitherEffectImpl(), []);
+  const ditherResolutionRef = useRef(new THREE.Vector2(1, 1));
   const pointerRef = useRef({
     x: 0.5,
     y: 0.5,
@@ -385,6 +391,7 @@ export default function WorkCursorDitherEffect({
     const strengthUniform = effect.uniforms.get("uTrailStrength");
     const radiusUniform = effect.uniforms.get("uTrailRadius");
     const resolutionUniform = effect.uniforms.get("uResolution");
+    const ditherResolutionUniform = effect.uniforms.get("uDitherResolution");
     const timeUniform = effect.uniforms.get("uTime");
     const velocityUniform = effect.uniforms.get("uVelocity");
 
@@ -394,6 +401,7 @@ export default function WorkCursorDitherEffect({
       !strengthUniform ||
       !radiusUniform ||
       !resolutionUniform ||
+      !ditherResolutionUniform ||
       !timeUniform ||
       !velocityUniform
     ) {
@@ -422,6 +430,8 @@ export default function WorkCursorDitherEffect({
     const baseRadius = Math.sqrt((size.width * size.height * 0.495) / Math.PI);
     const trailRadius = baseRadius * 0.82;
     resolutionUniform.value.set(size.width, size.height);
+    gl.getDrawingBufferSize(ditherResolutionRef.current);
+    ditherResolutionUniform.value.copy(ditherResolutionRef.current);
     timeUniform.value += delta;
 
     for (let index = 0; index < TRAIL_SLOTS; index += 1) {
