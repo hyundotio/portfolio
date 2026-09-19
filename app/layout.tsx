@@ -62,7 +62,7 @@ export const metadata: Metadata = {
 
 const navLinks = [
   { title: "Hyun.io", href: "/" },
-  { title: "Work", href: "/work/ibm" },
+  { title: "Work", href: "/work/kayhan-space" },
   {
     title: "Resume",
     href: "/resume",
