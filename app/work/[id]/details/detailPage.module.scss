@@ -572,7 +572,9 @@ a.mediaCardSubtitle:hover {
   top: calc(2.75rem + 1rem);
   max-height: calc(var(--detail-hero-height) - 2.75rem - 2rem);
   overflow-y: auto;
-  overscroll-behavior: contain;
+  // Let wheel and trackpad input continue onto the document once the
+  // sidebar reaches either end of its own scroll range.
+  overscroll-behavior-y: auto;
   scrollbar-gutter: stable;
   padding: 1.75rem 1.5rem 2.25rem;
 }
