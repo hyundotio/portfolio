@@ -14,7 +14,8 @@
   --accent-ink: #006ad1; /* same hue, dark enough for small text */
   --ease: cubic-bezier(0.2, 0.75, 0, 1);
 
-  --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font: var(--font-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --mono: var(--font-mono), ui-monospace, Menlo, monospace;
 
   --size-small: 0.875rem;
   --size-body: 1.0625rem;
@@ -194,6 +195,71 @@ a:hover {
   max-width: 40em;
 }
 
+/*
+  Plex Mono for labels and meta, as on the resume.
+  Capitals only where the resume uses them: labels, names, meta lines.
+  Sub-heads and captions stay sentence case; body text is the sans.
+*/
+.mono,
+.caps-label,
+.section > .col-label,
+.work-item .small,
+.hero-meta,
+.media figcaption,
+.viewer-bar,
+.viewer-caption,
+.viewer-foot button,
+.site-footer .col-label,
+.site-header .brand,
+.site-nav,
+.menu-button,
+.menu-bar .brand {
+  font-family: var(--mono);
+  font-size: var(--size-small);
+  line-height: 1.55;
+}
+
+.caps,
+.caps-label,
+.section > .col-label,
+.work-item .small,
+.hero-meta,
+.viewer-bar,
+.viewer-foot button,
+.site-footer .col-label,
+.site-header .brand,
+.site-nav,
+.menu-button,
+.menu-bar .brand {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* The name, set like the resume: light mono capitals in blue. */
+.name {
+  font-family: var(--mono);
+  font-weight: 300;
+  font-size: clamp(3rem, 1.6rem + 3.6vw, 5.25rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* The resume's tagline: bold mono, blue, sentence case. */
+.tagline {
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--accent-ink);
+}
+
+.home-head .display {
+  margin-top: -0.08em;
+}
+
 /* ---------- site chrome ---------- */
 
 /* Sticky, full-bleed bar; the grid inside keeps the columns. */
@@ -280,6 +346,12 @@ html.menu-open {
   border-bottom: 1px solid var(--rule);
 }
 
+.menu-bar .brand {
+  font-weight: 600;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
 .menu-bar .menu-button {
   display: block;
   min-height: 44px;
@@ -317,7 +389,8 @@ html.menu-open {
 }
 
 .site-header .brand {
-  font-weight: 700;
+  font-weight: 600;
+  color: var(--accent-ink);
   text-decoration: none;
 }
 
@@ -358,9 +431,12 @@ html.menu-open {
   row-gap: 20px;
 }
 
+/* Section labels: blue mono over a blue rule, like the resume. */
 .section > .col-label {
-  padding-top: 16px;
-  border-top: 1px solid var(--fg);
+  padding-top: 14px;
+  border-top: 2px solid var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
 }
 
 .section > .col-text,
@@ -447,7 +523,7 @@ html.menu-open {
   padding-top: 14px;
 }
 
-/* Short blue rules over each credit, poster style. */
+/* Short black dashes over each credit, as on the resume. */
 .hero-meta > p::before {
   content: "";
   position: absolute;
@@ -455,7 +531,7 @@ html.menu-open {
   left: 0;
   width: 24px;
   height: 2px;
-  background: var(--accent);
+  background: var(--fg);
   transform-origin: left;
   animation: draw 600ms var(--ease) both;
 }
@@ -489,15 +565,17 @@ html.menu-open {
   display: inline-block;
   white-space: nowrap;
   color: var(--accent);
-  font-weight: 700;
-  letter-spacing: -0.055em;
+  /* Same treatment as the name: light mono capitals. */
+  font-family: var(--mono);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
   line-height: 0.9;
-  /* Room for descenders (y, p) inside the mask. */
-  padding-bottom: 0.2em;
-  margin-left: -0.045em;
+  padding-bottom: 0.08em;
+  margin-left: -0.04em;
   font-size: min(
     calc(
-      (min(100vw, var(--max)) - 2 * var(--margin)) / (var(--chars) * 0.56)
+      (min(100vw, var(--max)) - 2 * var(--margin)) / (var(--chars) * 0.6)
     ),
     50vh
   );
@@ -790,7 +868,11 @@ html.viewer-open {
 }
 
 .reveal-2 {
-  animation-delay: 140ms;
+  animation-delay: 120ms;
+}
+
+.reveal-3 {
+  animation-delay: 240ms;
 }
 
 .viewer[open] {
@@ -879,7 +961,7 @@ html.viewer-open {
   .wordmark {
     line-height: 0.88;
     font-size: min(
-      calc((100vw - 2 * var(--margin)) / (var(--longest) * 0.56)),
+      calc((100vw - 2 * var(--margin)) / (var(--longest) * 0.6)),
       50vh
     );
   }
@@ -924,4 +1006,11 @@ html.viewer-open {
   .site-footer {
     margin-top: 96px;
   }
+}
+
+/* Buttons reset their font above; put the resume's mono back on these. */
+.menu-button,
+.viewer-foot button {
+  font-family: var(--mono);
+  font-size: var(--size-small);
 }

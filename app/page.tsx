@@ -12,12 +12,19 @@ export default function Home() {
 
   return (
     <>
-      <section className="page-head grid">
-        <h1 className="display col-display reveal">
-          {intro.replace(/\.$/, "")}
-          <span className="accent">.</span>
-        </h1>
-        <p className="lead muted col-display prose reveal reveal-2">{lead}</p>
+      <section className="page-head home-head grid">
+        <p className="name col-label reveal" aria-hidden="true">
+          Hyun
+          <br />
+          Seo
+        </p>
+        <div className="col-wide">
+          <h1 className="display reveal reveal-2">
+            {intro.replace(/\.$/, "")}
+            <span className="accent">.</span>
+          </h1>
+          <p className="tagline prose reveal reveal-3">{lead}</p>
+        </div>
       </section>
 
       <section id="work" className="section grid" aria-labelledby="work-title">
@@ -29,9 +36,7 @@ export default function Home() {
             <li key={work.id}>
               <article className="work-item">
                 <div>
-                  <p>
-                    <strong>{work.company}</strong>
-                  </p>
+                  <p className="caps-label">{work.company}</p>
                   <p className="small muted">{work.years}</p>
                   <p className="small muted">{work.role}</p>
                 </div>

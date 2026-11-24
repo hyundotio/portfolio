@@ -1,6 +1,8 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import MobileMenu from "@/app/_components/MobileMenu";
 import { legalText, links } from "@/content/site";
@@ -11,6 +13,23 @@ import {
   siteTitle,
   siteTitleTemplate,
 } from "@/utils/metadata";
+
+// TeX Gyre Heros: a free Helvetica clone (GUST Font License, see app/fonts).
+const heros = localFont({
+  src: [
+    { path: "./fonts/texgyreheros-regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/texgyreheros-bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const plexMono = IBM_Plex_Mono({
+  weight: ["300", "400", "600"],
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   metadataBase,
@@ -51,7 +70,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${heros.variable} ${plexMono.variable}`}>
       <body>
         <header className="site-header">
           <div className="grid">
