@@ -6,7 +6,6 @@ import { WORK_DATA, type WorkDetailMediaCard } from "@/content/work";
 import { buildSocialMetadata } from "@/utils/metadata";
 import { MediaOpen, MediaViewer, type ViewerItem } from "@/app/_components/MediaViewer";
 import Wordmark from "@/app/_components/Wordmark";
-import WorkGraphic from "@/app/_components/WorkGraphic";
 
 type Params = Promise<{ id: string }>;
 
@@ -164,11 +163,6 @@ export default async function WorkPage({ params }: { params: Params }) {
               {work.periodHighlight}
             </span>
           </p>
-        </div>
-        <div className="hero-graphic grid">
-          <div className="col-full">
-            <WorkGraphic id={work.id} />
-          </div>
         </div>
         <div className="hero-mark grid" aria-hidden="true">
           <div className="col-full">

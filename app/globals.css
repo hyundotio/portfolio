@@ -363,7 +363,7 @@ a:hover {
 }
 
 .hero-mark {
-  margin-top: 40px;
+  margin-top: 64px;
 }
 
 /* The mask the wordmark rises out of. */
@@ -393,119 +393,6 @@ a:hover {
 .hero-statement {
   margin-top: 0;
   animation: fade-up 800ms var(--ease) 250ms both;
-}
-
-/* ---------- case study graphics ---------- */
-
-.hero-graphic {
-  margin-top: 48px;
-}
-
-.work-graphic {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 3 / 1;
-  overflow: hidden;
-}
-
-.g-line,
-.g-faint,
-.g-accent-line,
-.g-dash,
-.g-zero {
-  fill: none;
-}
-
-.g-line {
-  stroke: var(--fg);
-  stroke-width: 2;
-}
-
-.g-faint {
-  stroke: var(--rule);
-  stroke-width: 1.5;
-}
-
-.g-dash {
-  stroke: var(--fg);
-  stroke-width: 1.5;
-  stroke-dasharray: 4 8;
-}
-
-.g-accent {
-  fill: var(--accent);
-}
-
-.g-accent-line {
-  stroke: var(--accent);
-  stroke-width: 3;
-}
-
-.g-ink {
-  fill: var(--fg);
-}
-
-.g-paper-line {
-  fill: var(--bg);
-  stroke: var(--fg);
-  stroke-width: 2;
-}
-
-.g-label {
-  fill: var(--muted);
-  font: 16px var(--font);
-}
-
-.g-gate {
-  fill: #fff;
-  font: 700 22px var(--font);
-  text-anchor: middle;
-}
-
-.g-zero {
-  stroke: var(--fg);
-  stroke-width: 56;
-}
-
-.g-slash {
-  stroke: var(--accent);
-  stroke-width: 36;
-}
-
-/* Lines draw themselves in (paths carry pathLength="1"). */
-.g-draw {
-  stroke-dasharray: 1;
-  animation: draw-line 1600ms var(--ease) both;
-}
-
-.g-pop {
-  transform-box: fill-box;
-  transform-origin: center;
-  animation: pop 600ms var(--ease) both;
-}
-
-.g-fade {
-  animation: fade 900ms ease both;
-}
-
-/* One quiet, continuous motion per graphic. */
-.g-sway {
-  transform-box: view-box;
-  transform-origin: 600px 200px;
-  animation: sway 14s ease-in-out infinite alternate;
-}
-
-.g-ripple {
-  transform-box: view-box;
-  transform-origin: 600px 300px;
-  animation: ripple 4.5s ease-out 1.2s infinite both;
-}
-
-.g-playhead {
-  stroke: var(--accent);
-  stroke-width: 3;
-  animation: sweep 7s linear 1.8s infinite both;
 }
 
 /* ---------- case study ---------- */
@@ -779,57 +666,10 @@ html.viewer-open {
   }
 }
 
-@keyframes draw-line {
-  from {
-    stroke-dashoffset: 1;
-  }
-}
 
-@keyframes pop {
-  from {
-    opacity: 0;
-    transform: scale(0.6);
-  }
-}
 
-@keyframes sway {
-  from {
-    transform: rotate(-3deg);
-  }
-  to {
-    transform: rotate(3deg);
-  }
-}
 
-@keyframes ripple {
-  from {
-    transform: scale(0.08);
-    opacity: 1;
-  }
-  to {
-    transform: scale(1);
-    opacity: 0;
-  }
-}
 
-@keyframes sweep {
-  0% {
-    transform: translateX(0);
-    opacity: 0;
-  }
-  8% {
-    opacity: 1;
-  }
-  75% {
-    transform: translateX(520px);
-    opacity: 1;
-  }
-  85%,
-  100% {
-    transform: translateX(520px);
-    opacity: 0;
-  }
-}
 
 .reveal {
   animation: fade-up 800ms var(--ease) both;
@@ -854,10 +694,6 @@ html.viewer-open {
   *::after {
     animation: none !important;
     transition: none !important;
-  }
-
-  .g-playhead {
-    display: none;
   }
 }
 
@@ -894,16 +730,8 @@ html.viewer-open {
     grid-column: auto;
   }
 
-  .hero-graphic {
-    margin-top: 32px;
-  }
-
-  .work-graphic {
-    aspect-ratio: 3 / 2;
-  }
-
   .hero-mark {
-    margin-top: 28px;
+    margin-top: 40px;
   }
 
   .wordmark {
