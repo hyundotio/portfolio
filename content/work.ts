@@ -3,6 +3,8 @@
 export interface WorkEntry {
   readonly id: string;
   readonly company: string;
+  readonly role: string;
+  readonly years: string;
   readonly periodPrefix: string;
   readonly periodHighlight: string;
   readonly period: string;
@@ -47,6 +49,8 @@ const WORK_ENTRIES = [
   {
     id: "ibm",
     company: "IBM",
+    role: "Associate Designer to Senior Designer",
+    years: "2013–2019",
     periodPrefix: "2013/07 (Assoc. Designer, B6) to ",
     periodHighlight: "2019/12 (Sr. Designer, B9)",
     period: "’13/07-’19/12",
@@ -211,6 +215,8 @@ const WORK_ENTRIES = [
   {
     id: "hawkeye-360",
     company: "HawkEye 360",
+    role: "Principal Designer",
+    years: "2020–2021",
     periodPrefix: "2020/01 to 2021/11 ",
     periodHighlight: "(Principal Designer)",
     period: "’20/01-’21/11",
@@ -384,6 +390,8 @@ const WORK_ENTRIES = [
   {
     id: "kayhan-space",
     company: "Kayhan Space",
+    role: "Head of Design to Chief Product Officer",
+    years: "2021–present",
     periodPrefix: "2021/11 (Head of Design) to ",
     periodHighlight: "Current (Chief Product Officer)",
     period: "’21/11–Current",
@@ -687,16 +695,147 @@ const WORK_ENTRIES = [
       },
     ],
   },
+  {
+    id: "frontline-zero",
+    company: "Frontline Zero",
+    role: "Solo developer, 556 Games",
+    years: "2026–present",
+    periodPrefix: "2026/10 to ",
+    periodHighlight: "Current (Solo developer, 556 Games)",
+    period: "’26/10–Current",
+    heading: "Built an engine and shipped a strategy game to every screen",
+    description:
+      "Frontline Zero is an isometric real-time strategy game set in the Russia–Ukraine war, where drones, jammers, and air defense decide every fight. I designed and built it end to end, from my own browser engine to the store pages, and shipped it on the web, the App Store, and Google Play with cross-play online battles. It reached over 400 players in its first month.",
+    metaDescription:
+      "Explore Hyun Seo's Frontline Zero, an isometric real-time strategy game built on a custom deterministic engine and shipped across web, iOS, and Android.",
+    highlights: [
+      "Designed and built Frontline Zero end to end: game design, art direction, interface, engine, online infrastructure, and store releases, from first commit to three platforms in about two months.",
+      "Reached over 400 players in the first month after release, across the web, the App Store, and Google Play.",
+      "Wrote webrts, a dependency-free TypeScript RTS engine with a deterministic simulation that makes lockstep cross-play possible between browsers, phones, tablets, and computers.",
+      "Designed touch controls from scratch so a dense strategy interface works on a phone, and cut decoded sprite memory from 1.1 GB to about 330 MB so the game runs on low-end devices.",
+    ],
+    detailIntro:
+      "Frontline Zero is my own studio project under 556 Games: a classic isometric real-time strategy game of modern war, Ukraine against Russia. I designed and built it end to end, from the engine underneath it to the store listings on top, and released it on the web, on iPhone, iPad, and Mac, and on Android in about two months. In its first month it reached over 400 players.",
+    detailMetaDescription:
+      "Case study on Frontline Zero: game design, a deterministic TypeScript RTS engine, lockstep cross-play, touch controls, and shipping across platforms as one person.",
+    detailSections: [
+      {
+        title: "The game",
+        body: [
+          "Players build a base, take the towns, factories, and oil that pay for the war, and win the sky before they move on the ground. Cheap FPV drones hunt anything left in the open. Jammers bring them down, fiber-optic drones ignore the jamming, and guns, interceptor drones, and SAMs are the hard counter. Every army has to answer one question: what covers me from above?",
+          "Both sides are playable and deliberately asymmetric. Ukraine leans on precision, dispersion, and adaptation; Russia on mass, firepower, and fortification. Twelve battle maps, each in spring and winter, have their own oil and sector layouts, and players can build and share their own maps. Real vehicles and weapons appear by name, every person in the game is fictional, and there is no gore.",
+        ],
+        mediaCards: [
+          {
+            title: "Key art",
+            src: "/assets/work/frontline-zero-key-art.jpg",
+            alt: "Frontline Zero key art showing one Ukrainian and one Russian soldier beneath the Frontline Zero title.",
+            width: 1920,
+            height: 1080,
+            subtitleLink: "https://frontlinezero.com",
+            subtitleLinkTitle: "Play Frontline Zero on the web",
+          },
+          {
+            title: "City battle in Kharkiv",
+            src: "/assets/work/frontline-zero-kharkiv-battle.jpg",
+            alt: "Frontline Zero battle in the streets of Kharkiv with armor, infantry, and the full command interface.",
+            width: 2048,
+            height: 1152,
+          },
+          {
+            title: "Winter at Bakhmut",
+            src: "/assets/work/frontline-zero-bakhmut-winter.jpg",
+            alt: "Frontline Zero winter battle at Bakhmut with units fighting across snow-covered terrain.",
+            width: 2048,
+            height: 1152,
+          },
+        ],
+      },
+      {
+        title: "An engine built for determinism",
+        body: [
+          "Underneath the game is webrts, a browser-native isometric RTS engine I wrote in TypeScript with no runtime dependencies. The engine is kept strictly game-agnostic: a test fails if it ever imports game content.",
+          "The simulation is fully deterministic, with integer world units, fixed-length ticks, a seeded random number generator, and every player input routed through orders. That discipline is what makes lockstep multiplayer possible. Every player runs the full simulation, the network carries only commands, and a relay on Cloudflare Durable Objects orders those commands into turns and checks state hashes, so a desync is caught rather than guessed at.",
+        ],
+        mediaCards: [
+          {
+            title: "Base building and economy",
+            src: "/assets/work/frontline-zero-kursk-base-economy.jpg",
+            alt: "Frontline Zero base at Kursk with production buildings, oil derricks, and the economy interface.",
+            width: 2048,
+            height: 1152,
+          },
+          {
+            title: "Forest fight over oil",
+            src: "/assets/work/frontline-zero-kreminna-forest.jpg",
+            alt: "Frontline Zero battle in Kreminna Forest over oil fields, with units moving through dense trees.",
+            width: 2048,
+            height: 1152,
+          },
+        ],
+      },
+      {
+        title: "Designing for touch",
+        body: [
+          "Strategy games are traditionally built around a mouse, a keyboard, and a large screen. I designed the touch interface from scratch, with gestures, an order wheel, and a dedicated phone layout, so the same matches work on a phone and players on phones can meet players on computers online.",
+          "Performance work served the same goal. Trimming and packing sprite atlases and moving to 256-color art cut decoded sprite memory from 1.1 GB to about 330 MB. The renderer also detects when a device draws WebGL in software and falls back to a canvas renderer that holds 60 frames per second.",
+        ],
+        mediaCards: [
+          {
+            title: "Skirmish on a phone",
+            src: "/assets/work/frontline-zero-touch-skirmish.jpg",
+            alt: "Frontline Zero skirmish running on an Android phone with the touch interface.",
+            width: 1920,
+            height: 1080,
+            subtitleLink:
+              "https://play.google.com/store/apps/details?id=com.games556.frontlinezero",
+            subtitleLinkTitle: "View on Google Play",
+          },
+          {
+            title: "Unit handbook",
+            src: "/assets/work/frontline-zero-unit-handbook.jpg",
+            alt: "Frontline Zero handbook screen describing a unit, its role, and the history behind it.",
+            width: 2048,
+            height: 1152,
+            subtitleLink: "https://apps.apple.com/us/app/frontline-zero/id6824570571",
+            subtitleLinkTitle: "View on the App Store",
+          },
+        ],
+      },
+      {
+        title: "Shipping as one person",
+        tertiary: true,
+        body: [
+          "I built Frontline Zero with AI coding agents as day-to-day collaborators, guided by a standing brief that sets the rules every agent follows: architecture boundaries, determinism, and how changes are tested. The same approach extended into production, including an art pipeline I wrote to turn 3D models into the game's isometric sprites.",
+          "Beyond the game itself, I handled the work a studio normally splits across a team: a map editor and community map browser, the tutorial and unit handbook, store listings and the press kit, and releases on the web, the App Store, and Google Play.",
+        ],
+      },
+      {
+        title: "Packaging and distribution",
+        tertiary: true,
+        body: [
+          "I treated the game as a product to package, not just a build to upload. Its original soundtrack is released as its own album, Frontline Zero (Original Game Soundtrack), distributed through RouteNote.",
+          "Every place the game lives is kept in sync: the free-to-play website, the App Store, Google Play, itch.io, ModDB and IndieDB, a YouTube channel, a Discord community, and a Fandom wiki. They share the same descriptions, art, and facts, so search engines and AI assistants pick up one consistent picture of the game and can send people straight to a place to play it.",
+        ],
+      },
+      {
+        title: "Why the work mattered",
+        body: [
+          "Frontline Zero is the most direct test of how I like to work: product thinking, interface design, and engineering held together by one person, with AI agents extending what that person can build. It put a deep, systems-heavy game in front of real players on every major screen in a matter of weeks, and more than 400 of them played it in the first month.",
+          "It is also a project with a purpose beyond the work. Ten percent of profit goes every year to humanitarian aid for civilians affected by the war, through UNITED24.",
+        ],
+      },
+    ],
+  },
 ] as const;
 
-// Keep the current role first while preserving the existing sequence of the
-// remaining work entries.
+// Current work first (main role, then studio project), then the past roles.
 export const WORK_DATA = [
   WORK_ENTRIES[2],
-  WORK_ENTRIES[0],
+  WORK_ENTRIES[3],
   WORK_ENTRIES[1],
+  WORK_ENTRIES[0],
 ] as const;
 
 // 3. Derived Types
 export type WorkId = (typeof WORK_DATA)[number]["id"];
-export type SceneState = "home" | "easter-egg" | "contact" | "resume" | WorkId;

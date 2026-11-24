@@ -1,0 +1,1088 @@
+/*
+  One grid, one typeface, two weights.
+  12 columns. Labels sit in columns 1–3, reading text in 4–10,
+  media may run to 12. Below 800px everything stacks.
+*/
+
+:root {
+  --fg: #111;
+  --muted: #6e6e6e;
+  --rule: #d6d6d6;
+  --bg: #fff;
+  --field: #fff;
+  --hover: #f3f3f1;
+  --accent: #0084ff; /* from the resume */
+  --accent-ink: #006ad1; /* same hue, dark enough for small text */
+  --ease: cubic-bezier(0.2, 0.75, 0, 1);
+
+  /* Real Helvetica where installed (Apple devices); the free clone elsewhere. */
+  --font: "Helvetica Neue", Helvetica, var(--font-sans), Arial, sans-serif;
+  --mono: var(--font-mono), ui-monospace, Menlo, monospace;
+
+  --size-small: 0.875rem;
+  --size-body: 1.0625rem;
+  --size-lead: 1.3125rem;
+  --size-display: clamp(2rem, 1.2rem + 3.2vw, 3.5rem);
+
+  --gutter: 24px;
+  --margin: 40px;
+  --max: 1320px;
+  --section-gap: 96px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fg: #ececec;
+    --muted: #9b9b9b;
+    --rule: #333;
+    --bg: #121212;
+    --field: #1a1a1a;
+    --hover: #1b1b1b;
+    --accent-ink: #4ba7ff;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  font-size: var(--size-body);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+h1,
+h2,
+h3 {
+  font-size: inherit;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+ul,
+ol {
+  padding: 0;
+  list-style: none;
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  transition:
+    color 200ms ease,
+    text-decoration-thickness 200ms ease;
+}
+
+a:hover {
+  color: var(--accent-ink);
+  text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- grid ---------- */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gutter);
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--margin);
+}
+
+.col-label {
+  grid-column: 1 / 4;
+}
+
+.col-text {
+  grid-column: 4 / 11;
+}
+
+.col-wide {
+  grid-column: 4 / 13;
+}
+
+.col-full {
+  grid-column: 1 / 13;
+}
+
+.col-display {
+  grid-column: 1 / 11;
+}
+
+/* ---------- type ---------- */
+
+.display {
+  font-size: var(--size-display);
+  font-weight: 500;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+}
+
+.lead {
+  font-size: var(--size-lead);
+  line-height: 1.45;
+}
+
+.small {
+  font-size: var(--size-small);
+  line-height: 1.5;
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.prose p + p {
+  margin-top: 1em;
+}
+
+.prose {
+  max-width: 40em;
+}
+
+/*
+  Plex Mono for labels and meta, as on the resume.
+  Capitals only where the resume uses them: labels, names, meta lines.
+  Sub-heads and captions stay sentence case; body text is the sans.
+*/
+.mono,
+.caps-label,
+.section > .col-label,
+.work-item .small,
+.hero-meta,
+.media figcaption,
+.viewer-bar,
+.viewer-caption,
+.viewer-foot button,
+.site-footer .col-label,
+.site-header .brand,
+.site-nav,
+.menu-button,
+.menu-bar .brand {
+  font-family: var(--mono);
+  font-size: var(--size-small);
+  line-height: 1.55;
+}
+
+.caps,
+.caps-label,
+.section > .col-label,
+.work-item .small,
+.hero-meta,
+.viewer-bar,
+.viewer-foot button,
+.site-footer .col-label,
+.site-header .brand,
+.site-nav,
+.menu-button,
+.menu-bar .brand {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* The name, set like the resume: light mono capitals in blue. */
+.name {
+  font-family: var(--mono);
+  font-weight: 300;
+  font-size: clamp(3rem, 1.6rem + 3.6vw, 5.25rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+/* The resume's tagline: bold mono, blue, sentence case. */
+.tagline {
+  margin-top: 28px;
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--accent-ink);
+}
+
+.home-head .display {
+  margin-top: -0.08em;
+}
+
+/* ---------- site chrome ---------- */
+
+/* Sticky, full-bleed bar; the grid inside keeps the columns. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid transparent;
+}
+
+.site-header > .grid {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  row-gap: 6px;
+}
+
+/* Where supported, a hairline fades in under the bar once you scroll. */
+@supports (animation-timeline: scroll()) {
+  .site-header {
+    animation: header-rule linear both;
+    animation-timeline: scroll();
+    animation-range: 0 48px;
+  }
+}
+
+@keyframes header-rule {
+  to {
+    border-bottom-color: var(--rule);
+  }
+}
+
+/* ---------- mobile menu ---------- */
+
+.menu-button {
+  display: none;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.menu-button:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 0.18em;
+}
+
+html.menu-open {
+  overflow: hidden;
+}
+
+.menu {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0 var(--margin);
+  padding-bottom: env(safe-area-inset-bottom);
+  border: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.menu::backdrop {
+  background: var(--bg);
+}
+
+.menu[open] {
+  animation: fade 180ms ease-out;
+}
+
+.menu-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 56px;
+  padding-top: 6px;
+  border-bottom: 1px solid var(--rule);
+}
+
+.menu-bar .brand {
+  font-weight: 600;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.menu-bar .menu-button {
+  display: block;
+  min-height: 44px;
+  min-width: 44px;
+  text-align: right;
+}
+
+.menu-list {
+  margin-top: 24px;
+}
+
+.menu-list li {
+  border-bottom: 1px solid var(--rule);
+  animation: fade-up 500ms var(--ease) both;
+}
+
+.menu-list a {
+  display: block;
+  padding: 14px 0 12px;
+  font-size: 2.25rem;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.menu-list a:hover,
+.menu-list a:focus-visible {
+  color: var(--accent-ink);
+}
+
+/* Anchor jumps land below the bar. */
+[id] {
+  scroll-margin-top: 88px;
+}
+
+.site-header .brand {
+  font-weight: 600;
+  color: var(--accent-ink);
+  text-decoration: none;
+}
+
+.site-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 28px;
+}
+
+.site-nav a {
+  text-decoration: none;
+}
+
+.site-nav a:hover,
+.site-header .brand:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  color: inherit;
+}
+
+.site-footer {
+  margin-top: 160px;
+  padding-top: 20px;
+  padding-bottom: 48px;
+  border-top: 1px solid var(--rule);
+  row-gap: 8px;
+}
+
+/* ---------- sections ---------- */
+
+.page-head {
+  padding-top: 72px;
+  row-gap: 24px;
+}
+
+.section {
+  margin-top: var(--section-gap);
+  row-gap: 20px;
+}
+
+/* Section labels: blue mono over a blue rule, like the resume. */
+.section > .col-label {
+  padding-top: 14px;
+  border-top: 2px solid var(--accent);
+  color: var(--accent-ink);
+  font-weight: 600;
+}
+
+.section > .col-text,
+.section > .col-wide {
+  padding-top: 16px;
+  border-top: 1px solid var(--rule);
+}
+
+.section > .media {
+  border-top: 0;
+  padding-top: 20px;
+}
+
+/* ---------- work index ---------- */
+
+/*
+  Each row is one button-like block: the heading's link stretches over the
+  whole row, the row fills on hover, and the square button inverts.
+*/
+.work-list > li {
+  --bleed: 16px;
+  position: relative;
+  margin: 0 calc(-1 * var(--bleed));
+  padding: 24px var(--bleed) 28px;
+  transition: background-color 200ms ease;
+}
+
+/* The fill bleeds past the column; the rules stay on the column edges. */
+.work-list > li::before {
+  content: "";
+  position: absolute;
+  left: var(--bleed);
+  right: var(--bleed);
+  bottom: 0;
+  height: 1px;
+  background: var(--rule);
+}
+
+.work-list > li:hover {
+  background: var(--hover);
+}
+
+.work-list > li:has(h3 a:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.work-item h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.work-item h3 a:focus-visible {
+  outline: none;
+}
+
+.work-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 9px 14px 8px;
+  border: 1px solid var(--fg);
+  font-family: var(--mono);
+  font-size: var(--size-small);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.work-cta .arrow {
+  display: inline-block;
+  transition: transform 300ms var(--ease);
+}
+
+.work-list > li:hover .work-cta,
+.work-list > li:has(h3 a:focus-visible) .work-cta {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.work-list > li:hover .work-cta .arrow,
+.work-list > li:has(h3 a:focus-visible) .work-cta .arrow {
+  transform: translateX(4px);
+}
+
+/* A blue rule draws along the bottom of the row you're pointing at. */
+.work-list > li::after {
+  content: "";
+  position: absolute;
+  left: var(--bleed);
+  right: var(--bleed);
+  bottom: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms var(--ease);
+}
+
+.work-list > li:hover::after,
+.work-list > li:focus-within::after {
+  transform: scaleX(1);
+}
+
+.work-item h3 a {
+  text-decoration-color: transparent;
+}
+
+.work-item h3 a:hover,
+.work-item h3 a:focus-visible {
+  text-decoration-color: var(--accent);
+}
+
+.section > .work-list {
+  padding-top: 0;
+}
+
+.work-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  column-gap: var(--gutter);
+  row-gap: 6px;
+}
+
+.work-item h3 {
+  font-size: var(--size-lead);
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.link-list li + li {
+  margin-top: 4px;
+}
+
+/* ---------- case study hero ---------- */
+
+.work-hero {
+  padding-top: 56px;
+}
+
+.hero-meta {
+  row-gap: 20px;
+}
+
+.hero-meta > p {
+  position: relative;
+  padding-top: 14px;
+}
+
+/* Short black dashes over each credit, as on the resume. */
+.hero-meta > p::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--fg);
+  transform-origin: left;
+  animation: draw 600ms var(--ease) both;
+}
+
+.hero-meta > p:nth-child(2)::before {
+  animation-delay: 80ms;
+}
+
+.hero-meta > p:nth-child(3)::before {
+  animation-delay: 160ms;
+}
+
+.hero-cell-a {
+  grid-column: 4 / 7;
+}
+
+.hero-cell-b {
+  grid-column: 7 / 11;
+}
+
+.hero-mark {
+  margin-top: 64px;
+}
+
+/* The mask the wordmark rises out of. */
+.hero-mark > div {
+  overflow: hidden;
+}
+
+.wordmark {
+  display: inline-block;
+  white-space: nowrap;
+  color: var(--accent);
+  /* Same treatment as the name: light mono capitals. */
+  font-family: var(--mono);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.9;
+  padding-bottom: 0.08em;
+  margin-left: -0.04em;
+  font-size: min(
+    calc(
+      (min(100vw, var(--max)) - 2 * var(--margin)) / (var(--chars) * 0.6)
+    ),
+    50vh
+  );
+  animation: rise 1000ms var(--ease) both;
+}
+
+.hero-statement {
+  margin-top: 0;
+  animation: fade-up 800ms var(--ease) 250ms both;
+}
+
+/* ---------- case study ---------- */
+
+.meta dt {
+  color: var(--muted);
+}
+
+.meta dd + dt {
+  margin-top: 12px;
+}
+
+.bullets li {
+  padding-left: 1.25em;
+  position: relative;
+}
+
+.bullets li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: var(--muted);
+}
+
+.bullets li + li {
+  margin-top: 0.75em;
+}
+
+.media {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 40px var(--gutter);
+  align-items: start;
+}
+
+.media > :only-child {
+  grid-column: 1 / -1;
+}
+
+.media img,
+.media video {
+  width: 100%;
+  background: var(--rule);
+}
+
+.media figcaption {
+  margin-top: 10px;
+}
+
+.media figcaption .fig-title,
+.viewer-caption .fig-title {
+  color: var(--fg);
+}
+
+.fig-links,
+.viewer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 16px;
+}
+
+/* Thumbnail that opens the viewer. */
+.media-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.text-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  color: var(--muted);
+}
+
+/* ---------- viewer ---------- */
+
+html.viewer-open {
+  overflow: hidden;
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0 var(--margin);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  border: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.viewer[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.viewer::backdrop {
+  background: var(--bg);
+}
+
+.viewer button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.viewer button:hover:not(:disabled) {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.viewer button:disabled {
+  color: var(--rule);
+  cursor: default;
+}
+
+.viewer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--rule);
+}
+
+.viewer-stage {
+  display: flex;
+  min-height: 0;
+  padding: 16px 0;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.viewer-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.viewer-media img,
+.viewer-media video {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  -webkit-user-drag: none;
+}
+
+.viewer-foot {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--gutter);
+  padding: 8px 0 12px;
+  border-top: 1px solid var(--rule);
+}
+
+.viewer-caption {
+  max-width: 48em;
+}
+
+.viewer-next {
+  text-align: right;
+}
+
+/* ---------- resume ---------- */
+
+.resume-pages {
+  display: grid;
+  gap: var(--gutter);
+}
+
+.resume-pages img {
+  border: 1px solid var(--rule);
+}
+
+/* ---------- form ---------- */
+
+.form {
+  display: grid;
+  gap: 20px;
+  max-width: 36em;
+}
+
+.form label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.form input,
+.form textarea {
+  display: block;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--fg);
+  border-radius: 0;
+  background: var(--field);
+  color: var(--fg);
+  font: inherit;
+}
+
+.form textarea {
+  resize: vertical;
+}
+
+.form button {
+  justify-self: start;
+  padding: 10px 20px;
+  border: 1px solid var(--fg);
+  border-radius: 0;
+  background: var(--fg);
+  color: var(--bg);
+  font: inherit;
+  cursor: pointer;
+}
+
+.form button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ---------- motion ---------- */
+
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+
+
+
+
+
+.reveal {
+  animation: fade-up 800ms var(--ease) both;
+}
+
+.reveal-2 {
+  animation-delay: 120ms;
+}
+
+.reveal-3 {
+  animation-delay: 240ms;
+}
+
+.viewer[open] {
+  animation: fade 180ms ease-out;
+}
+
+.viewer-media img,
+.viewer-media video {
+  animation: fade 240ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .site-header {
+    border-bottom-color: var(--rule);
+  }
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 800px) {
+  :root {
+    --margin: 20px;
+    --section-gap: 64px;
+  }
+
+  .grid > * {
+    grid-column: 1 / -1;
+  }
+
+  .page-head {
+    padding-top: 40px;
+  }
+
+  .site-header > .grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 56px;
+    padding-top: 6px;
+    padding-bottom: 0;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .site-header .menu-button {
+    display: block;
+    min-height: 44px;
+    min-width: 44px;
+    text-align: right;
+  }
+
+  [id] {
+    scroll-margin-top: 72px;
+  }
+
+  .work-hero {
+    padding-top: 24px;
+  }
+
+  .hero-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-meta > .col-label {
+    grid-column: 1 / -1;
+  }
+
+  .hero-meta > .hero-cell-a,
+  .hero-meta > .hero-cell-b {
+    grid-column: auto;
+  }
+
+  .hero-mark {
+    margin-top: 40px;
+  }
+
+  .wordmark {
+    line-height: 0.88;
+    font-size: min(
+      calc((100vw - 2 * var(--margin)) / (var(--longest) * 0.6)),
+      50vh
+    );
+  }
+
+  .wordmark-word {
+    display: block;
+  }
+
+
+  .section > .col-text,
+  .section > .col-wide {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .work-item,
+  .media {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .viewer-foot {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "caption caption"
+      "prev next";
+    row-gap: 4px;
+  }
+
+  .viewer-caption {
+    grid-area: caption;
+  }
+
+  .viewer-prev {
+    grid-area: prev;
+    text-align: left;
+  }
+
+  .viewer-next {
+    grid-area: next;
+  }
+
+  .site-footer {
+    margin-top: 96px;
+  }
+}
+
+/* Buttons reset their font above; put the resume's mono back on these. */
+.menu-button,
+.viewer-foot button {
+  font-family: var(--mono);
+  font-size: var(--size-small);
+}

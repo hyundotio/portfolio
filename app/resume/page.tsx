@@ -1,53 +1,54 @@
-"use client";
+import Image from "next/image";
+import type { Metadata } from "next";
+import { resumePdfHref } from "@/content/site";
+import { buildSocialMetadata } from "@/utils/metadata";
+import { MediaOpen, MediaViewer } from "@/app/_components/MediaViewer";
 
-import { useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
-import Resume from "@/Components/Resume";
-import { getModalDismissTarget } from "@/Components/modalRouteHistory";
-import styles from "../@modal/modal.module.scss";
+const description =
+  "Resume for Hyun Seo, design-led technical product builder across space systems, RF intelligence, AI, quantum, and geospatial data.";
 
-const resumePdfHref = "/assets/downloads/resume/resume.pdf";
+export const metadata: Metadata = {
+  title: "Resume",
+  description,
+  ...buildSocialMetadata({ title: "Resume", description, path: "/resume" }),
+};
+
+const pages = [1, 2].map((n) => ({
+  src: `/assets/downloads/resume/resume_page_${n}.png`,
+  alt: `Hyun Seo resume, page ${n}`,
+  title: `Page ${n}`,
+  width: 1224,
+  height: 1584,
+}));
 
 export default function ResumePage() {
-  const router = useRouter();
-
-  const handleClose = useCallback(() => {
-    const { basePath } = getModalDismissTarget();
-    router.replace(basePath);
-  }, [router]);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        handleClose();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleClose]);
-
   return (
-    <div className={styles.backdrop} onClick={handleClose}>
-      <div
-        className={`${styles.content} ${styles["resume-content"]}`}
-        onClick={(e) => e.stopPropagation()}
-      >
-        <button
-          type="button"
-          onClick={handleClose}
-          className={styles["close-btn"]}
-          aria-label="Close resume modal"
-        >
-          <span aria-hidden="true" className={styles["close-icon"]} />
-        </button>
-        <a href={resumePdfHref} download className={styles["download-btn"]}>
-          Download
-        </a>
-        <div className={`${styles["modal-body"]} ${styles["resume-body"]}`}>
-          <Resume />
+    <>
+      <header className="page-head grid">
+        <h1 className="display col-display">Resume</h1>
+      </header>
+
+      <section className="section grid" aria-label="Resume">
+        <p className="col-label">
+          <a href={resumePdfHref}>Download PDF</a>
+        </p>
+        <div className="col-text resume-pages">
+          <MediaViewer items={pages}>
+            {pages.map((page, i) => (
+              <MediaOpen key={page.src} index={i} label={`View ${page.alt} larger`}>
+                <Image
+                  src={page.src}
+                  alt={page.alt}
+                  width={page.width}
+                  height={page.height}
+                  priority={i === 0}
+                  sizes="(max-width: 800px) 100vw, 720px"
+                />
+              </MediaOpen>
+            ))}
+          </MediaViewer>
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

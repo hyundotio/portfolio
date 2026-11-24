@@ -1,9 +1,6 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  // Keeping your existing settings
-  reactCompiler: true,
   reactStrictMode: true,
   turbopack: {
     root: process.cwd(),
@@ -16,14 +13,13 @@ const nextConfig: NextConfig = {
         destination: "/assets/downloads/resume/resume.pdf",
         permanent: true,
       },
-    ];
-  },
-
-  async rewrites() {
-    return [
+      // Old URLs from the previous design.
+      { source: "/work", destination: "/#work", permanent: false },
+      { source: "/about", destination: "/#about", permanent: false },
       {
-        source: "/work",
-        destination: "/", // Loads the index page (Scene) without a hard refresh
+        source: "/work/:id/details",
+        destination: "/work/:id",
+        permanent: true,
       },
     ];
   },

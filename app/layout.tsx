@@ -1,13 +1,11 @@
-import "@/styles/reset.css";
-import "@/styles/theme.scss";
-import "@/styles/typography.scss";
-import "@/styles/globals.css";
-import { Inter } from "next/font/google";
+import "./globals.css";
 import type { Metadata } from "next";
+import Link from "next/link";
+import { IBM_Plex_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
-import AppShell from "@/Components/AppShell";
-import ThemeProvider from "@/Components/ThemeProvider";
-import RouteTransitionProvider from "@/Components/RouteTransitionProvider";
+import MobileMenu from "@/app/_components/MobileMenu";
+import { legalText, links } from "@/content/site";
 import {
   buildSocialMetadata,
   metadataBase,
@@ -16,9 +14,23 @@ import {
   siteTitleTemplate,
 } from "@/utils/metadata";
 
-const inter = Inter({
+// TeX Gyre Heros: a free Helvetica clone (GUST Font License, see app/fonts).
+// Only used where Helvetica isn't installed, so it isn't preloaded: Apple
+// devices never download it.
+const heros = localFont({
+  src: [
+    { path: "./fonts/texgyreheros-regular.otf", weight: "400", style: "normal" },
+    { path: "./fonts/texgyreheros-bold.otf", weight: "700", style: "normal" },
+  ],
+  variable: "--font-sans",
+  display: "swap",
+  preload: false,
+});
+
+const plexMono = IBM_Plex_Mono({
+  weight: ["300", "400", "600"],
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-mono",
   display: "swap",
 });
 
@@ -40,59 +52,65 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      {
-        url: "/favicon-96x96.png",
-        type: "image/png",
-        sizes: "96x96",
-      },
-      {
-        url: "/favicon.svg",
-        type: "image/svg+xml",
-      },
+      { url: "/favicon-96x96.png", type: "image/png", sizes: "96x96" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
     ],
     shortcut: "/favicon.ico",
-    apple: [
-      {
-        url: "/apple-touch-icon.png",
-        sizes: "180x180",
-      },
-    ],
+    apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
 };
 
-const navLinks = [
-  { title: "Hyun.io", href: "/" },
-  { title: "Work", href: "/work/kayhan-space" },
-  {
-    title: "Resume",
-    href: "/resume",
-  },
+const nav = [
+  { title: "Work", href: "/#work" },
+  { title: "About", href: "/#about" },
+  { title: "Resume", href: "/resume" },
   { title: "Contact", href: "/contact" },
-  { title: "About", href: "/about" },
-  {
-    title: "LinkedIn ⧉",
-    href: "https://linkedin.com/in/hyunseo",
-    target: "_blank",
-  },
 ];
 
 export default function RootLayout({
   children,
-  modal,
 }: {
   children: React.ReactNode;
-  modal: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.className} ${inter.variable}`}>
+    <html lang="en" className={`${heros.variable} ${plexMono.variable}`}>
       <body>
-        <ThemeProvider>
-          <RouteTransitionProvider>
-            <AppShell navLinks={navLinks} modal={modal}>
-              {children}
-            </AppShell>
-          </RouteTransitionProvider>
-        </ThemeProvider>
+        <header className="site-header">
+          <div className="grid">
+            <Link href="/" className="brand col-label">
+              Hyun Seo
+            </Link>
+            <nav className="site-nav col-wide" aria-label="Main">
+              <ul>
+                {nav.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href}>{item.title}</Link>
+                  </li>
+                ))}
+                <li>
+                  <a href={links.linkedin} target="_blank" rel="noreferrer">
+                    LinkedIn
+                  </a>
+                </li>
+              </ul>
+            </nav>
+            <MobileMenu
+              items={[
+                ...nav,
+                { title: "LinkedIn", href: links.linkedin, external: true },
+              ]}
+            />
+          </div>
+        </header>
+
+        <main>{children}</main>
+
+        <footer className="site-footer grid small muted">
+          <p className="col-label">
+            © {new Date().getUTCFullYear()} Hyun Seo. All rights reserved.
+          </p>
+          <p className="col-text">{legalText}</p>
+        </footer>
         <Analytics />
       </body>
     </html>
