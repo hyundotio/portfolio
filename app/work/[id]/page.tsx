@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { WORK_DATA, type WorkDetailMediaCard } from "@/content/work";
 import { buildSocialMetadata } from "@/utils/metadata";
 import { MediaOpen, MediaViewer, type ViewerItem } from "@/app/_components/MediaViewer";
+import Wordmark from "@/app/_components/Wordmark";
 
 type Params = Promise<{ id: string }>;
 
@@ -139,23 +140,47 @@ export default async function WorkPage({ params }: { params: Params }) {
 
   return (
     <article>
-      <header className="page-head grid">
-        <p className="col-full muted">
-          <Link href="/#work">Work</Link> / {work.company}
-        </p>
-        <h1 className="display col-display">{work.heading}</h1>
+      <header className="work-hero">
+        <div className="hero-meta grid small">
+          <p className="col-label">
+            <Link href="/#work">Work</Link>
+            <br />
+            <span className="muted">
+              {String(index + 1).padStart(2, "0")} of{" "}
+              {String(WORK_DATA.length).padStart(2, "0")}
+            </span>
+          </p>
+          <p className="hero-cell-a">
+            Role
+            <br />
+            <span className="muted">{work.role}</span>
+          </p>
+          <p className="hero-cell-b">
+            Period
+            <br />
+            <span className="muted">
+              {work.periodPrefix}
+              {work.periodHighlight}
+            </span>
+          </p>
+        </div>
+        <div className="hero-mark grid" aria-hidden="true">
+          <div className="col-full">
+            <Wordmark text={work.company} />
+          </div>
+        </div>
+        <div className="grid">
+          <h1 className="display hero-statement col-display">
+            <span className="sr-only">{work.company}: </span>
+            {work.heading}
+          </h1>
+        </div>
       </header>
 
-      <section className="section grid" aria-label="Overview">
-        <dl className="col-label meta small">
-          <dt>Company</dt>
-          <dd>{work.company}</dd>
-          <dt>Period</dt>
-          <dd>
-            {work.periodPrefix}
-            {work.periodHighlight}
-          </dd>
-        </dl>
+      <section className="section grid" aria-labelledby="overview">
+        <h2 id="overview" className="col-label">
+          Overview
+        </h2>
         <p className="col-text lead prose">{work.detailIntro}</p>
       </section>
 

@@ -13,8 +13,11 @@ export default function Home() {
   return (
     <>
       <section className="page-head grid">
-        <h1 className="display col-display">{intro}</h1>
-        <p className="lead muted col-display prose">{lead}</p>
+        <h1 className="display col-display reveal">
+          {intro.replace(/\.$/, "")}
+          <span className="accent">.</span>
+        </h1>
+        <p className="lead muted col-display prose reveal reveal-2">{lead}</p>
       </section>
 
       <section id="work" className="section grid" aria-labelledby="work-title">

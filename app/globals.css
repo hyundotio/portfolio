@@ -10,6 +10,9 @@
   --rule: #d6d6d6;
   --bg: #fff;
   --field: #fff;
+  --accent: #0084ff; /* from the resume */
+  --accent-ink: #006ad1; /* same hue, dark enough for small text */
+  --ease: cubic-bezier(0.2, 0.75, 0, 1);
 
   --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -31,6 +34,7 @@
     --rule: #333;
     --bg: #121212;
     --field: #1a1a1a;
+    --accent-ink: #4ba7ff;
   }
 }
 
@@ -92,17 +96,40 @@ video {
 a {
   color: inherit;
   text-decoration: underline;
+  text-decoration-color: var(--accent);
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
+  transition:
+    color 200ms ease,
+    text-decoration-thickness 200ms ease;
 }
 
 a:hover {
-  color: var(--muted);
+  color: var(--accent-ink);
+  text-decoration-thickness: 2px;
 }
 
 :focus-visible {
-  outline: 2px solid var(--fg);
+  outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* ---------- grid ---------- */
@@ -193,6 +220,7 @@ a:hover {
 .site-nav a:hover,
 .site-header .brand:hover {
   text-decoration: underline;
+  text-decoration-color: var(--accent);
   color: inherit;
 }
 
@@ -235,8 +263,37 @@ a:hover {
 /* ---------- work index ---------- */
 
 .work-list > li {
+  position: relative;
   padding: 20px 0 24px;
   border-bottom: 1px solid var(--rule);
+}
+
+/* A blue rule draws along the bottom of the row you're pointing at. */
+.work-list > li::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 500ms var(--ease);
+}
+
+.work-list > li:hover::after,
+.work-list > li:focus-within::after {
+  transform: scaleX(1);
+}
+
+.work-item h3 a {
+  text-decoration-color: transparent;
+}
+
+.work-item h3 a:hover,
+.work-item h3 a:focus-visible {
+  text-decoration-color: var(--accent);
 }
 
 .work-list > li:first-child {
@@ -259,6 +316,82 @@ a:hover {
 
 .link-list li + li {
   margin-top: 4px;
+}
+
+/* ---------- case study hero ---------- */
+
+.work-hero {
+  padding-top: 56px;
+}
+
+.hero-meta {
+  row-gap: 20px;
+}
+
+.hero-meta > p {
+  position: relative;
+  padding-top: 14px;
+}
+
+/* Short blue rules over each credit, poster style. */
+.hero-meta > p::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background: var(--accent);
+  transform-origin: left;
+  animation: draw 600ms var(--ease) both;
+}
+
+.hero-meta > p:nth-child(2)::before {
+  animation-delay: 80ms;
+}
+
+.hero-meta > p:nth-child(3)::before {
+  animation-delay: 160ms;
+}
+
+.hero-cell-a {
+  grid-column: 4 / 7;
+}
+
+.hero-cell-b {
+  grid-column: 7 / 11;
+}
+
+.hero-mark {
+  margin-top: 64px;
+}
+
+/* The mask the wordmark rises out of. Extra bottom room for descenders. */
+.hero-mark > div {
+  overflow: hidden;
+  padding-bottom: 0.06em;
+}
+
+.wordmark {
+  display: inline-block;
+  white-space: nowrap;
+  color: var(--accent);
+  font-weight: 700;
+  letter-spacing: -0.055em;
+  line-height: 0.9;
+  margin-left: -0.045em;
+  font-size: min(
+    calc(
+      (min(100vw, var(--max)) - 2 * var(--margin)) / (var(--chars) * 0.56)
+    ),
+    50vh
+  );
+  animation: rise 1000ms var(--ease) both;
+}
+
+.hero-statement {
+  margin-top: 28px;
+  animation: fade-up 800ms var(--ease) 250ms both;
 }
 
 /* ---------- case study ---------- */
@@ -505,6 +638,59 @@ html.viewer-open {
   cursor: default;
 }
 
+/* ---------- motion ---------- */
+
+@keyframes rise {
+  from {
+    transform: translateY(105%);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes draw {
+  from {
+    transform: scaleX(0);
+  }
+}
+
+.reveal {
+  animation: fade-up 800ms var(--ease) both;
+}
+
+.reveal-2 {
+  animation-delay: 140ms;
+}
+
+.viewer[open] {
+  animation: fade 180ms ease-out;
+}
+
+.viewer-media img,
+.viewer-media video {
+  animation: fade 240ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
 /* ---------- small screens ---------- */
 
 @media (max-width: 800px) {
@@ -519,6 +705,43 @@ html.viewer-open {
 
   .page-head {
     padding-top: 40px;
+  }
+
+  .work-hero {
+    padding-top: 24px;
+  }
+
+  .hero-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .hero-meta > .col-label {
+    grid-column: 1 / -1;
+  }
+
+  .hero-meta > .hero-cell-a,
+  .hero-meta > .hero-cell-b {
+    grid-column: auto;
+  }
+
+  .hero-mark {
+    margin-top: 40px;
+  }
+
+  .wordmark {
+    line-height: 0.88;
+    font-size: min(
+      calc((100vw - 2 * var(--margin)) / (var(--longest) * 0.56)),
+      50vh
+    );
+  }
+
+  .wordmark-word {
+    display: block;
+  }
+
+  .hero-statement {
+    margin-top: 20px;
   }
 
   .section > .col-text,
