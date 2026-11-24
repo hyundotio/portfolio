@@ -308,8 +308,145 @@ a:hover {
   margin-top: 10px;
 }
 
-.media figcaption .fig-title {
+.media figcaption .fig-title,
+.viewer-caption .fig-title {
   color: var(--fg);
+}
+
+.fig-links,
+.viewer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 16px;
+}
+
+/* Thumbnail that opens the viewer. */
+.media-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.text-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  cursor: pointer;
+}
+
+.text-button:hover {
+  color: var(--muted);
+}
+
+/* ---------- viewer ---------- */
+
+html.viewer-open {
+  overflow: hidden;
+}
+
+.viewer {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0 var(--margin);
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  border: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+.viewer[open] {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+
+.viewer::backdrop {
+  background: var(--bg);
+}
+
+.viewer button {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.viewer button:hover:not(:disabled) {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.viewer button:disabled {
+  color: var(--rule);
+  cursor: default;
+}
+
+.viewer-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--rule);
+}
+
+.viewer-stage {
+  display: flex;
+  min-height: 0;
+  padding: 16px 0;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.viewer-media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.viewer-media img,
+.viewer-media video {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  -webkit-user-drag: none;
+}
+
+.viewer-foot {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  column-gap: var(--gutter);
+  padding: 8px 0 12px;
+  border-top: 1px solid var(--rule);
+}
+
+.viewer-caption {
+  max-width: 48em;
+}
+
+.viewer-next {
+  text-align: right;
 }
 
 /* ---------- resume ---------- */
@@ -393,6 +530,27 @@ a:hover {
   .work-item,
   .media {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .viewer-foot {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "caption caption"
+      "prev next";
+    row-gap: 4px;
+  }
+
+  .viewer-caption {
+    grid-area: caption;
+  }
+
+  .viewer-prev {
+    grid-area: prev;
+    text-align: left;
+  }
+
+  .viewer-next {
+    grid-area: next;
   }
 
   .site-footer {

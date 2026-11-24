@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { WORK_DATA, type WorkDetailMediaCard } from "@/content/work";
 import { buildSocialMetadata } from "@/utils/metadata";
+import { MediaOpen, MediaViewer, type ViewerItem } from "@/app/_components/MediaViewer";
 
 type Params = Promise<{ id: string }>;
 
@@ -48,59 +49,73 @@ function linkLabel(href: string) {
   }
 }
 
-function MediaFigure({ card }: { card: WorkDetailMediaCard }) {
-  const width = card.width ?? 1920;
-  const height = card.height ?? 1080;
-  const link =
-    typeof card.subtitleLink === "string"
-      ? { href: card.subtitleLink, text: card.subtitleLinkTitle }
-      : card.subtitleLink
-        ? { href: card.subtitleLink.href, text: card.subtitleLink.text }
-        : null;
+function cardLink(card: WorkDetailMediaCard) {
+  if (typeof card.subtitleLink === "string") {
+    return {
+      href: card.subtitleLink,
+      text: card.subtitleLinkTitle ?? linkLabel(card.subtitleLink),
+    };
+  }
+  return card.subtitleLink ?? null;
+}
+
+function toViewerItem(card: WorkDetailMediaCard): ViewerItem {
+  return {
+    src: card.src,
+    alt: card.alt,
+    width: card.width ?? 1920,
+    height: card.height ?? 1080,
+    isVideo: card.isVideo,
+    title: card.title,
+    subtitle: card.subtitle,
+    link: cardLink(card),
+  };
+}
+
+function MediaFigure({ item, index }: { item: ViewerItem; index: number }) {
+  const label = `View ${item.title ?? "image"} larger`;
 
   return (
     <figure>
-      {card.isVideo ? (
+      {item.isVideo ? (
         <video
-          src={`${card.src}#t=0.1`}
-          width={width}
-          height={height}
+          src={`${item.src}#t=0.1`}
+          width={item.width}
+          height={item.height}
           controls
           muted
           playsInline
           preload="metadata"
-          aria-label={card.alt}
+          aria-label={item.alt}
         />
       ) : (
-        <a href={card.src} aria-label={`${card.title ?? "Image"}, full size`}>
+        <MediaOpen index={index} label={label}>
           <Image
-            src={card.src}
-            alt={card.alt}
-            width={width}
-            height={height}
+            src={item.src}
+            alt={item.alt}
+            width={item.width}
+            height={item.height}
             sizes="(max-width: 800px) 100vw, 460px"
           />
-        </a>
+        </MediaOpen>
       )}
-      {(card.title || card.subtitle || link) && (
-        <figcaption className="small muted">
-          {card.title && <span className="fig-title">{card.title}</span>}
-          {card.subtitle && (
-            <>
-              {card.title && ". "}
-              {card.subtitle}
-            </>
+      <figcaption className="small muted">
+        {item.title && <span className="fig-title">{item.title}</span>}
+        {item.title && item.subtitle && ". "}
+        {item.subtitle}
+        <span className="fig-links">
+          {item.link && (
+            <a href={item.link.href} target="_blank" rel="noreferrer">
+              {item.link.text}
+            </a>
           )}
-          {link && (
-            <>
-              {(card.title || card.subtitle) && <br />}
-              <a href={link.href} target="_blank" rel="noreferrer">
-                {link.text ?? linkLabel(link.href)}
-              </a>
-            </>
+          {item.isVideo && (
+            <MediaOpen index={index} label={label} className="text-button">
+              View larger
+            </MediaOpen>
           )}
-        </figcaption>
-      )}
+        </span>
+      </figcaption>
     </figure>
   );
 }
@@ -112,6 +127,15 @@ export default async function WorkPage({ params }: { params: Params }) {
 
   const work = WORK_DATA[index];
   const next = WORK_DATA[(index + 1) % WORK_DATA.length];
+
+  // One flat list so the viewer can step through every item on the page.
+  const sections = work.detailSections.map((section) => {
+    const cards: readonly WorkDetailMediaCard[] =
+      "mediaCards" in section ? section.mediaCards : [];
+    return { section, cards };
+  });
+  const viewerItems = sections.flatMap(({ cards }) => cards.map(toViewerItem));
+  let viewerIndex = 0;
 
   return (
     <article>
@@ -146,34 +170,42 @@ export default async function WorkPage({ params }: { params: Params }) {
         </ul>
       </section>
 
-      {work.detailSections.map((section) => {
-        const sectionId = slugify(section.title);
-        const media = "mediaCards" in section ? section.mediaCards : undefined;
+      <MediaViewer items={viewerItems}>
+        {sections.map(({ section, cards }) => {
+          const sectionId = slugify(section.title);
 
-        return (
-          <section
-            key={section.title}
-            className="section grid"
-            aria-labelledby={sectionId}
-          >
-            <h2 id={sectionId} className="col-label">
-              {section.title}
-            </h2>
-            <div className="col-text prose">
-              {section.body.map((paragraph) => (
-                <p key={paragraph}>{paragraph}</p>
-              ))}
-            </div>
-            {media && media.length > 0 && (
-              <div className="col-wide media">
-                {media.map((card) => (
-                  <MediaFigure key={card.src} card={card} />
+          return (
+            <section
+              key={section.title}
+              className="section grid"
+              aria-labelledby={sectionId}
+            >
+              <h2 id={sectionId} className="col-label">
+                {section.title}
+              </h2>
+              <div className="col-text prose">
+                {section.body.map((paragraph) => (
+                  <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
-            )}
-          </section>
-        );
-      })}
+              {cards.length > 0 && (
+                <div className="col-wide media">
+                  {cards.map((card) => {
+                    const i = viewerIndex++;
+                    return (
+                      <MediaFigure
+                        key={card.src}
+                        item={viewerItems[i]}
+                        index={i}
+                      />
+                    );
+                  })}
+                </div>
+              )}
+            </section>
+          );
+        })}
+      </MediaViewer>
 
       <nav className="section grid" aria-label="Next case study">
         <p className="col-label muted">Next</p>
