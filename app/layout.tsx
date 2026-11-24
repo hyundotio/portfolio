@@ -52,24 +52,26 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <header className="site-header grid">
-          <Link href="/" className="brand col-label">
-            Hyun Seo
-          </Link>
-          <nav className="site-nav col-wide" aria-label="Main">
-            <ul>
-              {nav.map((item) => (
-                <li key={item.href}>
-                  <Link href={item.href}>{item.title}</Link>
+        <header className="site-header">
+          <div className="grid">
+            <Link href="/" className="brand col-label">
+              Hyun Seo
+            </Link>
+            <nav className="site-nav col-wide" aria-label="Main">
+              <ul>
+                {nav.map((item) => (
+                  <li key={item.href}>
+                    <Link href={item.href}>{item.title}</Link>
+                  </li>
+                ))}
+                <li>
+                  <a href={links.linkedin} target="_blank" rel="noreferrer">
+                    LinkedIn
+                  </a>
                 </li>
-              ))}
-              <li>
-                <a href={links.linkedin} target="_blank" rel="noreferrer">
-                  LinkedIn
-                </a>
-              </li>
-            </ul>
-          </nav>
+              </ul>
+            </nav>
+          </div>
         </header>
 
         <main>{children}</main>

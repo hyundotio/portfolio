@@ -196,10 +196,39 @@ a:hover {
 
 /* ---------- site chrome ---------- */
 
+/* Sticky, full-bleed bar; the grid inside keeps the columns. */
 .site-header {
-  padding-top: 28px;
-  padding-bottom: 28px;
-  row-gap: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--bg);
+  border-bottom: 1px solid transparent;
+}
+
+.site-header > .grid {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  row-gap: 6px;
+}
+
+/* Where supported, a hairline fades in under the bar once you scroll. */
+@supports (animation-timeline: scroll()) {
+  .site-header {
+    animation: header-rule linear both;
+    animation-timeline: scroll();
+    animation-range: 0 48px;
+  }
+}
+
+@keyframes header-rule {
+  to {
+    border-bottom-color: var(--rule);
+  }
+}
+
+/* Anchor jumps land below the bar. */
+[id] {
+  scroll-margin-top: 88px;
 }
 
 .site-header .brand {
@@ -695,6 +724,10 @@ html.viewer-open {
     animation: none !important;
     transition: none !important;
   }
+
+  .site-header {
+    border-bottom-color: var(--rule);
+  }
 }
 
 /* ---------- small screens ---------- */
@@ -711,6 +744,21 @@ html.viewer-open {
 
   .page-head {
     padding-top: 40px;
+  }
+
+  .site-header > .grid {
+    padding-top: 14px;
+    padding-bottom: 12px;
+    row-gap: 4px;
+  }
+
+  .site-nav ul {
+    gap: 2px 16px;
+    font-size: 1rem;
+  }
+
+  [id] {
+    scroll-margin-top: 96px;
   }
 
   .work-hero {
