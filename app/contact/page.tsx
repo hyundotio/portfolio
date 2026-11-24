@@ -1,45 +1,35 @@
-"use client";
+import type { Metadata } from "next";
+import { links } from "@/content/site";
+import { buildSocialMetadata } from "@/utils/metadata";
+import ContactForm from "./ContactForm";
 
-import { useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
-import ContactForm from "@/Components/ContactForm";
-import { getModalDismissTarget } from "@/Components/modalRouteHistory";
-import styles from "../@modal/modal.module.scss";
+const description = "Get in touch with Hyun Seo.";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description,
+  ...buildSocialMetadata({ title: "Contact", description, path: "/contact" }),
+};
 
 export default function ContactPage() {
-  const router = useRouter();
-
-  const handleClose = useCallback(() => {
-    const { basePath } = getModalDismissTarget();
-    router.replace(basePath);
-  }, [router]);
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        handleClose();
-      }
-    };
-
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [handleClose]);
-
   return (
-    <div className={styles.backdrop} onClick={handleClose}>
-      <div className={styles.content} onClick={(e) => e.stopPropagation()}>
-        <button
-          type="button"
-          onClick={handleClose}
-          className={styles["close-btn"]}
-          aria-label="Close contact modal"
-        >
-          <span aria-hidden="true" className={styles["close-icon"]} />
-        </button>
-        <div className={styles["modal-body"]}>
+    <>
+      <header className="page-head grid">
+        <h1 className="display col-display">Get in touch</h1>
+      </header>
+
+      <section className="section grid" aria-label="Contact form">
+        <p className="col-label muted">
+          Or find me on{" "}
+          <a href={links.linkedin} target="_blank" rel="noreferrer">
+            LinkedIn
+          </a>
+          .
+        </p>
+        <div className="col-text">
           <ContactForm />
         </div>
-      </div>
-    </div>
+      </section>
+    </>
   );
 }

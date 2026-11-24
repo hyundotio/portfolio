@@ -3,6 +3,8 @@
 export interface WorkEntry {
   readonly id: string;
   readonly company: string;
+  readonly role: string;
+  readonly years: string;
   readonly periodPrefix: string;
   readonly periodHighlight: string;
   readonly period: string;
@@ -47,6 +49,8 @@ const WORK_ENTRIES = [
   {
     id: "ibm",
     company: "IBM",
+    role: "Associate Designer to Senior Designer",
+    years: "2013–2019",
     periodPrefix: "2013/07 (Assoc. Designer, B6) to ",
     periodHighlight: "2019/12 (Sr. Designer, B9)",
     period: "’13/07-’19/12",
@@ -211,6 +215,8 @@ const WORK_ENTRIES = [
   {
     id: "hawkeye-360",
     company: "HawkEye 360",
+    role: "Principal Designer",
+    years: "2020–2021",
     periodPrefix: "2020/01 to 2021/11 ",
     periodHighlight: "(Principal Designer)",
     period: "’20/01-’21/11",
@@ -384,6 +390,8 @@ const WORK_ENTRIES = [
   {
     id: "kayhan-space",
     company: "Kayhan Space",
+    role: "Head of Design to Chief Product Officer",
+    years: "2021–present",
     periodPrefix: "2021/11 (Head of Design) to ",
     periodHighlight: "Current (Chief Product Officer)",
     period: "’21/11–Current",
@@ -689,14 +697,12 @@ const WORK_ENTRIES = [
   },
 ] as const;
 
-// Keep the current role first while preserving the existing sequence of the
-// remaining work entries.
+// Reverse-chronological: current role first.
 export const WORK_DATA = [
   WORK_ENTRIES[2],
-  WORK_ENTRIES[0],
   WORK_ENTRIES[1],
+  WORK_ENTRIES[0],
 ] as const;
 
 // 3. Derived Types
 export type WorkId = (typeof WORK_DATA)[number]["id"];
-export type SceneState = "home" | "easter-egg" | "contact" | "resume" | WorkId;
