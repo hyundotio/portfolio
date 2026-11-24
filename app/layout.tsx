@@ -2,6 +2,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Analytics } from "@vercel/analytics/next";
+import MobileMenu from "@/app/_components/MobileMenu";
 import { legalText, links } from "@/content/site";
 import {
   buildSocialMetadata,
@@ -71,6 +72,12 @@ export default function RootLayout({
                 </li>
               </ul>
             </nav>
+            <MobileMenu
+              items={[
+                ...nav,
+                { title: "LinkedIn", href: links.linkedin, external: true },
+              ]}
+            />
           </div>
         </header>
 
