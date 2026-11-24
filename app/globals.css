@@ -460,11 +460,22 @@ html.menu-open {
   whole row, the row fills on hover, and the square button inverts.
 */
 .work-list > li {
+  --bleed: 16px;
   position: relative;
-  margin: 0 -16px;
-  padding: 24px 16px 28px;
-  border-bottom: 1px solid var(--rule);
+  margin: 0 calc(-1 * var(--bleed));
+  padding: 24px var(--bleed) 28px;
   transition: background-color 200ms ease;
+}
+
+/* The fill bleeds past the column; the rules stay on the column edges. */
+.work-list > li::before {
+  content: "";
+  position: absolute;
+  left: var(--bleed);
+  right: var(--bleed);
+  bottom: 0;
+  height: 1px;
+  background: var(--rule);
 }
 
 .work-list > li:hover {
@@ -523,9 +534,9 @@ html.menu-open {
 .work-list > li::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
+  left: var(--bleed);
+  right: var(--bleed);
+  bottom: 0;
   height: 2px;
   background: var(--accent);
   transform: scaleX(0);
