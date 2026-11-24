@@ -45,6 +45,9 @@ export default function Home() {
                     <Link href={`/work/${work.id}`}>{work.heading}</Link>
                   </h3>
                   <p className="prose">{work.description}</p>
+                  <span className="work-cta" aria-hidden="true">
+                    Read case study <span className="arrow">→</span>
+                  </span>
                 </div>
               </article>
             </li>

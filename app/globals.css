@@ -10,6 +10,7 @@
   --rule: #d6d6d6;
   --bg: #fff;
   --field: #fff;
+  --hover: #f3f3f1;
   --accent: #0084ff; /* from the resume */
   --accent-ink: #006ad1; /* same hue, dark enough for small text */
   --ease: cubic-bezier(0.2, 0.75, 0, 1);
@@ -36,6 +37,7 @@
     --rule: #333;
     --bg: #121212;
     --field: #1a1a1a;
+    --hover: #1b1b1b;
     --accent-ink: #4ba7ff;
   }
 }
@@ -453,10 +455,68 @@ html.menu-open {
 
 /* ---------- work index ---------- */
 
+/*
+  Each row is one button-like block: the heading's link stretches over the
+  whole row, the row fills on hover, and the square button inverts.
+*/
 .work-list > li {
   position: relative;
-  padding: 20px 0 24px;
+  margin: 0 -16px;
+  padding: 24px 16px 28px;
   border-bottom: 1px solid var(--rule);
+  transition: background-color 200ms ease;
+}
+
+.work-list > li:hover {
+  background: var(--hover);
+}
+
+.work-list > li:has(h3 a:focus-visible) {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+
+.work-item h3 a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.work-item h3 a:focus-visible {
+  outline: none;
+}
+
+.work-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding: 9px 14px 8px;
+  border: 1px solid var(--fg);
+  font-family: var(--mono);
+  font-size: var(--size-small);
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.work-cta .arrow {
+  display: inline-block;
+  transition: transform 300ms var(--ease);
+}
+
+.work-list > li:hover .work-cta,
+.work-list > li:has(h3 a:focus-visible) .work-cta {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.work-list > li:hover .work-cta .arrow,
+.work-list > li:has(h3 a:focus-visible) .work-cta .arrow {
+  transform: translateX(4px);
 }
 
 /* A blue rule draws along the bottom of the row you're pointing at. */
@@ -487,7 +547,7 @@ html.menu-open {
   text-decoration-color: var(--accent);
 }
 
-.work-list > li:first-child {
+.section > .work-list {
   padding-top: 0;
 }
 
