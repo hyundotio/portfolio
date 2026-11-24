@@ -5,6 +5,7 @@ import { IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import MobileMenu from "@/app/_components/MobileMenu";
+import SmoothHashLinks from "@/app/_components/SmoothHashLinks";
 import { legalText, links } from "@/content/site";
 import {
   buildSocialMetadata,
@@ -111,6 +112,7 @@ export default function RootLayout({
           </p>
           <p className="col-text">{legalText}</p>
         </footer>
+        <SmoothHashLinks />
         <Analytics />
       </body>
     </html>
