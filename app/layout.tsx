@@ -15,6 +15,8 @@ import {
 } from "@/utils/metadata";
 
 // TeX Gyre Heros: a free Helvetica clone (GUST Font License, see app/fonts).
+// Only used where Helvetica isn't installed, so it isn't preloaded: Apple
+// devices never download it.
 const heros = localFont({
   src: [
     { path: "./fonts/texgyreheros-regular.otf", weight: "400", style: "normal" },
@@ -22,6 +24,7 @@ const heros = localFont({
   ],
   variable: "--font-sans",
   display: "swap",
+  preload: false,
 });
 
 const plexMono = IBM_Plex_Mono({

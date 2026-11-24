@@ -14,7 +14,8 @@
   --accent-ink: #006ad1; /* same hue, dark enough for small text */
   --ease: cubic-bezier(0.2, 0.75, 0, 1);
 
-  --font: var(--font-sans), "Helvetica Neue", Helvetica, Arial, sans-serif;
+  /* Real Helvetica where installed (Apple devices); the free clone elsewhere. */
+  --font: "Helvetica Neue", Helvetica, var(--font-sans), Arial, sans-serif;
   --mono: var(--font-mono), ui-monospace, Menlo, monospace;
 
   --size-small: 0.875rem;
