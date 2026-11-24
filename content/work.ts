@@ -705,16 +705,17 @@ const WORK_ENTRIES = [
     period: "’26/10–Current",
     heading: "Built an engine and shipped a strategy game to every screen",
     description:
-      "Frontline Zero is an isometric real-time strategy game set in the Russia–Ukraine war, where drones, jammers, and air defense decide every fight. I designed and built it end to end, from my own browser engine to the store pages, and shipped it on the web, the App Store, and Google Play with cross-play online battles.",
+      "Frontline Zero is an isometric real-time strategy game set in the Russia–Ukraine war, where drones, jammers, and air defense decide every fight. I designed and built it end to end, from my own browser engine to the store pages, and shipped it on the web, the App Store, and Google Play with cross-play online battles. It reached over 400 players in its first month.",
     metaDescription:
       "Explore Hyun Seo's Frontline Zero, an isometric real-time strategy game built on a custom deterministic engine and shipped across web, iOS, and Android.",
     highlights: [
       "Designed and built Frontline Zero end to end: game design, art direction, interface, engine, online infrastructure, and store releases, from first commit to three platforms in about two months.",
+      "Reached over 400 players in the first month after release, across the web, the App Store, and Google Play.",
       "Wrote webrts, a dependency-free TypeScript RTS engine with a deterministic simulation that makes lockstep cross-play possible between browsers, phones, tablets, and computers.",
       "Designed touch controls from scratch so a dense strategy interface works on a phone, and cut decoded sprite memory from 1.1 GB to about 330 MB so the game runs on low-end devices.",
     ],
     detailIntro:
-      "Frontline Zero is my own studio project under 556 Games: a classic isometric real-time strategy game of modern war, Ukraine against Russia. I designed and built it end to end, from the engine underneath it to the store listings on top, and released it on the web, on iPhone, iPad, and Mac, and on Android in about two months.",
+      "Frontline Zero is my own studio project under 556 Games: a classic isometric real-time strategy game of modern war, Ukraine against Russia. I designed and built it end to end, from the engine underneath it to the store listings on top, and released it on the web, on iPhone, iPad, and Mac, and on Android in about two months. In its first month it reached over 400 players.",
     detailMetaDescription:
       "Case study on Frontline Zero: game design, a deterministic TypeScript RTS engine, lockstep cross-play, touch controls, and shipping across platforms as one person.",
     detailSections: [
@@ -810,9 +811,17 @@ const WORK_ENTRIES = [
         ],
       },
       {
+        title: "Packaging and distribution",
+        tertiary: true,
+        body: [
+          "I treated the game as a product to package, not just a build to upload. Its original soundtrack is released as its own album, Frontline Zero (Original Game Soundtrack), distributed through RouteNote.",
+          "Every place the game lives is kept in sync: the free-to-play website, the App Store, Google Play, itch.io, ModDB and IndieDB, a YouTube channel, a Discord community, and a Fandom wiki. They share the same descriptions, art, and facts, so search engines and AI assistants pick up one consistent picture of the game and can send people straight to a place to play it.",
+        ],
+      },
+      {
         title: "Why the work mattered",
         body: [
-          "Frontline Zero is the most direct test of how I like to work: product thinking, interface design, and engineering held together by one person, with AI agents extending what that person can build. It put a deep, systems-heavy game in front of real players on every major screen in a matter of weeks.",
+          "Frontline Zero is the most direct test of how I like to work: product thinking, interface design, and engineering held together by one person, with AI agents extending what that person can build. It put a deep, systems-heavy game in front of real players on every major screen in a matter of weeks, and more than 400 of them played it in the first month.",
           "It is also a project with a purpose beyond the work. Ten percent of profit goes every year to humanitarian aid for civilians affected by the war, through UNITED24.",
         ],
       },
