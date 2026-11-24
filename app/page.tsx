@@ -3,13 +3,12 @@ import { WORK_DATA } from "@/content/work";
 import {
   aboutParagraphs,
   intro,
+  tagline,
   links,
   resumePdfHref,
 } from "@/content/site";
 
 export default function Home() {
-  const [lead, ...about] = aboutParagraphs;
-
   return (
     <>
       <section className="page-head home-head grid">
@@ -23,7 +22,7 @@ export default function Home() {
             {intro.replace(/\.$/, "")}
             <span className="accent">.</span>
           </h1>
-          <p className="tagline prose reveal reveal-3">{lead}</p>
+          <p className="tagline prose reveal reveal-3">{tagline}</p>
         </div>
       </section>
 
@@ -60,7 +59,7 @@ export default function Home() {
           About
         </h2>
         <div className="col-text prose">
-          {about.map((paragraph) => (
+          {aboutParagraphs.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
           ))}
         </div>

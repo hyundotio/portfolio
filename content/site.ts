@@ -1,6 +1,10 @@
 export const intro =
   "Hello, I’m Hyun. I design and build products for complex systems.";
 
+// Same line as the resume's tagline.
+export const tagline =
+  "Design-led technical product builder making complex systems usable across space, RF intelligence, AI, quantum, cybersecurity, and geospatial data.";
+
 export const aboutParagraphs = [
   "I make hard technical systems visible, testable, explainable, and usable enough for people to make decisions with them.",
   "At Kayhan Space, I lead hands-on product systems work across orbital-operations workflows, UX, data visualization, frontend architecture, AI-native tooling, and technical product strategy.",
