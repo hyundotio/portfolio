@@ -700,6 +700,16 @@ html.menu-open {
 .media video {
   width: 100%;
   background: var(--rule);
+  /* A hairline frame drawn inside the edge, so white screenshots still
+     show where they start and end on the grid. */
+  outline: 1px solid var(--rule);
+  outline-offset: -1px;
+  transition: outline-color 200ms ease;
+}
+
+.media-open:hover img,
+.media-open:focus-visible img {
+  outline-color: var(--fg);
 }
 
 .media figcaption {
