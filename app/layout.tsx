@@ -3,10 +3,12 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
+import CopyForLLM from "@/app/_components/CopyForLLM";
 import MobileMenu from "@/app/_components/MobileMenu";
 import SmoothHashLinks from "@/app/_components/SmoothHashLinks";
 import ThemeSwitch from "@/app/_components/ThemeSwitch";
 import { themeScript } from "@/app/_components/themeScript";
+import { examplePrompt } from "@/content/llm";
 import { legalText, links } from "@/content/site";
 import {
   buildSocialMetadata,
@@ -96,10 +98,14 @@ export default function RootLayout({
                     GitHub
                   </a>
                 </li>
+                <li>
+                  <CopyForLLM variant="nav" prompt={examplePrompt} />
+                </li>
               </ul>
             </nav>
             <ThemeSwitch className="theme-slot" />
             <MobileMenu
+              llmPrompt={examplePrompt}
               items={[
                 ...nav,
                 { title: "LinkedIn", href: links.linkedin, external: true },

@@ -1,7 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
+import { useRef, useState } from "react";
+import CopyForLLM from "./CopyForLLM";
 import ThemeSwitch from "./ThemeSwitch";
 
 type Item = { title: string; href: string; external?: boolean };
@@ -10,10 +11,19 @@ type Item = { title: string; href: string; external?: boolean };
  * Small screens only: a "Menu" text button that opens a full-screen list of
  * links. Built on <dialog>, so Esc, focus and the back layer come for free.
  */
-export default function MobileMenu({ items }: { items: Item[] }) {
+export default function MobileMenu({
+  items,
+  llmPrompt,
+}: {
+  items: Item[];
+  llmPrompt: string;
+}) {
   const ref = useRef<HTMLDialogElement>(null);
+  // Each opening starts the copy line fresh.
+  const [opened, setOpened] = useState(0);
 
   const open = () => {
+    setOpened((n) => n + 1);
     ref.current?.showModal();
     document.documentElement.classList.add("menu-open");
   };
@@ -61,6 +71,9 @@ export default function MobileMenu({ items }: { items: Item[] }) {
                 </li>
               ),
             )}
+            <li style={{ animationDelay: `${items.length * 40}ms` }}>
+              <CopyForLLM key={opened} variant="menu" prompt={llmPrompt} />
+            </li>
           </ul>
         </nav>
         <div className="menu-theme">

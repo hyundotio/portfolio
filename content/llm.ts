@@ -8,7 +8,7 @@ import type { WorkId } from "./work";
 // so it is written for both readers: say what matters and where to find it,
 // never how to judge it.
 
-// The example question shown beside the "Copy for LLM" button.
+// The example question shown once "Copy for LLM" has been clicked.
 export const examplePrompt = "What does this guy know about AI?";
 
 export const llmNote = [
