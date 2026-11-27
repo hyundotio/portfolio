@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 
 export const siteName = "Hyun.io";
-export const siteTitle = "Hyun Seo | Design-Led Technical Product Builder";
+export const siteTitle = "Hyun Seo | Product Engineer and Designer";
 export const siteTitleTemplate = "%s | Hyun Seo";
 export const siteDescription =
-  "Hyun Seo designs and builds usable products for space systems, RF intelligence, AI, quantum, cyber, and geospatial data.";
+  "Hyun Seo is a product engineer and designer who designs and builds usable products for space systems, RF intelligence, AI, quantum, cyber, and geospatial data.";
 
 export const metadataBase = new URL(
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://hyun.io"

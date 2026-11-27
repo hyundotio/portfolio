@@ -224,7 +224,7 @@ const WORK_ENTRIES = [
     period: "’20/01-’21/11",
     heading: "Turned RF geolocation into an analyst product",
     description:
-      "As the first product designer at HawkEye 360, I helped establish the company’s design discipline and led product design for Mission Space, a geospatial intelligence platform for analyzing RF emissions collected by HawkEye 360 satellites.",
+      "As the first product designer at HawkEye 360, I designed Mission Space, a geospatial intelligence platform for analyzing RF emissions collected by HawkEye 360 satellites. I also built its frontend design system, worked in the React codebase, and established the company’s design discipline.",
     metaDescription:
       "Explore Hyun Seo's HawkEye 360 work turning satellite RF geolocation into usable geospatial intelligence products.",
     highlights: [
@@ -233,7 +233,7 @@ const WORK_ENTRIES = [
       "Worked hands-on across React, Redux, TypeScript, GraphQL, SCSS, Deck.gl, and Luma.gl, including map performance work that improved interaction from roughly 10-15 FPS to 60 FPS.",
     ],
     detailIntro:
-      "HawkEye 360 was where I moved from designer to design-function builder. I joined as the company’s first product designer at a moment when the company had a powerful new data source and a clear question: how should people actually use it? Mission Space became the answer, turning satellite-collected RF geolocation data into an analyst-facing software experience.",
+      "HawkEye 360 is where design and frontend engineering became one job for me. I joined as the company’s first product designer at a moment when the company had a powerful new data source and a clear question: how should people actually use it? Mission Space became the answer, turning satellite-collected RF geolocation data into an analyst-facing software experience.",
     detailMetaDescription:
       "Case study on HawkEye 360 Mission Space, RF geolocation maps, analyst workflows, and design systems.",
     detailSections: [
@@ -397,33 +397,35 @@ const WORK_ENTRIES = [
     periodPrefix: "2021/11 (Head of Design) to ",
     periodHighlight: "Current (Chief Product Officer)",
     period: "’21/11–Current",
-    heading: "Helped rebuild the company around product",
+    heading: "Designed and shipped Satcat, a public platform for orbital intelligence",
     description:
-      "At Kayhan Space, I grew from Head of Design into Chief Product Officer while helping transform the company from a specialized technical product into a broader product-led business with stronger UX, public reach, AI-native workflows, and automated orbital intelligence for journalists and analysts.",
+      "I joined Kayhan Space as Head of Design and became Chief Product Officer, and I stayed hands-on the whole way. I designed and developed Satcat Terminal and Satcat AI Analyst, designed and helped build the orbital-operations products, and took Satcat public to thousands of registered users. I also built the company’s AI tooling and taught the whole company to use it.",
     metaDescription:
-      "Explore Hyun Seo's Kayhan Space work across Satcat, Satcat AI Analyst, orbital operations UX, investigative intelligence, brand, AI workflows, and product leadership.",
+      "Explore Hyun Seo's Kayhan Space work designing and building Satcat, Satcat AI Analyst, orbital operations UX, investigative intelligence, brand, and AI workflows.",
     highlights: [
-      "Drove Satcat from product thesis to a public platform with thousands of registered users, hundreds of thousands of visitors, and millions of page views over the last 24 months.",
       "Designed and developed major product surfaces across orbital operations, space business analysis, and AI-assisted defense intelligence. Extended the AI Analyst through recurring work with journalists and analysts, including CNN and Reuters.",
-      "Helped build a design- and user-centric culture while moving the company toward AI-native workflows across engineering, analytics, documentation, product knowledge, and enablement.",
+      "Drove Satcat from product thesis to a public platform with thousands of registered users, hundreds of thousands of visitors, and millions of page views over the last 24 months.",
+      "Built the corporate MCP, held town halls on how to use it, and took the company from almost no AI tooling use to company-wide use across engineering, analytics, documentation, and product knowledge.",
+      "Taught developers to be user-centric and UX-first, and installed a shared design taste and a design floor across the company.",
     ],
     detailIntro:
-      "Kayhan Space became the most complete test of my range so far. I did not operate inside a narrow product-design lane; I helped shape how the company built, communicated, and shipped. That included product strategy, UX, brand, technical feasibility, internal operating processes, AI-native development practices, engineering culture, and direct implementation. The result was not just a better interface, but a broader product-led company with stronger reach, clearer UX, and more commercial pull.",
+      "Kayhan Space is where I have had the widest range. My title went from Head of Design to Chief Product Officer, but the job stayed hands-on: I set product direction with leadership, then did the design and a lot of the building myself. That covered UX, frontend development, data visualization, brand, and the company website. Whatever I found effective along the way, I turned into something the rest of the company could use, most of all the AI tooling everyone works with now.",
     detailMetaDescription:
-      "Case study on Kayhan Space product leadership across Satcat, Satcat AI Analyst, orbital operations, investigative intelligence, brand, and AI workflows.",
+      "Case study on designing and building Satcat, Satcat AI Analyst, orbital operations products, investigative intelligence, brand, and AI workflows at Kayhan Space.",
     detailSections: [
       {
         title: "Scope of the role",
         body: [
-          "I joined Kayhan Space as Head of Design, but the company’s needs quickly extended beyond design. Over time, the role expanded into product direction, process design, technical feasibility work, brand, customer discovery, and executive-level company building. I ultimately grew into the Chief Product Officer role because product strategy, design quality, commercialization, and engineering velocity were tightly connected and had to be treated as one system.",
-          "My work operated at multiple altitudes at once: defining product strategy with leadership, designing customer-facing experiences, shaping internal processes, helping technical teams make better product decisions, and translating ideas into code and implementation when the company needed them to become real.",
+          "I joined Kayhan Space as Head of Design, but the company’s needs quickly extended beyond design. The role grew into product direction, technical feasibility work, brand, and customer discovery. I became Chief Product Officer because I didn’t just build nice things. I built things other people use, and through them the company got a shared design taste, a design floor, and user-centric methods.",
+          "The title reflects scope more than headcount. I have spent far more of my time designing and building than managing. In a typical stretch I define a product direction with leadership, design the workflow, write the code, and test it in production with real data.",
+          "The building is only half of it. When a tool or a way of working proves effective for me, I scale it into the organization so everyone gets better at it, which is where I have had the most leverage.",
         ],
       },
       {
         title: "From specialized B2B product to public platform",
         body: [
           "One of the biggest shifts I drove was Satcat, a B2B and public-facing product direction that expanded Kayhan from a specialized customer base to a public product with thousands of registered users, hundreds of thousands of visitors, and millions of page views over the last 24 months.",
-          "The thesis was that space data did not need to stay locked behind operator-only workflows. A public product could help people understand the quality of Kayhan’s product experience, expand the audience beyond a small number of satellite operators and launch providers, and create awareness, distribution, and commercial gravity around the company.",
+          "The thesis was that space data did not need to stay locked behind operator-only workflows. A public product could help people understand the quality of Kayhan’s product experience, expand the audience beyond a small number of satellite operators and launch providers, and bring awareness, distribution, and customers to the company.",
         ],
         mediaCards: [
           {
@@ -590,8 +592,8 @@ const WORK_ENTRIES = [
       {
         title: "Brand, website, and product surface",
         body: [
-          "I led the redesign of Kayhan’s brand, logo, website, and product experience. I designed and developed the company website using Next.js and Strapi, and worked hands-on across product strategy, UX, frontend development, data visualization, prototyping, customer discovery, technical architecture, marketing support, and executive strategy.",
-          "I treated brand and product quality as strategic assets rather than surface polish. In a technical industry, coherence, clarity, and usability shape trust long before procurement or contracting begins.",
+          "I led the redesign of Kayhan’s brand, logo, website, and product experience, and I designed and developed the company website myself using Next.js and Strapi.",
+          "I treated brand and product quality as part of the product. In a technical industry, coherence, clarity, and usability shape trust long before procurement or contracting begins.",
         ],
         mediaCards: [
           {
@@ -627,12 +629,13 @@ const WORK_ENTRIES = [
         ],
       },
       {
-        title: "AI-native operating workflows",
+        title: "Scaling AI tooling across the company",
         tertiary: true,
         defaultExpanded: true,
         body: [
-          "One of the shifts I am most proud of was helping move Kayhan toward AI-native operating workflows across engineering, analytics, internal documentation, product knowledge, and cross-functional enablement.",
-          "This was not just about asking AI to write code. It meant creating expectations, systems, and shared practices around AI-assisted development, internal knowledge, non-engineering enablement, analytics, and documentation. It also meant pushing the team to test work as end users in deployed environments with real data, not simply treating a successful build as proof that a product experience worked.",
+          "One of the shifts I am most proud of is moving Kayhan to AI-native workflows across engineering, analytics, internal documentation, product knowledge, and cross-functional enablement. Before, very few people at the company used AI tooling, and those who did were not getting much out of it.",
+          "I built the corporate MCP, then held town halls to show the whole company how to use it. That is how I like to work in general: find what is effective in my own building, turn it into a tool or a practice, and teach it until everyone is better for it.",
+          "Around the tooling I set expectations and shared practices for AI-assisted development, internal knowledge, non-engineering enablement, analytics, and documentation. I also pushed the team to test work as end users in deployed environments with real data. A successful build is not proof that a product experience works.",
         ],
         mediaCards: [
           {
@@ -652,12 +655,12 @@ const WORK_ENTRIES = [
         ],
       },
       {
-        title: "Culture and engineering ownership",
+        title: "Teaching developers to be UX-first",
         tertiary: true,
         body: [
-          "Early on, I took pride in the individual craft itself and in being close to customers, but over time the more meaningful work became helping change how the team thought about building.",
-          "I pushed for a culture where engineers were not judged only by whether code shipped or builds passed. The expectation became broader: each engineer was responsible not just for implementation, but for the quality of the user experience their work created. That meant testing flows end-to-end, questioning design implications, and advocating for better product outcomes from within their own technical perspective.",
-          "The goal was to make product quality a shared responsibility rather than something thrown over the wall to design. When that worked well, engineers were not just producing code against a checklist; they were acting as owners of the customer experience with the benefit of their own expertise.",
+          "One of my proudest achievements at Kayhan is teaching developers to be user-centric and UX-first. I care about the craft and about being close to customers, and I wanted the whole team to work that way. The aim was institutional design taste and a design floor: quality that holds whether or not I touched the work.",
+          "I pushed for a culture where shipping code and passing builds were the start of the job. Each engineer was responsible for the quality of the user experience their work created. That meant testing flows end-to-end, questioning design implications, and advocating for better product outcomes from within their own technical perspective.",
+          "The goal was to make product quality a shared responsibility instead of something thrown over the wall to design. When that worked well, engineers acted as owners of the customer experience with the benefit of their own expertise.",
         ],
       },
       {
@@ -691,8 +694,8 @@ const WORK_ENTRIES = [
       {
         title: "Why the work mattered",
         body: [
-          "The biggest lesson from this period was that product can reshape a company’s identity when it is treated as more than interface design. At Kayhan, the combination of product direction, UX clarity, branding, technical execution, AI-enabled workflows, and market framing changed what kind of company we could be.",
-          "Just as importantly, I helped push the engineering culture beyond a narrow definition of success. The strongest outcome was not only shipping better products myself, but helping create an environment where engineers increasingly owned the user experience consequences of what they built. That shift made product quality more durable than any single feature or redesign.",
+          "What I take from Kayhan is that the fastest way to change what a company can be is to build the thing. Satcat started as a thesis. Because I could design it, build it, and put it in front of people, it became a public platform, an AI analyst, and analysis that CNN and Reuters used in their reporting.",
+          "The part I value most is what spread. Developers became user-centric and UX-first, the company got a design floor, and the AI tooling I built became how everyone works. That made the quality more durable than any single feature or redesign.",
         ],
       },
     ],

@@ -5,7 +5,7 @@ import { buildSocialMetadata } from "@/utils/metadata";
 import { MediaOpen, MediaViewer } from "@/app/_components/MediaViewer";
 
 const description =
-  "Resume for Hyun Seo, design-led technical product builder across space systems, RF intelligence, AI, quantum, and geospatial data.";
+  "Resume for Hyun Seo, product engineer and designer across space systems, RF intelligence, AI, quantum, and geospatial data.";
 
 export const metadata: Metadata = {
   title: "Resume",
