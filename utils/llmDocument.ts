@@ -53,7 +53,10 @@ function workBlock(work: WorkEntry) {
   ];
 
   const sections = work.detailSections.map((section) => {
-    const cards = (section.mediaCards ?? []).map(cardLink).filter(Boolean);
+    const cards = [
+      ...(section.links ?? []).map((link) => `- ${link.label} ${link.href}`),
+      ...(section.mediaCards ?? []).map(cardLink).filter(Boolean),
+    ];
     return [
       `#### ${section.title}`,
       sectionUrl(work, section.title),

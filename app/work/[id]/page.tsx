@@ -227,6 +227,20 @@ export default async function WorkPage({ params }: { params: Params }) {
                 {section.body.map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
+                {"links" in section && (
+                  <p className="small fig-links">
+                    {section.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {link.label}
+                      </a>
+                    ))}
+                  </p>
+                )}
               </div>
               {cards.length > 0 && (
                 <div className="col-wide media">

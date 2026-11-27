@@ -26,6 +26,8 @@ export interface WorkEntry {
 export interface WorkDetailSection {
   readonly title: string;
   readonly body: readonly string[];
+  /** Sources for the text, shown under it. For press with no image to show. */
+  readonly links?: readonly { readonly label: string; readonly href: string }[];
   readonly mediaCards?: readonly WorkDetailMediaCard[];
   readonly tertiary?: boolean;
   readonly defaultExpanded?: boolean;
@@ -568,6 +570,12 @@ const WORK_ENTRIES = [
           "The most visible example was a CNN investigation into whether Russian reconnaissance satellites could have supported Iranian targeting of U.S. military assets. For that collaboration, I produced detailed reports, source data, interactive web tools, 3D reconstructions, explanatory animations, and broadcast-ready graphics and After Effects assets. CNN used the analysis and visuals throughout its finished investigation, which aired across multiple programs and became part of broader national-security coverage.",
           "Satcat AI Analyst made work at this depth possible by automating much of the underlying orbital investigation. After the CNN collaboration, I folded the custom methods and new requirements back into the product, extending the system so increasingly sophisticated investigations could be repeated end to end without a human analyst manually assembling each one.",
           "The work kept coming after CNN. In October 2026, Newsweek reported on a Russian military satellite, Kosmos-2612, closing in on ICEYE-X36, a commercial radar satellite whose imagery supports Ukraine. Working from Satcat, I gave Newsweek a modeled closest approach of about 8.8 meters and a relative speed slow enough to suggest the Russian satellite was shadowing it. I also made clear that other predictions differed and the true closest distance was unconfirmed.",
+        ],
+        links: [
+          {
+            label: "Read the Newsweek article",
+            href: "https://www.newsweek.com/map-shows-how-russian-military-satellite-got-within-meters-of-us-spacecraft-12599448",
+          },
         ],
         mediaCards: [
           {
