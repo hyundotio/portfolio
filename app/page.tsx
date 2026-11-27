@@ -13,11 +13,11 @@ export default function Home() {
     <>
       <section className="page-head grid">
         <div className="col-display">
-          <h1 className="display reveal">
+          <h1 className="display">
             {intro.replace(/\.$/, "")}
             <span className="accent">.</span>
           </h1>
-          <p className="tagline prose reveal reveal-2">{tagline}</p>
+          <p className="tagline prose">{tagline}</p>
         </div>
       </section>
 

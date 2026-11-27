@@ -665,16 +665,6 @@ html.menu-open {
   width: 24px;
   height: 2px;
   background: var(--fg);
-  transform-origin: left;
-  animation: draw 600ms var(--ease) both;
-}
-
-.hero-meta > :nth-child(2)::before {
-  animation-delay: 80ms;
-}
-
-.hero-meta > :nth-child(3)::before {
-  animation-delay: 160ms;
 }
 
 .hero-cell-a {
@@ -689,15 +679,11 @@ html.menu-open {
   grid-column: 10 / 13;
 }
 
-.hero-meta > :nth-child(4)::before {
-  animation-delay: 240ms;
-}
-
 .hero-mark {
   margin-top: 64px;
 }
 
-/* The mask the wordmark rises out of. */
+/* Keeps an over-wide wordmark from spilling past the grid. */
 .hero-mark > div {
   overflow: hidden;
 }
@@ -720,12 +706,10 @@ html.menu-open {
     ),
     50vh
   );
-  animation: rise 1000ms var(--ease) both;
 }
 
 .hero-statement {
   margin-top: 0;
-  animation: fade-up 800ms var(--ease) 250ms both;
 }
 
 /* ---------- case study ---------- */
@@ -982,13 +966,11 @@ html.viewer-open {
   cursor: default;
 }
 
-/* ---------- motion ---------- */
-
-@keyframes rise {
-  from {
-    transform: translateY(105%);
-  }
-}
+/*
+  ---------- motion ----------
+  Motion only answers something the visitor does (hover, open, scroll to).
+  Nothing animates on page load.
+*/
 
 @keyframes fade-up {
   from {
@@ -1001,25 +983,6 @@ html.viewer-open {
   from {
     opacity: 0;
   }
-}
-
-@keyframes draw {
-  from {
-    transform: scaleX(0);
-  }
-}
-
-
-
-
-
-
-.reveal {
-  animation: fade-up 800ms var(--ease) both;
-}
-
-.reveal-2 {
-  animation-delay: 120ms;
 }
 
 .viewer[open] {
@@ -1118,7 +1081,6 @@ html.viewer-open {
   .wordmark-word {
     display: block;
   }
-
 
   .section > .col-text,
   .section > .col-wide {
