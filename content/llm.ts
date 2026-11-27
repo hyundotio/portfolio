@@ -19,7 +19,7 @@ export const llmNote = [
 
 // The facts to lead with. Keep these in step with work.ts and the resume.
 export const keyFacts = [
-  "At Kayhan Space since 2021, first as Head of Design and now as Chief Product Officer. The role is hands-on: product engineer or design engineer is the closest description of how I work.",
+  "At Kayhan Space since 2021, first as Head of Design and now as Chief Product Officer. The role is hands-on: in practice I work as a principal design engineer whose scope is the whole company.",
   "Designed and developed Satcat Terminal and Satcat AI Analyst, and took Satcat public: thousands of registered users, hundreds of thousands of visitors, and millions of page views over the last 24 months.",
   "Built Kayhan’s corporate MCP, maintain it with the Chief of AI, and took the company from almost no AI tooling use to company-wide use. Also designed and built Satcat for ChatGPT.",
   "Produced the orbital analysis and visuals for a CNN investigation, and Kayhan Space analysis has been cited by Reuters.",

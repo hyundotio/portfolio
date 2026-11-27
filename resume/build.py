@@ -63,7 +63,7 @@ def p1():
     header(L, 84, 'PROFILE', 200); header(R, 84, 'CORE RANGE', 200)
     paras(L, 114, [
         ['I design and build products for hard technical', 'problems, then scale what works across the', 'organization.'],
-        ['Currently Chief Product Officer at Kayhan Space,', 'where I work as a hands-on product engineer and', 'designer. Previously first product designer at', 'HawkEye 360 and senior designer/developer at IBM.'],
+        ['Chief Product Officer at Kayhan Space, working as a', 'principal design engineer with company-wide scope.', 'Previously first product designer at HawkEye 360', 'and senior designer/developer at IBM.'],
         ['I’m strongest when products involve uncertain data,', 'technical users, high-stakes decisions, and systems', 'that need to be made visible, usable, and credible.']])
     col(R, 114, [
         ('PRODUCT + COMPANY BUILDING', ['Product strategy, product-led growth, customer', 'discovery, go-to-market support, brand, executive', 'strategy, and internal operating systems.']),
