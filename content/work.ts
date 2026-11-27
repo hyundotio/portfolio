@@ -417,7 +417,7 @@ const WORK_ENTRIES = [
     metaDescription:
       "Explore Hyun Seo's Kayhan Space work designing and building Satcat, Satcat AI Analyst, orbital operations UX, investigative intelligence, brand, and AI workflows.",
     highlights: [
-      "Designed and developed major product surfaces across orbital operations, space business analysis, and AI-assisted defense intelligence. Extended the AI Analyst through recurring work with journalists and analysts, including CNN and Reuters.",
+      "Designed and developed major product surfaces across orbital operations, space business analysis, and AI-assisted defense intelligence. Extended the AI Analyst through recurring work with journalists and analysts, including CNN, Reuters, and Newsweek.",
       "Drove Satcat from product thesis to a public platform with thousands of registered users, hundreds of thousands of visitors, and millions of page views over the last 24 months.",
       "Built the corporate MCP and maintain it with the Chief of AI, held town halls on how to use it, and took the company from almost no AI tooling use to company-wide use across engineering, analytics, documentation, and product knowledge.",
       "Taught developers to be user-centric and UX-first, and installed a shared design taste and a design floor across the company.",
@@ -567,6 +567,7 @@ const WORK_ENTRIES = [
           "Beyond the product itself, a recurring part of my work at Kayhan was helping journalists and analysts make sense of time-sensitive space activity. I frequently translated orbital data into defensible answers by reconstructing historical satellite activity and evaluating data collections across orbital geometry, illumination, cloud cover, and various sensor limitations.",
           "The most visible example was a CNN investigation into whether Russian reconnaissance satellites could have supported Iranian targeting of U.S. military assets. For that collaboration, I produced detailed reports, source data, interactive web tools, 3D reconstructions, explanatory animations, and broadcast-ready graphics and After Effects assets. CNN used the analysis and visuals throughout its finished investigation, which aired across multiple programs and became part of broader national-security coverage.",
           "Satcat AI Analyst made work at this depth possible by automating much of the underlying orbital investigation. After the CNN collaboration, I folded the custom methods and new requirements back into the product, extending the system so increasingly sophisticated investigations could be repeated end to end without a human analyst manually assembling each one.",
+          "The work kept coming after CNN. In October 2026, Newsweek reported on a Russian military satellite, Kosmos-2612, closing in on ICEYE-X36, a commercial radar satellite whose imagery supports Ukraine. Working from Satcat, I gave Newsweek a modeled closest approach of about 8.8 meters and a relative speed slow enough to suggest the Russian satellite was shadowing it. I also made clear that other predictions differed and the true closest distance was unconfirmed.",
         ],
         mediaCards: [
           {
