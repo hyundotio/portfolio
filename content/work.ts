@@ -755,7 +755,7 @@ const WORK_ENTRIES = [
       "Designed touch controls from scratch so a dense strategy interface works on a phone, and cut decoded sprite memory from 1.1 GB to about 330 MB so the game runs on low-end devices.",
     ],
     detailIntro:
-      "Frontline Zero is my own studio project under 556 Games: a classic isometric real-time strategy game of modern war, Ukraine against Russia. I designed and built it end to end, from the engine underneath it to the store listings on top, and released it on the web, on iPhone, iPad, and Mac, and on Android in about two months. In its first month it reached over 400 players.",
+      "Frontline Zero is my own studio project under 556 Games: a classic isometric real-time strategy game of modern war, Ukraine against Russia. I designed and built it end to end, from the engine underneath it to the store listings on top, and released it on the web, on iPhone, iPad, and Mac, and on Android in about two months. It went public in mid-October 2026, and in its first month it reached over 400 players.",
     detailMetaDescription:
       "Case study on Frontline Zero: game design, a deterministic TypeScript RTS engine, lockstep cross-play, touch controls, and shipping across platforms as one person.",
     detailSections: [

@@ -1,4 +1,6 @@
 import Link from "next/link";
+import CopyForLLM from "@/app/_components/CopyForLLM";
+import { examplePrompt } from "@/content/llm";
 import { WORK_DATA } from "@/content/work";
 import {
   aboutParagraphs,
@@ -18,6 +20,7 @@ export default function Home() {
             <span className="accent">.</span>
           </h1>
           <p className="tagline prose">{tagline}</p>
+          <CopyForLLM prompt={examplePrompt} />
         </div>
       </section>
 

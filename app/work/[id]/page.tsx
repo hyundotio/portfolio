@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { WORK_DATA, type WorkDetailMediaCard } from "@/content/work";
 import { buildSocialMetadata } from "@/utils/metadata";
+import { slugify } from "@/utils/slugify";
 import { MediaOpen, MediaViewer, type ViewerItem } from "@/app/_components/MediaViewer";
 import Wordmark from "@/app/_components/Wordmark";
 
@@ -33,13 +34,6 @@ export async function generateMetadata({
       path: `/work/${work.id}`,
     }),
   };
-}
-
-function slugify(text: string) {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
 }
 
 function linkLabel(href: string) {

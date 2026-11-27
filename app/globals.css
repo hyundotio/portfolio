@@ -242,6 +242,42 @@ a:hover {
   color: var(--accent-ink);
 }
 
+/* Copy for LLM: the whole site as text, for the visitor's own assistant. */
+.llm-copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 28px;
+}
+
+.llm-copy button {
+  flex: none;
+  min-width: 9.5em; /* "Copied" keeps the width of "Copy for LLM". */
+  padding: 9px 14px 8px;
+  border: 1px solid var(--fg);
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  font-size: var(--size-small);
+  line-height: 1.2;
+  cursor: pointer;
+  transition:
+    background-color 200ms ease,
+    color 200ms ease;
+}
+
+.llm-copy button:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.llm-copy p {
+  flex: 1 1 18em;
+  max-width: 34em;
+}
+
 /* ---------- site chrome ---------- */
 
 /* Sticky, full-bleed bar; the grid inside keeps the columns. */
