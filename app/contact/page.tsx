@@ -23,6 +23,10 @@ export default function ContactPage() {
           Or find me on{" "}
           <a href={links.linkedin} target="_blank" rel="noreferrer">
             LinkedIn
+          </a>{" "}
+          or{" "}
+          <a href={links.github} target="_blank" rel="noreferrer">
+            GitHub
           </a>
           .
         </p>

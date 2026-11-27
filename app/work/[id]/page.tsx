@@ -163,6 +163,20 @@ export default async function WorkPage({ params }: { params: Params }) {
               {work.periodHighlight}
             </span>
           </p>
+          {"links" in work && work.links && (
+            <div className="hero-cell-c">
+              Links
+              <ul>
+                {work.links.map((link) => (
+                  <li key={link.href}>
+                    <a href={link.href} target="_blank" rel="noreferrer">
+                      {link.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <div className="hero-mark grid" aria-hidden="true">
           <div className="col-full">

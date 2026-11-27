@@ -19,5 +19,6 @@ export const resumePdfHref = "/assets/downloads/resume/resume.pdf";
 
 export const links = {
   linkedin: "https://linkedin.com/in/hyunseo",
+  github: "https://github.com/hyundotio",
   scholar: "https://scholar.google.com/citations?user=P-hCXaQAAAAJ&hl=en",
 } as const;

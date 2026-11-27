@@ -11,18 +11,13 @@ import {
 export default function Home() {
   return (
     <>
-      <section className="page-head home-head grid">
-        <p className="name col-label reveal" aria-hidden="true">
-          Hyun
-          <br />
-          Seo
-        </p>
-        <div className="col-wide">
-          <h1 className="display reveal reveal-2">
+      <section className="page-head grid">
+        <div className="col-display">
+          <h1 className="display reveal">
             {intro.replace(/\.$/, "")}
             <span className="accent">.</span>
           </h1>
-          <p className="tagline prose reveal reveal-3">{tagline}</p>
+          <p className="tagline prose reveal reveal-2">{tagline}</p>
         </div>
       </section>
 
@@ -76,6 +71,11 @@ export default function Home() {
           <li>
             <a href={links.linkedin} target="_blank" rel="noreferrer">
               LinkedIn
+            </a>
+          </li>
+          <li>
+            <a href={links.github} target="_blank" rel="noreferrer">
+              GitHub
             </a>
           </li>
           <li>

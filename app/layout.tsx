@@ -103,6 +103,11 @@ export default function RootLayout({
                     LinkedIn
                   </a>
                 </li>
+                <li>
+                  <a href={links.github} target="_blank" rel="noreferrer">
+                    GitHub
+                  </a>
+                </li>
               </ul>
             </nav>
             <ThemeSwitch className="theme-slot" />
@@ -110,6 +115,7 @@ export default function RootLayout({
               items={[
                 ...nav,
                 { title: "LinkedIn", href: links.linkedin, external: true },
+                { title: "GitHub", href: links.github, external: true },
               ]}
             />
           </div>

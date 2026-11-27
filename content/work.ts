@@ -15,6 +15,8 @@ export interface WorkEntry {
   readonly detailIntro: string;
   readonly detailMetaDescription: string;
   readonly detailSections: readonly WorkDetailSection[];
+  /** Where to see or use the work, shown in the case study's credits. */
+  readonly links?: readonly { readonly label: string; readonly href: string }[];
 }
 
 export interface WorkDetailSection {
@@ -700,6 +702,17 @@ const WORK_ENTRIES = [
     company: "Frontline Zero",
     role: "Solo developer, 556 Games",
     years: "2026–present",
+    links: [
+      { label: "Website", href: "https://frontlinezero.com" },
+      {
+        label: "App Store",
+        href: "https://apps.apple.com/us/app/frontline-zero/id6824570571",
+      },
+      {
+        label: "Google Play",
+        href: "https://play.google.com/store/apps/details?id=com.games556.frontlinezero",
+      },
+    ],
     periodPrefix: "2026/10 to ",
     periodHighlight: "Current (Solo developer, 556 Games)",
     period: "’26/10–Current",

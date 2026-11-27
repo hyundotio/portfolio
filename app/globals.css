@@ -252,17 +252,6 @@ a:hover {
   letter-spacing: 0.02em;
 }
 
-/* The name, set like the resume: light mono capitals in blue. */
-.name {
-  font-family: var(--mono);
-  font-weight: 300;
-  font-size: clamp(3rem, 1.6rem + 3.6vw, 5.25rem);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
-
 /* The resume's tagline: bold mono, blue, sentence case. */
 .tagline {
   margin-top: 28px;
@@ -271,10 +260,6 @@ a:hover {
   font-size: 1rem;
   line-height: 1.6;
   color: var(--accent-ink);
-}
-
-.home-head .display {
-  margin-top: -0.08em;
 }
 
 /* ---------- site chrome ---------- */
@@ -666,13 +651,13 @@ html.menu-open {
   row-gap: 20px;
 }
 
-.hero-meta > p {
+.hero-meta > * {
   position: relative;
   padding-top: 14px;
 }
 
 /* Short black dashes over each credit, as on the resume. */
-.hero-meta > p::before {
+.hero-meta > *::before {
   content: "";
   position: absolute;
   top: 0;
@@ -684,11 +669,11 @@ html.menu-open {
   animation: draw 600ms var(--ease) both;
 }
 
-.hero-meta > p:nth-child(2)::before {
+.hero-meta > :nth-child(2)::before {
   animation-delay: 80ms;
 }
 
-.hero-meta > p:nth-child(3)::before {
+.hero-meta > :nth-child(3)::before {
   animation-delay: 160ms;
 }
 
@@ -697,7 +682,15 @@ html.menu-open {
 }
 
 .hero-cell-b {
-  grid-column: 7 / 11;
+  grid-column: 7 / 10;
+}
+
+.hero-cell-c {
+  grid-column: 10 / 13;
+}
+
+.hero-meta > :nth-child(4)::before {
+  animation-delay: 240ms;
 }
 
 .hero-mark {
@@ -1029,10 +1022,6 @@ html.viewer-open {
   animation-delay: 120ms;
 }
 
-.reveal-3 {
-  animation-delay: 240ms;
-}
-
 .viewer[open] {
   animation: fade 180ms ease-out;
 }
@@ -1109,7 +1098,8 @@ html.viewer-open {
   }
 
   .hero-meta > .hero-cell-a,
-  .hero-meta > .hero-cell-b {
+  .hero-meta > .hero-cell-b,
+  .hero-meta > .hero-cell-c {
     grid-column: auto;
   }
 
