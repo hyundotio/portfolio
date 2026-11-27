@@ -5,6 +5,7 @@
 */
 
 :root {
+  color-scheme: light;
   --fg: #111;
   --muted: #6e6e6e;
   --rule: #d6d6d6;
@@ -30,8 +31,10 @@
   --section-gap: 96px;
 }
 
+/* Dark: follow the system unless the visitor picked light; or forced. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
     --fg: #ececec;
     --muted: #9b9b9b;
     --rule: #333;
@@ -40,6 +43,17 @@
     --hover: #1b1b1b;
     --accent-ink: #4ba7ff;
   }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --fg: #ececec;
+  --muted: #9b9b9b;
+  --rule: #333;
+  --bg: #121212;
+  --field: #1a1a1a;
+  --hover: #1b1b1b;
+  --accent-ink: #4ba7ff;
 }
 
 *,
@@ -293,6 +307,68 @@ a:hover {
   to {
     border-bottom-color: var(--rule);
   }
+}
+
+/* ---------- theme switch ---------- */
+
+.site-nav {
+  grid-column: 4 / 10;
+}
+
+.theme-slot {
+  grid-column: 10 / 13;
+  justify-self: end;
+}
+
+.theme-switch {
+  display: flex;
+  gap: 16px;
+}
+
+.theme-switch button {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: var(--size-small);
+  line-height: 1.55;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.3em;
+  cursor: pointer;
+  transition:
+    color 200ms ease,
+    text-decoration-color 200ms ease;
+}
+
+.theme-switch button:hover {
+  color: var(--fg);
+}
+
+.theme-switch button[aria-pressed="true"] {
+  color: var(--fg);
+  text-decoration-color: var(--accent);
+  cursor: default;
+}
+
+.menu-theme {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  font-family: var(--mono);
+  font-size: var(--size-small);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.menu-theme .theme-switch button {
+  min-height: 44px;
 }
 
 /* ---------- mobile menu ---------- */
@@ -1004,7 +1080,8 @@ html.viewer-open {
     padding-bottom: 0;
   }
 
-  .site-nav {
+  .site-nav,
+  .theme-slot {
     display: none;
   }
 
