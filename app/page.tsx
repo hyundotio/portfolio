@@ -30,7 +30,7 @@ export default function Home() {
             <li key={work.id}>
               <article className="work-item">
                 <div>
-                  <p className="caps-label">{work.company}</p>
+                  <p className="label">{work.company}</p>
                   <p className="small muted">{work.years}</p>
                   <p className="small muted">{work.role}</p>
                 </div>

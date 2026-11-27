@@ -5,6 +5,11 @@ import { THEME_KEY as KEY } from "./themeScript";
 
 type Theme = "system" | "light" | "dark";
 const OPTIONS: Theme[] = ["system", "light", "dark"];
+const LABELS: Record<Theme, string> = {
+  system: "System",
+  light: "Light",
+  dark: "Dark",
+};
 const EVENT = "themechange";
 
 function read(): Theme {
@@ -58,7 +63,7 @@ export default function ThemeSwitch({ className = "" }: { className?: string }) 
           aria-pressed={theme === option}
           onClick={() => choose(option)}
         >
-          {option}
+          {LABELS[option]}
         </button>
       ))}
     </div>

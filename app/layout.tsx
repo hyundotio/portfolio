@@ -1,7 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { IBM_Plex_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import MobileMenu from "@/app/_components/MobileMenu";
@@ -28,13 +27,6 @@ const heros = localFont({
   variable: "--font-sans",
   display: "swap",
   preload: false,
-});
-
-const plexMono = IBM_Plex_Mono({
-  weight: ["300", "400", "600"],
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -77,11 +69,7 @@ export default function RootLayout({
 }) {
   return (
     // The head script may set data-theme before React hydrates.
-    <html
-      lang="en"
-      className={`${heros.variable} ${plexMono.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en" className={heros.variable} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
