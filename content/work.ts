@@ -51,14 +51,14 @@ const WORK_ENTRIES = [
   {
     id: "ibm",
     company: "IBM",
-    role: "Associate Designer to Senior Designer",
+    role: "Associate Designer to Senior Designer + Developer",
     years: "2013–2019",
     periodPrefix: "2013/07 (Assoc. Designer, B6) to ",
     periodHighlight: "2019/12 (Sr. Designer, B9)",
     period: "’13/07-’19/12",
     heading: "Made emerging research understandable",
     description:
-      "Designed interfaces, prototypes, demos, and explainers across IBM Cybersecurity, IBM Design, and IBM Research, working on Project Debater, IBM Quantum, Qiskit, robotics, haptics, and emerging interaction models.",
+      "Designed interfaces, prototypes, demos, and explainers across IBM Security, IBM Design, and IBM Research, working on Project Debater, IBM Quantum, Qiskit, robotics, haptics, and emerging interaction models.",
     metaDescription:
       "Explore Hyun Seo's IBM work translating early AI, quantum, cybersecurity, robotics, and research into usable products.",
     highlights: [
@@ -67,7 +67,7 @@ const WORK_ENTRIES = [
       "Served on an Invention Disclosure Board and contributed to a patent and research portfolio cited 220+ times.",
     ],
     detailIntro:
-      "IBM was where I learned how to make advanced technical work understandable without flattening it. Across IBM Cybersecurity, IBM Design, and IBM Research, I worked on early product experiences, research demos, technical explainers, invention disclosures, and interfaces for technologies that were often years ahead of mainstream adoption.",
+      "IBM was where I learned how to make advanced technical work understandable without flattening it. Across IBM Security, IBM Design, and IBM Research, I worked on early product experiences, research demos, technical explainers, invention disclosures, and interfaces for technologies that were often years ahead of mainstream adoption.",
     detailMetaDescription:
       "IBM case study on Project Debater, IBM Quantum, Qiskit, robotics, and making emerging research understandable.",
     detailSections: [
@@ -189,7 +189,7 @@ const WORK_ENTRIES = [
         tertiary: true,
         defaultExpanded: true,
         body: [
-          "This role capped six years at IBM across IBM Cybersecurity, IBM Design, and IBM Research, where my work spanned cybersecurity, HCI, AI, quantum, robotics, and emerging interfaces.",
+          "This role capped six years at IBM across IBM Security, IBM Design, and IBM Research, where my work spanned cybersecurity, HCI, AI, quantum, robotics, and emerging interfaces.",
           "I also served on an Invention Disclosure Board, helping review, shape, and prioritize technical invention submissions for legal docketing. Several of these projects contributed to a broader patent and research portfolio that has been cited 220+ times.",
         ],
         mediaCards: [
@@ -394,6 +394,13 @@ const WORK_ENTRIES = [
     company: "Kayhan Space",
     role: "Head of Design to Chief Product Officer",
     years: "2021–present",
+    links: [
+      { label: "Satcat", href: "https://www.satcat.com" },
+      {
+        label: "Satcat for ChatGPT",
+        href: "https://chatgpt.com/plugins/plugin_asdk_app_6af2245825cc81919b1e92c00297dc2a",
+      },
+    ],
     periodPrefix: "2021/11 (Head of Design) to ",
     periodHighlight: "Current (Chief Product Officer)",
     period: "’21/11–Current",
@@ -405,8 +412,9 @@ const WORK_ENTRIES = [
     highlights: [
       "Designed and developed major product surfaces across orbital operations, space business analysis, and AI-assisted defense intelligence. Extended the AI Analyst through recurring work with journalists and analysts, including CNN and Reuters.",
       "Drove Satcat from product thesis to a public platform with thousands of registered users, hundreds of thousands of visitors, and millions of page views over the last 24 months.",
-      "Built the corporate MCP, held town halls on how to use it, and took the company from almost no AI tooling use to company-wide use across engineering, analytics, documentation, and product knowledge.",
+      "Built the corporate MCP and maintain it with the Chief of AI, held town halls on how to use it, and took the company from almost no AI tooling use to company-wide use across engineering, analytics, documentation, and product knowledge.",
       "Taught developers to be user-centric and UX-first, and installed a shared design taste and a design floor across the company.",
+      "Designed and built Satcat for ChatGPT, part of an ongoing effort to meet users in the high-traffic places they already are.",
     ],
     detailIntro:
       "Kayhan Space is where I have had the widest range. My title went from Head of Design to Chief Product Officer, but the job stayed hands-on: I set product direction with leadership, then did the design and a lot of the building myself. That covered UX, frontend development, data visualization, brand, and the company website. Whatever I found effective along the way, I turned into something the rest of the company could use, most of all the AI tooling everyone works with now.",
@@ -540,6 +548,13 @@ const WORK_ENTRIES = [
         ],
       },
       {
+        title: "Meeting users where they are",
+        body: [
+          "I also designed and built Satcat for ChatGPT, an app that brings the Satcat satellite catalog into the conversation. People can find satellites, plot their orbital history, and see them on an interactive 3D globe without leaving the chat.",
+          "The idea is to meet users where they are, the way DoorDash does. Funneling every visitor to our own site adds friction, so we keep building extensions and plugins in the high-traffic places people already use, and let them reach our products from there.",
+        ],
+      },
+      {
         title: "Investigative analysis as a product capability",
         body: [
           "Beyond the product itself, a recurring part of my work at Kayhan was helping journalists and analysts make sense of time-sensitive space activity. I frequently translated orbital data into defensible answers by reconstructing historical satellite activity and evaluating data collections across orbital geometry, illumination, cloud cover, and various sensor limitations.",
@@ -634,7 +649,7 @@ const WORK_ENTRIES = [
         defaultExpanded: true,
         body: [
           "One of the shifts I am most proud of is moving Kayhan to AI-native workflows across engineering, analytics, internal documentation, product knowledge, and cross-functional enablement. Before, very few people at the company used AI tooling, and those who did were not getting much out of it.",
-          "I built the corporate MCP, then held town halls to show the whole company how to use it. That is how I like to work in general: find what is effective in my own building, turn it into a tool or a practice, and teach it until everyone is better for it.",
+          "I built the corporate MCP and maintain it with our Chief of AI, and I held town halls to show the whole company how to use it. That is how I like to work in general: find what is effective in my own building, turn it into a tool or a practice, and teach it until everyone is better for it.",
           "Around the tooling I set expectations and shared practices for AI-assisted development, internal knowledge, non-engineering enablement, analytics, and documentation. I also pushed the team to test work as end users in deployed environments with real data. A successful build is not proof that a product experience works.",
         ],
         mediaCards: [
