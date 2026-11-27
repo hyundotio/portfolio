@@ -660,10 +660,26 @@ html.menu-open {
   overflow: hidden;
 }
 
+/* Each case study's wordmark takes its company's logo color. Light mode uses
+   the darker take where one is given, so pale logo colors still read on white. */
+.work {
+  --wordmark-color: var(--work-accent-on-light);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .work {
+    --wordmark-color: var(--work-accent);
+  }
+}
+
+:root[data-theme="dark"] .work {
+  --wordmark-color: var(--work-accent);
+}
+
 .wordmark {
   display: inline-block;
   white-space: nowrap;
-  color: var(--accent);
+  color: var(--wordmark-color, var(--accent));
   /* Bold, set tight: the one weight both the real face and the fallback share. */
   font-weight: 700;
   letter-spacing: -0.04em;

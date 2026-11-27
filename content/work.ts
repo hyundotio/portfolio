@@ -3,6 +3,10 @@
 export interface WorkEntry {
   readonly id: string;
   readonly company: string;
+  /** The company's logo color, used for the case study's wordmark. */
+  readonly accent: string;
+  /** A darker take for light backgrounds, when the logo color is too pale on white. */
+  readonly accentOnLight?: string;
   readonly role: string;
   readonly years: string;
   readonly periodPrefix: string;
@@ -51,6 +55,7 @@ const WORK_ENTRIES = [
   {
     id: "ibm",
     company: "IBM",
+    accent: "#1f70c1",
     role: "Associate Designer to Senior Designer + Developer",
     years: "2013–2019",
     periodPrefix: "2013/07 (Assoc. Designer, B6) to ",
@@ -217,6 +222,7 @@ const WORK_ENTRIES = [
   {
     id: "hawkeye-360",
     company: "HawkEye 360",
+    accent: "#e45c27",
     role: "Principal Designer",
     years: "2020–2021",
     periodPrefix: "2020/01 to 2021/11 ",
@@ -392,6 +398,7 @@ const WORK_ENTRIES = [
   {
     id: "kayhan-space",
     company: "Kayhan Space",
+    accent: "#7947e5",
     role: "Head of Design to Chief Product Officer",
     years: "2021–present",
     links: [
@@ -718,6 +725,8 @@ const WORK_ENTRIES = [
   {
     id: "frontline-zero",
     company: "Frontline Zero",
+    accent: "#ffb23e",
+    accentOnLight: "#c48930",
     role: "Solo developer, 556 Games",
     years: "2026–present",
     links: [

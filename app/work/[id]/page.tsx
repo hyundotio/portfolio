@@ -138,8 +138,15 @@ export default async function WorkPage({ params }: { params: Params }) {
   const viewerItems = sections.flatMap(({ cards }) => cards.map(toViewerItem));
   let viewerIndex = 0;
 
+  // The wordmark takes the company's logo color (see .work in globals.css).
+  const accentStyle = {
+    "--work-accent": work.accent,
+    "--work-accent-on-light":
+      "accentOnLight" in work ? work.accentOnLight : work.accent,
+  } as React.CSSProperties;
+
   return (
-    <article>
+    <article className="work" style={accentStyle}>
       <header className="work-hero">
         <div className="hero-meta grid small">
           <p className="col-label">
