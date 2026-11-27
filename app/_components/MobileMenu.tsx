@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useRef } from "react";
+import ThemeSwitch from "./ThemeSwitch";
 
 type Item = { title: string; href: string; external?: boolean };
 
@@ -62,6 +63,10 @@ export default function MobileMenu({ items }: { items: Item[] }) {
             )}
           </ul>
         </nav>
+        <div className="menu-theme">
+          <span>Theme</span>
+          <ThemeSwitch />
+        </div>
       </dialog>
     </>
   );

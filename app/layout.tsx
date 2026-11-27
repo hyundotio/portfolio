@@ -6,6 +6,8 @@ import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import MobileMenu from "@/app/_components/MobileMenu";
 import SmoothHashLinks from "@/app/_components/SmoothHashLinks";
+import ThemeSwitch from "@/app/_components/ThemeSwitch";
+import { themeScript } from "@/app/_components/themeScript";
 import { legalText, links } from "@/content/site";
 import {
   buildSocialMetadata,
@@ -74,14 +76,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${heros.variable} ${plexMono.variable}`}>
+    // The head script may set data-theme before React hydrates.
+    <html
+      lang="en"
+      className={`${heros.variable} ${plexMono.variable}`}
+      suppressHydrationWarning
+    >
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body>
         <header className="site-header">
           <div className="grid">
             <Link href="/" className="brand col-label">
               Hyun Seo
             </Link>
-            <nav className="site-nav col-wide" aria-label="Main">
+            <nav className="site-nav" aria-label="Main">
               <ul>
                 {nav.map((item) => (
                   <li key={item.href}>
@@ -95,6 +105,7 @@ export default function RootLayout({
                 </li>
               </ul>
             </nav>
+            <ThemeSwitch className="theme-slot" />
             <MobileMenu
               items={[
                 ...nav,
