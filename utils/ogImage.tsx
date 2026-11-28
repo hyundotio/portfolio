@@ -2,8 +2,8 @@ import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
-// Share images in the site's own type: Helvetica (TeX Gyre Heros) for words,
-// IBM Plex Mono caps for labels, on white with the resume blue.
+// Share images in the site's own type: Helvetica (TeX Gyre Heros) throughout,
+// sentence case, on white with the resume blue.
 
 export const ogSize = { width: 1200, height: 630 };
 export const ogContentType = "image/png";
@@ -12,42 +12,22 @@ const fg = "#111111";
 const muted = "#6e6e6e";
 const rule = "#d6d6d6";
 const accent = "#0084ff";
+const accentInk = "#006ad1";
 const pad = 72;
 
 async function fonts() {
   const read = (...p: string[]) => readFile(join(process.cwd(), ...p));
-  const [regular, bold, mono] = await Promise.all([
+  const [regular, bold] = await Promise.all([
     read("app/fonts/texgyreheros-regular.otf"),
     read("app/fonts/texgyreheros-bold.otf"),
-    read(
-      "node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff",
-    ),
   ]);
   return [
     { name: "Heros", data: regular, weight: 400 as const, style: "normal" as const },
     { name: "Heros", data: bold, weight: 700 as const, style: "normal" as const },
-    { name: "Plex Mono", data: mono, weight: 400 as const, style: "normal" as const },
   ];
 }
 
-function Label({ children, color = fg }: { children: string; color?: string }) {
-  return (
-    <div
-      style={{
-        display: "flex",
-        fontFamily: "Plex Mono",
-        fontSize: 22,
-        letterSpacing: "0.06em",
-        textTransform: "uppercase",
-        color,
-      }}
-    >
-      {children}
-    </div>
-  );
-}
-
-/** Top bar: the blue rule over a row of mono caps labels, like a section head. */
+/** Top bar: the blue rule, then the name as in the header and a muted note. */
 function Bar({ left, right }: { left: string; right: string }) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
@@ -57,10 +37,13 @@ function Bar({ left, right }: { left: string; right: string }) {
           display: "flex",
           justifyContent: "space-between",
           paddingTop: 20,
+          fontSize: 26,
         }}
       >
-        <Label>{left}</Label>
-        <Label color={muted}>{right}</Label>
+        <div style={{ display: "flex", fontWeight: 700, color: accentInk }}>
+          {left}
+        </div>
+        <div style={{ display: "flex", color: muted }}>{right}</div>
       </div>
     </div>
   );
@@ -129,9 +112,10 @@ export async function siteOgImage({
               display: "flex",
               borderTop: `1px solid ${rule}`,
               paddingTop: 20,
-              fontSize: 26,
+              fontSize: 28,
+              fontWeight: 700,
               lineHeight: 1.35,
-              color: muted,
+              color: accentInk,
             }}
           >
             {footer}
@@ -164,7 +148,7 @@ export async function workOgImage({
   return new ImageResponse(
     (
       <Frame>
-        <Bar left="Hyun Seo / Case study" right={years} />
+        <Bar left="Hyun Seo" right={`Case study, ${years}`} />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
             style={{
