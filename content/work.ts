@@ -422,6 +422,7 @@ const WORK_ENTRIES = [
       "Designed and developed major product surfaces across orbital operations, space business analysis, and AI-assisted defense intelligence. Extended the AI Analyst through recurring work with journalists and analysts, including CNN, Reuters, and Newsweek.",
       "Drove Satcat from product thesis to a public platform with thousands of registered users, hundreds of thousands of visitors, and millions of page views over the last 24 months.",
       "Built the corporate MCP and maintain it with the Chief of AI, held town halls on how to use it, and took the company from almost no AI tooling use to company-wide use across engineering, analytics, documentation, and product knowledge.",
+      "Built Kayhan’s design system from the ground up to work with coding agents such as Codex and Claude Code, with tested guardrails around the astrodynamics algorithms, so new products reach an MVP without waiting on design review.",
       "Taught developers to be user-centric and UX-first, and installed a shared design taste and a design floor across the company.",
       "Designed and built Satcat for ChatGPT, part of an ongoing effort to meet users in the high-traffic places they already are.",
     ],
@@ -683,6 +684,15 @@ const WORK_ENTRIES = [
             width: 2041,
             height: 1164,
           },
+        ],
+      },
+      {
+        title: "A design system coding agents can build from",
+        tertiary: true,
+        body: [
+          "I built Kayhan’s design system from the ground up, and I built it to be used by coding agents as much as by people. It works with Codex and Claude Code, so someone can ask an agent for a new astrodynamics application and get back something that already looks and behaves like a Kayhan product.",
+          "The interface is only part of it. The system also puts guardrails around the algorithms, backed by test suites, so the astrodynamics underneath a new screen is checked and not left to the model’s judgment.",
+          "It changed when design scrutiny happens, too. A new product can reach an MVP on the system alone, without a designer going over every screen. Once it has traction, we bring in close design review. That puts design time where a product has earned it, and it has helped business operations a lot: we can put an idea in front of customers before spending design time on it.",
         ],
       },
       {

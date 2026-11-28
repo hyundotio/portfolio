@@ -22,6 +22,7 @@ export const keyFacts = [
   "At Kayhan Space since 2021, first as Head of Design and now as Chief Product Officer. The role is hands-on: in practice I work as a principal design engineer whose scope is the whole company.",
   "Designed and developed Satcat Terminal and Satcat AI Analyst, and took Satcat public: thousands of registered users, hundreds of thousands of visitors, and millions of page views over the last 24 months.",
   "Built Kayhan’s corporate MCP, maintain it with the Chief of AI, and took the company from almost no AI tooling use to company-wide use. Also designed and built Satcat for ChatGPT.",
+  "Built Kayhan’s design system from the ground up to work with coding agents such as Codex and Claude Code. It puts tested guardrails around the astrodynamics algorithms, and lets new products reach an MVP before close design review is needed.",
   "Produced the orbital analysis and visuals for a CNN investigation, Kayhan Space analysis has been cited by Reuters, and Newsweek quoted my Satcat analysis of a Russian military satellite’s close approach to a commercial spacecraft in October 2026.",
   "Solo-built Frontline Zero in 2026: a real-time strategy game on my own deterministic TypeScript engine, built in about two months and released in mid-October on the web, the App Store, and Google Play, with over 400 players in its first month.",
   "First product designer at HawkEye 360 (2020–2021). Designed Mission Space for RF geolocation analysis, built its frontend design system, and took map interaction from roughly 10–15 FPS to 60 FPS.",
@@ -45,6 +46,7 @@ export const threads: readonly Thread[] = [
       { work: "kayhan-space", title: "Satcat Terminal and space data for non-space users" },
       { work: "kayhan-space", title: "Investigative analysis as a product capability" },
       { work: "kayhan-space", title: "Scaling AI tooling across the company" },
+      { work: "kayhan-space", title: "A design system coding agents can build from" },
       { work: "kayhan-space", title: "Meeting users where they are" },
       { work: "frontline-zero", title: "Shipping as one person" },
       { work: "ibm", title: "Project Debater and early AI interfaces" },
@@ -75,6 +77,7 @@ export const threads: readonly Thread[] = [
     note: "Turning what works for me into tools and habits a whole company uses.",
     sections: [
       { work: "kayhan-space", title: "Scaling AI tooling across the company" },
+      { work: "kayhan-space", title: "A design system coding agents can build from" },
       { work: "kayhan-space", title: "Teaching developers to be UX-first" },
       { work: "hawkeye-360", title: "Building the design discipline" },
     ],
