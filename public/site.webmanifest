@@ -1,6 +1,8 @@
 {
-  "name": "Hyun.io",
-  "short_name": "Hyun.io",
+  "name": "Hyun Seo",
+  "short_name": "Hyun Seo",
+  "description": "Product engineer and designer making complex systems usable across space, RF intelligence, AI, quantum, cybersecurity, and geospatial data.",
+  "start_url": "/",
   "icons": [
     {
       "src": "/web-app-manifest-192x192.png",

@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import { WORK_DATA, type WorkDetailMediaCard } from "@/content/work";
 import { buildSocialMetadata } from "@/utils/metadata";
 import { slugify } from "@/utils/slugify";
+import { jsonLdHtml, workJsonLd } from "@/utils/structuredData";
 import { MediaOpen, MediaViewer, type ViewerItem } from "@/app/_components/MediaViewer";
 import Wordmark from "@/app/_components/Wordmark";
 
@@ -32,6 +33,7 @@ export async function generateMetadata({
       title: work.company,
       description: work.detailMetaDescription,
       path: `/work/${work.id}`,
+      type: "article",
     }),
   };
 }
@@ -141,6 +143,10 @@ export default async function WorkPage({ params }: { params: Params }) {
 
   return (
     <article className="work" style={accentStyle}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdHtml(workJsonLd(work))}
+      />
       <header className="work-hero">
         <div className="hero-meta grid small">
           <p className="col-label">

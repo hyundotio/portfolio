@@ -7,10 +7,15 @@ import {
   links,
   resumePdfHref,
 } from "@/content/site";
+import { homeJsonLd, jsonLdHtml } from "@/utils/structuredData";
 
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLdHtml(homeJsonLd())}
+      />
       <section className="page-head grid">
         <div className="col-display">
           <h1 className="display">

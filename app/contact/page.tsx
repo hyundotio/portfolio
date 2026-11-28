@@ -3,7 +3,8 @@ import { links } from "@/content/site";
 import { buildSocialMetadata } from "@/utils/metadata";
 import ContactForm from "./ContactForm";
 
-const description = "Get in touch with Hyun Seo.";
+const description =
+  "Send Hyun Seo a message about product and design engineering work, or find Hyun on LinkedIn and GitHub.";
 
 export const metadata: Metadata = {
   title: "Contact",

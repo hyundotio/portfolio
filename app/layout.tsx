@@ -1,5 +1,5 @@
 import "./globals.css";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import Link from "next/link";
 import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
@@ -38,6 +38,9 @@ export const metadata: Metadata = {
     template: siteTitleTemplate,
   },
   description: siteDescription,
+  applicationName: "Hyun Seo",
+  authors: [{ name: "Hyun Seo", url: "/" }],
+  creator: "Hyun Seo",
   ...buildSocialMetadata({
     title: siteTitle,
     description: siteDescription,
@@ -45,7 +48,7 @@ export const metadata: Metadata = {
   }),
   manifest: "/site.webmanifest",
   appleWebApp: {
-    title: "Hyun.io",
+    title: "Hyun Seo",
   },
   icons: {
     icon: [
@@ -55,6 +58,14 @@ export const metadata: Metadata = {
     shortcut: "/favicon.ico",
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],
   },
+};
+
+// Browser chrome follows the page: white, or near-black in dark mode.
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#121212" },
+  ],
 };
 
 const nav = [
