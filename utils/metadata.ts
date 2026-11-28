@@ -8,7 +8,8 @@ export const siteTitleTemplate = "%s | Hyun Seo";
 export const siteDescription = `Hyun Seo is a ${tagline.charAt(0).toLowerCase()}${tagline.slice(1)}`;
 
 export const metadataBase = new URL(
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://hyun.io"
+  // hyun.io redirects here, so canonical and share URLs use the final address.
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.hyun.io"
 );
 
 /**
