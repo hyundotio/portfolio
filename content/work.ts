@@ -560,7 +560,7 @@ const WORK_ENTRIES = [
       {
         title: "Meeting users where they are",
         body: [
-          "I also designed and built Satcat for ChatGPT, an app that brings the Satcat satellite catalog into the conversation. People can find satellites, plot their orbital history, and see them on an interactive 3D globe without leaving the chat.",
+          "I also designed and built Satcat for ChatGPT, an app that brings the Satcat satellite catalog into the conversation. People can find satellites, plot their orbital history, and see them on an interactive 3D globe without leaving the chat. The plots and the globe are served by the same design system our other products are built from.",
           "The idea is to meet users where they are, the way DoorDash does. Funneling every visitor to our own site adds friction, so we keep building extensions and plugins in the high-traffic places people already use, and let them reach our products from there.",
         ],
       },
@@ -692,6 +692,7 @@ const WORK_ENTRIES = [
         body: [
           "I built Kayhan’s design system from the ground up, and I built it to be used by coding agents as much as by people. It works with Codex and Claude Code, so someone can ask an agent for a new astrodynamics application and get back something that already looks and behaves like a Kayhan product.",
           "The interface is only part of it. The system also puts guardrails around the algorithms, backed by test suites, so the astrodynamics underneath a new screen is checked and not left to the model’s judgment.",
+          "Satcat for ChatGPT runs on it. The plots and 3D visualizations it serves inside the chat come from this same system.",
           "It changed when design scrutiny happens, too. A new product can reach an MVP on the system alone, without a designer going over every screen. Once it has traction, we bring in close design review. That puts design time where a product has earned it, and it has helped business operations a lot: we can put an idea in front of customers before spending design time on it.",
         ],
       },
